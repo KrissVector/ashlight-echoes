@@ -1,0 +1,45 @@
+{
+  "bonds": [
+    {
+      "id": "blade_dance",
+      "name": "双刃共舞",
+      "members": ["shakuya", "kagegetsu"],
+      "effects": [
+        { "type": "stat_buff", "target": "all_members", "stat": "atk", "value": 4 },
+        { "type": "stat_buff", "target": "all_members", "stat": "crit", "value": 5 }
+      ],
+      "description": "灼夜与影月同时出战时，两人 ATK+4，暴击率+5%"
+    },
+    {
+      "id": "life_guardian",
+      "name": "生命守护",
+      "members": ["reisa", "hatsuba"],
+      "effects": [
+        { "type": "stat_buff", "target": "reisa", "stat": "hp", "value": 25 },
+        { "type": "stat_buff", "target": "reisa", "stat": "def", "value": 2 },
+        { "type": "heal_amp", "target": "hatsuba", "value": 25 }
+      ],
+      "description": "玲纱与初叶同时出战时，玲纱最大 HP+25、DEF+2；初叶治疗效果+25%"
+    },
+    {
+      "id": "arcane_resonance",
+      "name": "奥术共鸣",
+      "members": ["ruri", "hatsuba"],
+      "effects": [
+        { "type": "stat_buff", "target": "all_members", "stat": "ap", "value": 4 },
+        { "type": "spell_amp", "target": "all_members", "value": 10 }
+      ],
+      "description": "瑠璃与初叶同时出战时，两人 AP+4，法术类卡牌伤害+10%"
+    },
+    {
+      "id": "steel_and_magic",
+      "name": "钢与魔",
+      "members": ["reisa", "ruri"],
+      "effects": [
+        { "type": "shield_amp", "target": "reisa", "value": 20 },
+        { "type": "stat_buff", "target": "ruri", "stat": "hp", "value": 15 }
+      ],
+      "description": "玲纱与瑠璃同时出战时，玲纱护盾值+20%，瑠璃最大 HP+15"
+    }
+  ]
+}
