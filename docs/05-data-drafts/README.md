@@ -4,7 +4,7 @@ These JSON files are migrated design data drafts, not final runtime resources.
 
 Included:
 
-- `followers.json`: current character stat and initial card draft.
+- `characters.json`: current character stat and initial card draft.
 - `cards.json`: current card and upgrade draft.
 - `bonds.json`: early pair synergy draft.
 - `rewards.json`: old reward-pool prototype data; compare against `docs/02-systems/roguelike-run.md` before implementation.

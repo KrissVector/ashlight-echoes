@@ -75,4 +75,4 @@ Old placeholder documents were also excluded when they had been superseded by ne
 
 ## Terminology Note
 
-Some source documents still use `随从` because that was the early project term. In the formal design, these are playable characters / team members. There is no in-world player protagonist commanding personal followers.
+Formal design documents use playable characters / team members. Some migrated data drafts and legacy file names may still reflect old prototype terminology, but there is no in-world player protagonist commanding a subordinate cast.

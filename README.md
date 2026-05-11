@@ -19,4 +19,4 @@ This repository is the formal project home. The current migration intentionally 
 
 - Old prototype source code was deliberately not migrated.
 - Old technical docs were deliberately not migrated; technical architecture should be redefined for this formal project.
-- Some migrated design documents may still use the historical term "随从". In the formal project, treat these as playable characters / team members, not subordinates of a player protagonist.
+- Some migrated data drafts and legacy file names may still use old prototype terminology. Formal design documents use playable characters / team members; there is no subordinate-cast framing.

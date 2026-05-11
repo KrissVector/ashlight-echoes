@@ -4,7 +4,7 @@
     {
       "id": "potion_atk_small",
       "name": "力量药剂",
-      "description": "永久提升一名随从 ATK+3",
+      "description": "永久提升一名角色 ATK+3",
       "rarity": "normal",
       "basePrice": 40,
       "effect": { "type": "stat_boost", "stat": "atk", "value": 3, "target": "single" }
@@ -12,7 +12,7 @@
     {
       "id": "potion_ap_small",
       "name": "智慧药剂",
-      "description": "永久提升一名随从 AP+3",
+      "description": "永久提升一名角色 AP+3",
       "rarity": "normal",
       "basePrice": 40,
       "effect": { "type": "stat_boost", "stat": "ap", "value": 3, "target": "single" }
@@ -20,7 +20,7 @@
     {
       "id": "potion_hp_small",
       "name": "生命药剂",
-      "description": "永久提升一名随从 HP+15",
+      "description": "永久提升一名角色 HP+15",
       "rarity": "normal",
       "basePrice": 35,
       "effect": { "type": "stat_boost", "stat": "hp", "value": 15, "target": "single" }
@@ -28,7 +28,7 @@
     {
       "id": "potion_def_small",
       "name": "护盾药剂",
-      "description": "永久提升一名随从 DEF+2",
+      "description": "永久提升一名角色 DEF+2",
       "rarity": "normal",
       "basePrice": 45,
       "effect": { "type": "stat_boost", "stat": "def", "value": 2, "target": "single" }
@@ -44,7 +44,7 @@
     {
       "id": "potion_atk_big",
       "name": "强力力量药剂",
-      "description": "永久提升一名随从 ATK+6",
+      "description": "永久提升一名角色 ATK+6",
       "rarity": "rare",
       "basePrice": 80,
       "effect": { "type": "stat_boost", "stat": "atk", "value": 6, "target": "single" }
@@ -52,7 +52,7 @@
     {
       "id": "potion_ap_big",
       "name": "强力智慧药剂",
-      "description": "永久提升一名随从 AP+6",
+      "description": "永久提升一名角色 AP+6",
       "rarity": "rare",
       "basePrice": 80,
       "effect": { "type": "stat_boost", "stat": "ap", "value": 6, "target": "single" }
@@ -83,8 +83,8 @@
     }
   ],
   "shopConfigs": {
-    "tier1": { "tier": 1, "cardCount": 3, "potionCount": 3, "hasCardRemove": true, "cardRemovePrice": 50 },
-    "tier2": { "tier": 2, "cardCount": 3, "potionCount": 4, "hasCardRemove": true, "cardRemovePrice": 75 },
-    "tier3": { "tier": 3, "cardCount": 4, "potionCount": 4, "hasCardRemove": true, "cardRemovePrice": 100 }
+    "tier1": { "tier": 1, "potionCount": 3 },
+    "tier2": { "tier": 2, "potionCount": 4 },
+    "tier3": { "tier": 3, "potionCount": 4 }
   }
 }

@@ -1,11 +1,11 @@
 ﻿# Team and Character System
 
 > Status: migration bridge document  
-> Purpose: clarify the formal project terminology before the old character docs are fully rewritten
+> Purpose: clarify formal project terminology for team and character systems
 
 ## Core Rule
 
-There is no in-world player protagonist. The playable cast are characters / team members with their own motives and story arcs. Historical documents may use the term `随从`; read it as `角色` or `队员` unless a later design explicitly restores a different term.
+There is no in-world player protagonist. The playable cast are characters / team members with their own motives and story arcs. Formal design documents should use characters / team members; legacy data drafts and file names may still reflect old prototype terminology.
 
 ## Team Structure
 
@@ -20,6 +20,6 @@ See [Characters](../03-content/characters.md) for current stat, card, and playst
 
 ## Design Open Points
 
-- Final Chinese system term: 角色 / 队员 / 同伴 / something else.
+- Current Chinese system term: `角色`; use `队员` only when emphasizing membership in the active team.
 - Whether pair synergies should remain as `羁绊`, be renamed, or be expressed only through card/equipment interactions.
 - Final meta progression unlock conditions for characters and ultimate cards.
