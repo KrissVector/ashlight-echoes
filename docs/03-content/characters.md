@@ -1,8 +1,8 @@
 # 角色设计（v3）
 
 > 更新日期：2026-03-04
-> 卡牌数据（含效果和升级路线）：`docs/05-data-drafts/cards.json`
-> 角色属性配置：`docs/05-data-drafts/characters.json`
+> 卡牌数据（含效果和升级路线）：`docs/03-content/data/cards.json`
+> 角色属性配置：`docs/03-content/data/characters.json`
 > 世界观和角色背景：`docs/01-world/world-setting.md`
 
 ## 属性总览

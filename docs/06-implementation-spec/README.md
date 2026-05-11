@@ -34,10 +34,10 @@
 1. `docs/06-implementation-spec/` 中的实现规格
 2. `docs/02-systems/` 中的系统规则
 3. `docs/03-content/` 中的内容定义
-4. `docs/01-world/` 和 `docs/04-art/` 中的世界观与美术方向
-5. `docs/05-data-drafts/` 中的迁移数据草案
+4. `docs/03-content/data/` 中的正式内容表
+5. `docs/01-world/` 和 `docs/04-art/` 中的世界观与美术方向
 
-`docs/05-data-drafts/` 只能作为参考材料。不要把其中的 JSON 直接当成最终 runtime schema；正式结构需要以后由 `data-schema.md` 定义。
+`docs/03-content/data/` 是正式内容表。实现时仍需按 `data-schema.md` 建立运行时结构，但不应绕过这些内容表自行发明角色、卡牌或章节 id。
 
 ## 实现原则
 

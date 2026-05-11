@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "characters": [
+    {
+      "id": "reisa",
+      "name": "玲纱",
+      "title": "不碎之盾",
+      "role": "tank",
+      "unlockChapter": "prologue",
+      "baseStats": {
+        "hp": 180,
+        "atk": 14,
+        "ap": 0,
+        "def": 0,
+        "spd": 8,
+        "as": 1,
+        "crit": 5,
+        "cdmg": 150,
+        "evd": 5,
+        "acc": 100
+      },
+      "initialCards": [
+        "shield_strike",
+        "iron_bastion",
+        "counter_guard",
+        "immovable"
+      ],
+      "ultimateCardId": "immovable"
+    },
+    {
+      "id": "shakuya",
+      "name": "灼夜",
+      "title": "灼热双刃",
+      "role": "physical_dps",
+      "unlockChapter": "prologue",
+      "baseStats": {
+        "hp": 110,
+        "atk": 18,
+        "ap": 0,
+        "def": 0,
+        "spd": 12,
+        "as": 1,
+        "crit": 5,
+        "cdmg": 150,
+        "evd": 5,
+        "acc": 100
+      },
+      "initialCards": [
+        "battle_frenzy",
+        "bloodthirst",
+        "blood_whirlwind",
+        "flame_raven"
+      ],
+      "ultimateCardId": "flame_raven"
+    },
+    {
+      "id": "hatsuba",
+      "name": "初叶",
+      "title": "初绽之芽",
+      "role": "support",
+      "unlockChapter": "chapter_2",
+      "baseStats": {
+        "hp": 130,
+        "atk": 10,
+        "ap": 15,
+        "def": 0,
+        "spd": 10,
+        "as": 1,
+        "crit": 5,
+        "cdmg": 150,
+        "evd": 5,
+        "acc": 100
+      },
+      "initialCards": [
+        "healing_light",
+        "nature_blessing",
+        "bloom",
+        "divine_grace"
+      ],
+      "ultimateCardId": "divine_grace"
+    },
+    {
+      "id": "ruri",
+      "name": "瑠璃",
+      "title": "星蓝之页",
+      "role": "magical_dps",
+      "unlockChapter": "chapter_3",
+      "baseStats": {
+        "hp": 90,
+        "atk": 6,
+        "ap": 20,
+        "def": 0,
+        "spd": 12,
+        "as": 1,
+        "crit": 5,
+        "cdmg": 150,
+        "evd": 5,
+        "acc": 100
+      },
+      "initialCards": [
+        "arcane_missile",
+        "mana_surge",
+        "void_rift",
+        "meteor"
+      ],
+      "ultimateCardId": "meteor"
+    },
+    {
+      "id": "kagegetsu",
+      "name": "影月",
+      "title": "残月之影",
+      "role": "assassin",
+      "unlockChapter": "chapter_4",
+      "baseStats": {
+        "hp": 95,
+        "atk": 16,
+        "ap": 0,
+        "def": 0,
+        "spd": 18,
+        "as": 1,
+        "crit": 5,
+        "cdmg": 150,
+        "evd": 5,
+        "acc": 100
+      },
+      "initialCards": [
+        "shadow_dash",
+        "poison_bomb",
+        "phantom_step",
+        "execute"
+      ],
+      "ultimateCardId": "execute"
+    }
+  ]
+}

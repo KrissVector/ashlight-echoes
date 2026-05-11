@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "chapters": [
+    {
+      "id": "prologue",
+      "index": 0,
+      "title": "余烬相逢",
+      "mainLocation": "边烬哨站",
+      "nodeModel": "linear_tutorial",
+      "totalSteps": 2,
+      "focusCharacterIds": [
+        "reisa",
+        "shakuya"
+      ],
+      "fixedSteps": [
+        {
+          "step": 1,
+          "type": "tutorial_battle",
+          "summary": "玲纱单人教程战"
+        },
+        {
+          "step": 2,
+          "type": "tutorial_battle",
+          "summary": "玲纱与灼夜双人教程战"
+        }
+      ]
+    },
+    {
+      "id": "chapter_1",
+      "index": 1,
+      "title": "银誓余烬",
+      "mainLocation": "银誓要塞遗址",
+      "nodeModel": "choice_steps",
+      "totalSteps": 13,
+      "focusCharacterIds": [
+        "reisa",
+        "shakuya"
+      ],
+      "fixedSteps": [
+        {
+          "step": 6,
+          "type": "special_elite",
+          "summary": "灼夜大招解锁战"
+        },
+        {
+          "step": 13,
+          "type": "boss",
+          "summary": "断誓之盾·莱恩哈特"
+        }
+      ]
+    },
+    {
+      "id": "chapter_2",
+      "index": 2,
+      "title": "翠冠残梦",
+      "mainLocation": "翠冠圣林",
+      "nodeModel": "choice_steps",
+      "totalSteps": 13,
+      "focusCharacterIds": [
+        "hatsuba"
+      ],
+      "fixedSteps": [
+        {
+          "step": 3,
+          "type": "recruitment_battle",
+          "summary": "初叶入队战"
+        },
+        {
+          "step": 13,
+          "type": "boss",
+          "summary": "第2章 Boss"
+        }
+      ]
+    },
+    {
+      "id": "chapter_3",
+      "index": 3,
+      "title": "星环静默",
+      "mainLocation": "静默书库",
+      "nodeModel": "choice_steps",
+      "totalSteps": 13,
+      "focusCharacterIds": [
+        "ruri"
+      ],
+      "fixedSteps": [
+        {
+          "step": 3,
+          "type": "recruitment_battle",
+          "summary": "瑠璃入队战"
+        },
+        {
+          "step": 13,
+          "type": "boss",
+          "summary": "第3章 Boss"
+        }
+      ]
+    },
+    {
+      "id": "chapter_4",
+      "index": 4,
+      "title": "残月无声",
+      "mainLocation": "月隐废里",
+      "nodeModel": "choice_steps",
+      "totalSteps": 13,
+      "focusCharacterIds": [
+        "kagegetsu"
+      ],
+      "fixedSteps": [
+        {
+          "step": 3,
+          "type": "recruitment_battle",
+          "summary": "影月入队战"
+        },
+        {
+          "step": 13,
+          "type": "boss",
+          "summary": "第4章 Boss"
+        }
+      ]
+    },
+    {
+      "id": "chapter_5",
+      "index": 5,
+      "title": "焰尽天穹",
+      "mainLocation": "天穹坠痕",
+      "nodeModel": "choice_steps",
+      "totalSteps": 13,
+      "focusCharacterIds": [
+        "shakuya"
+      ],
+      "fixedSteps": [
+        {
+          "step": 13,
+          "type": "boss",
+          "summary": "天穹之骸"
+        }
+      ]
+    }
+  ]
+}
