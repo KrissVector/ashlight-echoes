@@ -1,78 +1,92 @@
-﻿# Ashlight Echoes - Design Overview
+# Ashlight Echoes - 设计总览
 
-> Status: formal project design baseline  
-> Source: migrated from the MyGame prototype project  
-> Migration scope: design documents, concept art, and configuration drafts only
+> 状态：正式项目设计基线
+> 来源：从旧 MyGame 原型项目迁移
+> 迁移范围：只迁移设计文档、概念图和配置草案
 
-## Project Positioning
+## 项目定位
 
-Ashlight Echoes is a 2D anime-style roguelike deckbuilder. The player does not exist as an in-world protagonist; the player acts from a strategy/director view, building a team from the cast and making combat and route decisions.
+《Ashlight Echoes》是一款 2D 二次元风格 roguelike 卡牌构筑游戏。玩家不是世界内的主角，而是以策略指挥视角组织队伍、选择遭遇、操作战斗和推进章节。
 
-The game is set on Hui Jin / Ashlight, a continent once nourished by Lumina. Two hundred years after the Starfall shattered the Celestial Core, Void power continues to corrupt ruins, creatures, and old guardians. Characters from different regions gather for their own reasons to seek Lumina Shards and resist the Void.
+游戏发生在辉烬大陆。两百年前，“灭星之夜”摧毁了天穹之心，星辉失控，虚空之力开始侵蚀废墟、生物和旧日守护者。来自不同地方的角色因各自理由走到一起，寻找星辉碎片并对抗虚空扩散。
 
-## Current Naming
+## 当前命名
 
-- Chinese working title: 辉烬残响
-- English working title: Ashlight Echoes
-- World name in legacy docs: 辉烬大陆 / Luminash
+- 中文暂定名：辉烬残响
+- 英文暂定名：Ashlight Echoes
+- 世界名候选：辉烬大陆 / Luminash
 
-`Luminash` may remain as an internal world-name candidate, but the project title uses `Ashlight Echoes` for readability.
+`Luminash` 可以保留为内部世界名候选；项目标题优先使用 `Ashlight Echoes`，便于英文传播。
 
-## Design Pillars
+## 设计支柱
 
-1. Character-driven ensemble narrative, with no player avatar or singular chosen-one protagonist.
-2. Roguelike deckbuilding built around team composition, card play, equipment, potions, and per-run growth.
-3. Step-based encounter selection: each step offers two or three imperfect choices instead of a full Slay-the-Spire-style node map.
-4. Each battle starts with HP restored; long-term pressure comes from environment modifiers, rewards, economy, and build decisions.
-5. Anime fantasy presentation with warm character interaction over a ruined, post-calamity world.
+1. 群像角色叙事：没有玩家化身，也没有单一“天选主角”。
+2. Roguelike 卡牌构筑：围绕队伍、共享牌库、装备、药水和局内成长形成构筑。
+3. 步进式遭遇选择：每步提供二/三选一，不使用完整节点地图。
+4. 每场战斗 HP 回满：长期压力来自环境修正、奖励、经济和构筑决策。
+5. 二次元幻想表现：废墟末世基底上保留温暖的角色互动。
 
-## Core Loop
+## 核心循环
 
 ```text
-Title / preparation
-  -> choose team members
-  -> choose next encounter option
-  -> apply node modifiers
-  -> battle / shop / event
-  -> reward, potion use, equipment decisions
-  -> repeat until chapter boss
-  -> chapter clear, unlocks, or run failure
+标题 / 准备
+  -> 选择上场角色
+  -> 选择下一遭遇选项
+  -> 应用节点修正
+  -> 战斗 / 商店 / 事件
+  -> 奖励、药水使用、装备决策
+  -> 重复直到章节 Boss
+  -> 章节结算、解锁或失败
 ```
 
-## Canonical Design Documents
+## 章节结构
 
-World and narrative:
+章节只定义一个主地点，不拆分多个地点链。运行时 UI 优先展示章节标题和主地点，避免早期向玩家灌输过多大区域名或组织名。
 
-- [World Setting](01-world/world-setting.md)
+| 章节 | 章节标题 | 主地点 | 功能 |
+|------|---------|--------|------|
+| 序章 | 余烬相逢 | 边烬哨站 | 教学与灼夜登场 |
+| 第1章 | 银誓余烬 | 银誓要塞遗址 | MVP 完整可玩章节 |
+| 第2章 | 翠冠残梦 | 翠冠圣林 | 初叶入队 |
+| 第3章 | 星环静默 | 静默书库 | 瑠璃入队 |
+| 第4章 | 残月无声 | 月隐废里 | 影月入队 |
+| 第5章 | 焰尽天穹 | 天穹坠痕 | 最终章节 |
 
-Systems:
+## 权威设计文档
 
-- [Battle](02-systems/battle.md)
-- [Cards](02-systems/cards.md)
-- [Run and Rewards](02-systems/roguelike-run.md)
-- [Map and Encounters](02-systems/map-encounters.md)
-- [Node Modifiers](02-systems/node-modifiers.md)
-- [Equipment](02-systems/equipment.md)
-- [Potions](02-systems/potions.md)
+世界观与叙事：
 
-Content:
+- [世界观设定](01-world/world-setting.md)
 
-- [Characters](03-content/characters.md)
-- [Chapter 1 Enemies](03-content/enemies-chapter-1.md)
-- [Build Archetypes](03-content/build-archetypes.md)
+系统：
 
-Art and data:
+- [战斗系统](02-systems/battle.md)
+- [卡牌系统](02-systems/cards.md)
+- [肉鸽流程与奖励](02-systems/roguelike-run.md)
+- [地图与遭遇](02-systems/map-encounters.md)
+- [节点修正](02-systems/node-modifiers.md)
+- [装备系统](02-systems/equipment.md)
+- [药水系统](02-systems/potions.md)
 
-- [Art Style Guide](04-art/style-guide.md)
-- [Concept Art Index](04-art/concept-index.md)
-- [Data Drafts](05-data-drafts/README.md)
+内容：
 
-## Migration Decisions
+- [角色设计](03-content/characters.md)
+- [第1章敌人设计](03-content/enemies-chapter-1.md)
+- [构筑原型](03-content/build-archetypes.md)
 
-The old prototype implementation is intentionally excluded from this repository. It was built against older assumptions, including a full node-map flow and old runtime structures. If code is reused later, treat it as reference material only and port individual algorithms after checking them against the documents above.
+美术与数据：
 
-Old placeholder documents were also excluded when they had been superseded by newer detailed documents. In particular, the old combined item-system placeholder is superseded by separate equipment and potion documents.
+- [美术风格指南](04-art/style-guide.md)
+- [概念图索引](04-art/concept-index.md)
+- [数据草案](05-data-drafts/README.md)
+- [实现规格](06-implementation-spec/README.md)
 
-## Terminology Note
+## 迁移决策
 
-Formal design documents use playable characters / team members. Some migrated data drafts and legacy file names may still reflect old prototype terminology, but there is no in-world player protagonist commanding a subordinate cast.
+旧原型实现刻意排除在本仓库外。旧代码基于旧的节点地图流程和旧 runtime 结构，后续如需复用，只能在核对新版文档后按算法片段迁移。
+
+旧占位文档在已有新版详细文档时也不迁移。例如旧的合并道具系统占位文档已被装备系统与药水系统文档取代。
+
+## 术语说明
+
+正式设计文档使用“可玩角色 / 队伍成员”。部分迁移数据草案可能仍残留旧原型术语，但本作没有世界内玩家主角，也不采用“玩家统领随从”的叙事框架。

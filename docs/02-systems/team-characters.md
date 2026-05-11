@@ -1,25 +1,25 @@
-﻿# Team and Character System
+# 队伍与角色系统
 
-> Status: migration bridge document  
-> Purpose: clarify formal project terminology for team and character systems
+> 状态：迁移桥接文档
+> 目的：明确正式项目中“队伍 / 角色”相关术语
 
-## Core Rule
+## 核心规则
 
-There is no in-world player protagonist. The playable cast are characters / team members with their own motives and story arcs. Formal design documents should use characters / team members; legacy data drafts and file names may still reflect old prototype terminology.
+本作没有世界内的玩家主角。可玩阵容由拥有独立动机和故事弧光的角色组成。正式设计文档使用“角色 / 队伍成员”表述；迁移数据草案和旧文件名如果残留旧原型术语，只能作为历史遗留处理。
 
-## Team Structure
+## 队伍结构
 
-- The player assembles a battle team from unlocked characters.
-- At most 3 characters enter battle.
-- Character selection determines the base deck for that battle.
-- Character growth happens inside a run through reward choices, potions, equipment, card upgrades, and story unlocks.
+- 玩家从已解锁角色中组建战斗队伍。
+- 最多 3 名角色进入战斗。
+- 角色选择决定该场战斗的基础共享牌库。
+- 角色成长发生在单次 run 内，来源包括奖励选择、药水、装备、卡牌升级和剧情解锁。
 
-## Current Cast
+## 当前角色
 
-See [Characters](../03-content/characters.md) for current stat, card, and playstyle drafts.
+当前属性、初始卡牌和玩法草案见 [角色设计](../03-content/characters.md)。
 
-## Design Open Points
+## 待定问题
 
-- Current Chinese system term: `角色`; use `队员` only when emphasizing membership in the active team.
-- Whether pair synergies should remain as `羁绊`, be renamed, or be expressed only through card/equipment interactions.
-- Final meta progression unlock conditions for characters and ultimate cards.
+- 当前中文系统术语使用 `角色`；只有强调上场队伍身份时才使用 `队员`。
+- 双人联动是否继续命名为 `羁绊`，或改由卡牌 / 装备互动自然表达。
+- 角色和大招卡的最终局外解锁条件。
