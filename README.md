@@ -6,6 +6,7 @@
 
 ## 设计入口
 
+- [文档索引](docs/README.md)
 - [设计总览](docs/00-overview.md)
 - [世界观设定](docs/01-world/world-setting.md)
 - [战斗系统](docs/02-systems/battle.md)
@@ -15,6 +16,13 @@
 - [美术风格指南](docs/04-art/style-guide.md)
 - [正式内容表](docs/03-content/data/README.md)
 - [实现规格](docs/06-implementation-spec/README.md)
+
+## LLM 协作记忆
+
+- 项目内记忆文件位于 [memory/](memory/README.md)。
+- Codex / Claude Code 或其它 LLM pull 本仓库后，必须先读取 `memory/`，并把其中内容同步到本机 LLM 记忆目录，再继续工作。
+- 每次提交前，必须把当前本机 LLM 记忆同步回 `memory/`，确保仓库里的记忆是最新副本。
+- `memory/` 只保存协作偏好和长期工作规则，不替代正式设计文档；玩法、内容和实现规格仍以 `docs/README.md` 中的文档体系为准。
 
 ## 迁移说明
 

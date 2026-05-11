@@ -79,14 +79,14 @@
 
 卡牌伤害由卡牌描述中的公式决定，常见模式：
 
-- **物理伤害**：`round(atkScaling × ATK + apScaling × AP)` — 减去目标 DEF
-- **法术伤害**：`round(base + apScaling × AP)` — 减去目标 DEF
+- **物理伤害**：`round(formula.atk × ATK + formula.ap × AP)` — 减去目标 DEF
+- **法术伤害**：`round(formula.base + formula.ap × AP)` — 减去目标 DEF
 - **固定/毒/流血伤害**：无视 DEF
-- **治疗**：`round(base + apScaling × AP)` — 不受 DEF 影响
-- **护盾**：`round(base + apScaling × AP)`
+- **治疗**：`round(formula.base + formula.ap × AP)` — 不受 DEF 影响
+- **护盾**：`round(formula.base + formula.ap × AP)`
 - 所有数值四舍五入取整
 
-部分卡牌还可基于**护盾值**（shieldScaling）或**流血层数**（bleedScaling）计算伤害。
+部分卡牌还可基于**护盾值**（`formula.shield`）或**流血层数**（`formula.bleedStacks`）计算伤害。
 
 ## 卡牌升级系统（已确定）
 
@@ -110,14 +110,3 @@
 
 - **消耗型升级**：部分卡牌升级后变为消耗型（如神恩降临的两个升级），效果更强但一局只能用一次
 - **卡牌变形**：极少数升级会将其他卡牌永久变形为新卡牌（如神恩降临·裁决）
-
-## 待定设计
-
-- [x] 牌库的组成规则 → 所有出战角色卡牌混合成公共牌库
-- [x] 卡牌费用系统 → 公共能量池
-- [x] 是否有"消耗"类卡牌 → 有
-- [x] 卡牌升级/强化规则 → 二选一升级，每牌限 1 次
-- [x] 手牌上限 8 张，每回合抽 3 张
-- [x] 上场人数限制 → 最多 3 人
-- [x] 卡牌副本 → 固有基础卡无副本；药水等外部系统可产生副本或新增牌
-- [x] 装备/药水可添加或改变卡牌

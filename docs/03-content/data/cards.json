@@ -16,15 +16,18 @@
         {
           "type": "damage",
           "damageType": "physical",
-          "base": 0,
-          "atkScaling": 0.8,
-          "apScaling": 1.0
+          "formula": {
+            "atk": 0.8,
+            "ap": 1
+          }
         },
         {
           "type": "shield",
           "target": "self",
-          "base": 4,
-          "apScaling": 1.0
+          "formula": {
+            "base": 4,
+            "ap": 1
+          }
         }
       ],
       "upgrades": [
@@ -39,15 +42,18 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.2,
-              "apScaling": 2.0
+              "formula": {
+                "atk": 1.2,
+                "ap": 2
+              }
             },
             {
               "type": "shield",
               "target": "self",
-              "base": 4,
-              "apScaling": 1.0
+              "formula": {
+                "base": 4,
+                "ap": 1
+              }
             }
           ]
         },
@@ -62,16 +68,19 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 0.8,
-              "apScaling": 1.0,
-              "shieldScaling": 1.0
+              "formula": {
+                "atk": 0.8,
+                "ap": 1,
+                "shield": 1
+              }
             },
             {
               "type": "shield",
               "target": "self",
-              "base": 6,
-              "apScaling": 2.0
+              "formula": {
+                "base": 6,
+                "ap": 2
+              }
             }
           ]
         }
@@ -92,8 +101,10 @@
         {
           "type": "shield",
           "target": "self",
-          "base": 8,
-          "apScaling": 1.0
+          "formula": {
+            "base": 8,
+            "ap": 1
+          }
         }
       ],
       "upgrades": [
@@ -108,11 +119,14 @@
             {
               "type": "shield",
               "target": "self",
-              "base": 12,
-              "apScaling": 1.5
+              "formula": {
+                "base": 12,
+                "ap": 1.5
+              }
             },
             {
               "type": "taunt",
+              "target": "self",
               "duration": 1
             }
           ]
@@ -128,14 +142,18 @@
             {
               "type": "shield",
               "target": "self",
-              "base": 10,
-              "apScaling": 2.0
+              "formula": {
+                "base": 10,
+                "ap": 2
+              }
             },
             {
               "type": "shield_amplify",
               "target": "self",
-              "base": 10,
-              "apScaling": 2.0
+              "formula": {
+                "base": 10,
+                "ap": 2
+              }
             }
           ]
         }
@@ -156,9 +174,10 @@
         {
           "type": "damage",
           "damageType": "physical",
-          "base": 0,
-          "atkScaling": 1.0,
-          "shieldScaling": 0.5
+          "formula": {
+            "atk": 1,
+            "shield": 0.5
+          }
         }
       ],
       "upgrades": [
@@ -173,18 +192,22 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.0,
-              "shieldScaling": 0.5
+              "formula": {
+                "atk": 1,
+                "shield": 0.5
+              }
             },
             {
               "type": "weakness",
-              "target": "target",
-              "base": 1,
-              "apScaling": 0.2
+              "target": "selected",
+              "formula": {
+                "base": 1,
+                "ap": 0.2
+              }
             },
             {
               "type": "taunt",
+              "target": "self",
               "duration": 1
             }
           ]
@@ -200,15 +223,18 @@
             {
               "type": "shield",
               "target": "self",
-              "base": 5,
-              "apScaling": 1.0
+              "formula": {
+                "base": 5,
+                "ap": 1
+              }
             },
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.0,
-              "shieldScaling": 1.0
+              "formula": {
+                "atk": 1,
+                "shield": 1
+              }
             }
           ]
         }
@@ -229,9 +255,11 @@
         {
           "type": "shield",
           "target": "all_allies",
-          "base": 8,
-          "apScaling": 2.0,
-          "duration": "battle"
+          "duration": "battle",
+          "formula": {
+            "base": 8,
+            "ap": 2
+          }
         }
       ],
       "upgrades": [
@@ -246,17 +274,21 @@
             {
               "type": "shield",
               "target": "all_allies",
-              "base": 10,
-              "apScaling": 2.0,
-              "duration": "battle"
+              "duration": "battle",
+              "formula": {
+                "base": 10,
+                "ap": 2
+              }
             },
             {
               "type": "buff",
               "target": "all_allies",
               "stat": "def",
-              "base": 1,
-              "apScaling": 1.0,
-              "duration": "battle"
+              "duration": "battle",
+              "formula": {
+                "base": 1,
+                "ap": 1
+              }
             }
           ]
         },
@@ -271,12 +303,15 @@
             {
               "type": "shield",
               "target": "all_allies",
-              "base": 10,
-              "apScaling": 2.0,
-              "duration": "battle"
+              "duration": "battle",
+              "formula": {
+                "base": 10,
+                "ap": 2
+              }
             },
             {
               "type": "taunt",
+              "target": "all_allies",
               "duration": 1
             },
             {
@@ -358,9 +393,10 @@
         {
           "type": "damage",
           "damageType": "physical",
-          "base": 0,
-          "atkScaling": 1.2,
-          "apScaling": 1.0
+          "formula": {
+            "atk": 1.2,
+            "ap": 1
+          }
         },
         {
           "type": "lifesteal",
@@ -379,9 +415,10 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.2,
-              "apScaling": 1.0
+              "formula": {
+                "atk": 1.2,
+                "ap": 1
+              }
             },
             {
               "type": "lifesteal",
@@ -389,14 +426,21 @@
             },
             {
               "type": "conditional_bonus",
-              "condition": "target_hp_below",
-              "threshold": 0.5,
-              "damageBonus": 100
+              "condition": {
+                "type": "hp_below",
+                "target": "selected",
+                "threshold": 0.5
+              },
+              "percent": 100
             },
             {
               "type": "conditional_bonus",
-              "condition": "target_has_bleed",
-              "damageBonus": 100
+              "condition": {
+                "type": "target_has_status",
+                "target": "selected",
+                "statusId": "bleed"
+              },
+              "percent": 100
             }
           ]
         },
@@ -411,9 +455,10 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.2,
-              "apScaling": 1.0
+              "formula": {
+                "atk": 1.2,
+                "ap": 1
+              }
             },
             {
               "type": "lifesteal",
@@ -455,9 +500,10 @@
         {
           "type": "damage",
           "damageType": "physical",
-          "base": 0,
-          "atkScaling": 1.0,
-          "apScaling": 1.0
+          "formula": {
+            "atk": 1,
+            "ap": 1
+          }
         }
       ],
       "upgrades": [
@@ -472,15 +518,18 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.0,
-              "apScaling": 1.0
+              "formula": {
+                "atk": 1,
+                "ap": 1
+              }
             },
             {
               "type": "bleed",
               "target": "all_enemies",
-              "base": 2,
-              "apScaling": 0.5
+              "formula": {
+                "base": 2,
+                "ap": 0.5
+              }
             }
           ]
         },
@@ -495,9 +544,10 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.0,
-              "apScaling": 1.0
+              "formula": {
+                "atk": 1,
+                "ap": 1
+              }
             },
             {
               "type": "on_kill_per_target",
@@ -539,9 +589,10 @@
         {
           "type": "damage",
           "damageType": "physical",
-          "base": 0,
-          "atkScaling": 3.0,
-          "apScaling": 1.0
+          "formula": {
+            "atk": 3,
+            "ap": 1
+          }
         }
       ],
       "upgrades": [
@@ -564,13 +615,13 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 3.0,
-              "apScaling": 1.0
+              "formula": {
+                "atk": 3,
+                "ap": 1
+              }
             },
             {
-              "type": "bleed_detonate",
-              "formula": "stacks_squared"
+              "type": "bleed_detonate"
             }
           ]
         },
@@ -593,15 +644,19 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 3.0,
-              "apScaling": 1.0
+              "formula": {
+                "atk": 3,
+                "ap": 1
+              }
             },
             {
               "type": "conditional_bonus",
-              "condition": "target_hp_below",
-              "threshold": 0.5,
-              "damageBonus": 100
+              "condition": {
+                "type": "hp_below",
+                "target": "selected",
+                "threshold": 0.5
+              },
+              "percent": 100
             },
             {
               "type": "on_kill",
@@ -613,9 +668,11 @@
                   "type": "percent_buff",
                   "target": "self",
                   "stat": "atk",
-                  "base": 10,
-                  "apScaling": 1.0,
-                  "duration": 1
+                  "duration": 1,
+                  "formula": {
+                    "base": 10,
+                    "ap": 1
+                  }
                 }
               ]
             }
@@ -638,8 +695,10 @@
         {
           "type": "heal",
           "target": "single_ally",
-          "base": 10,
-          "apScaling": 1.5
+          "formula": {
+            "base": 10,
+            "ap": 1.5
+          }
         }
       ],
       "upgrades": [
@@ -654,8 +713,10 @@
             {
               "type": "heal",
               "target": "single_ally",
-              "base": 10,
-              "apScaling": 1.5
+              "formula": {
+                "base": 10,
+                "ap": 1.5
+              }
             },
             {
               "type": "draw",
@@ -674,8 +735,10 @@
             {
               "type": "heal",
               "target": "single_ally",
-              "base": 10,
-              "apScaling": 1.5
+              "formula": {
+                "base": 10,
+                "ap": 1.5
+              }
             },
             {
               "type": "heal_as_damage",
@@ -701,17 +764,19 @@
           "type": "buff",
           "target": "single_ally",
           "stat": "atk",
-          "base": 0,
-          "apScaling": 0.5,
-          "duration": 1
+          "duration": 1,
+          "formula": {
+            "ap": 0.5
+          }
         },
         {
           "type": "buff",
           "target": "single_ally",
           "stat": "ap",
-          "base": 0,
-          "apScaling": 0.5,
-          "duration": 1
+          "duration": 1,
+          "formula": {
+            "ap": 0.5
+          }
         }
       ],
       "upgrades": [
@@ -727,17 +792,19 @@
               "type": "buff",
               "target": "single_ally",
               "stat": "atk",
-              "base": 0,
-              "apScaling": 0.5,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "ap": 0.5
+              }
             },
             {
               "type": "buff",
               "target": "single_ally",
               "stat": "ap",
-              "base": 0,
-              "apScaling": 0.5,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "ap": 0.5
+              }
             },
             {
               "type": "draw",
@@ -757,20 +824,31 @@
               "type": "buff",
               "target": "single_ally",
               "stat": "atk",
-              "base": 0,
-              "apScaling": 0.5,
-              "duration": 1
+              "duration": 1,
+              "conditionMultiplier": {
+                "condition": {
+                  "type": "target_is_self"
+                },
+                "multiplier": 2
+              },
+              "formula": {
+                "ap": 0.5
+              }
             },
             {
               "type": "buff",
               "target": "single_ally",
               "stat": "ap",
-              "base": 0,
-              "apScaling": 0.5,
-              "duration": 1
-            },
-            {
-              "type": "self_double_buff"
+              "duration": 1,
+              "conditionMultiplier": {
+                "condition": {
+                  "type": "target_is_self"
+                },
+                "multiplier": 2
+              },
+              "formula": {
+                "ap": 0.5
+              }
             }
           ]
         }
@@ -791,8 +869,10 @@
         {
           "type": "heal",
           "target": "all_allies",
-          "base": 10,
-          "apScaling": 1.5
+          "formula": {
+            "base": 10,
+            "ap": 1.5
+          }
         }
       ],
       "upgrades": [
@@ -807,24 +887,28 @@
             {
               "type": "heal",
               "target": "all_allies",
-              "base": 10,
-              "apScaling": 1.5
+              "formula": {
+                "base": 10,
+                "ap": 1.5
+              }
             },
             {
               "type": "buff",
               "target": "all_allies",
               "stat": "atk",
-              "base": 0,
-              "apScaling": 0.1,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "ap": 0.1
+              }
             },
             {
               "type": "buff",
               "target": "all_allies",
               "stat": "ap",
-              "base": 0,
-              "apScaling": 0.1,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "ap": 0.1
+              }
             }
           ]
         },
@@ -839,11 +923,13 @@
             {
               "type": "heal",
               "target": "all_allies",
-              "base": 10,
-              "apScaling": 1.5
+              "formula": {
+                "base": 10,
+                "ap": 1.5
+              }
             },
             {
-              "type": "heal_as_damage_per_target",
+              "type": "heal_as_damage",
               "target": "random_enemy"
             }
           ]
@@ -865,8 +951,10 @@
         {
           "type": "heal",
           "target": "all_allies",
-          "base": 30,
-          "apScaling": 3.0
+          "formula": {
+            "base": 30,
+            "ap": 3
+          }
         },
         {
           "type": "as_gain",
@@ -886,8 +974,10 @@
             {
               "type": "heal",
               "target": "all_allies",
-              "base": 30,
-              "apScaling": 3.0
+              "formula": {
+                "base": 30,
+                "ap": 3
+              }
             },
             {
               "type": "as_gain",
@@ -903,17 +993,19 @@
               "type": "buff",
               "target": "all_allies",
               "stat": "atk",
-              "base": 0,
-              "apScaling": 0.1,
-              "duration": "battle"
+              "duration": "battle",
+              "formula": {
+                "ap": 0.1
+              }
             },
             {
               "type": "buff",
               "target": "all_allies",
               "stat": "ap",
-              "base": 0,
-              "apScaling": 0.1,
-              "duration": "battle"
+              "duration": "battle",
+              "formula": {
+                "ap": 0.1
+              }
             }
           ]
         },
@@ -928,8 +1020,10 @@
             {
               "type": "heal",
               "target": "all_allies",
-              "base": 30,
-              "apScaling": 3.0
+              "formula": {
+                "base": 30,
+                "ap": 3
+              }
             },
             {
               "type": "as_gain",
@@ -990,8 +1084,10 @@
         {
           "type": "damage",
           "damageType": "magical",
-          "base": 10,
-          "apScaling": 1.0
+          "formula": {
+            "base": 10,
+            "ap": 1
+          }
         },
         {
           "type": "draw",
@@ -1014,8 +1110,10 @@
         {
           "type": "damage",
           "damageType": "magical",
-          "base": 10,
-          "apScaling": 1.0
+          "formula": {
+            "base": 10,
+            "ap": 1
+          }
         },
         {
           "type": "percentage_hp_reduction",
@@ -1039,10 +1137,11 @@
         {
           "type": "damage",
           "damageType": "magical",
-          "base": 0,
-          "apScaling": 0.8,
           "hits": 3,
-          "randomTarget": true
+          "randomTarget": true,
+          "formula": {
+            "ap": 0.8
+          }
         }
       ],
       "upgrades": [
@@ -1057,10 +1156,11 @@
             {
               "type": "damage",
               "damageType": "magical",
-              "base": 0,
-              "apScaling": 0.8,
               "hits": 3,
-              "randomTarget": true
+              "randomTarget": true,
+              "formula": {
+                "ap": 0.8
+              }
             },
             {
               "type": "draw",
@@ -1079,10 +1179,11 @@
             {
               "type": "damage",
               "damageType": "magical",
-              "base": 0,
-              "apScaling": 0.8,
               "hits": 3,
-              "randomTarget": true
+              "randomTarget": true,
+              "formula": {
+                "ap": 0.8
+              }
             },
             {
               "type": "random_debuff_per_hit",
@@ -1092,7 +1193,9 @@
                 "weakness",
                 "vulnerable"
               ],
-              "apScaling": 0.1
+              "formula": {
+                "ap": 0.1
+              }
             }
           ]
         }
@@ -1118,8 +1221,10 @@
           "type": "percent_buff",
           "target": "self",
           "stat": "ap",
-          "base": 40,
-          "duration": 1
+          "duration": 1,
+          "formula": {
+            "base": 40
+          }
         }
       ],
       "upgrades": [
@@ -1139,8 +1244,10 @@
               "type": "percent_buff",
               "target": "self",
               "stat": "ap",
-              "base": 40,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "base": 40
+              }
             }
           ]
         },
@@ -1160,8 +1267,10 @@
               "type": "percent_buff",
               "target": "self",
               "stat": "ap",
-              "base": 80,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "base": 80
+              }
             }
           ]
         }
@@ -1182,15 +1291,25 @@
         {
           "type": "damage",
           "damageType": "magical",
-          "base": 0,
-          "apScaling": 1.5,
-          "debuffCountBonus": 0.25
+          "formula": {
+            "ap": 1.5,
+            "products": [
+              {
+                "factors": [
+                  "ap",
+                  "debuffTypeCount"
+                ],
+                "coefficient": 0.25
+              }
+            ]
+          }
         },
         {
           "type": "vulnerable",
           "target": "all_enemies",
-          "base": 0,
-          "apScaling": 0.2
+          "formula": {
+            "ap": 0.2
+          }
         }
       ],
       "upgrades": [
@@ -1205,15 +1324,25 @@
             {
               "type": "damage",
               "damageType": "magical",
-              "base": 0,
-              "apScaling": 1.5,
-              "debuffCountBonus": 0.25
+              "formula": {
+                "ap": 1.5,
+                "products": [
+                  {
+                    "factors": [
+                      "ap",
+                      "debuffTypeCount"
+                    ],
+                    "coefficient": 0.25
+                  }
+                ]
+              }
             },
             {
               "type": "vulnerable",
               "target": "all_enemies",
-              "base": 0,
-              "apScaling": 0.2
+              "formula": {
+                "ap": 0.2
+              }
             },
             {
               "type": "on_kill_per_target",
@@ -1237,17 +1366,36 @@
             {
               "type": "damage",
               "damageType": "magical",
-              "base": 0,
-              "apScaling": 1.5,
-              "debuffCountBonus": 0.25,
               "ignoreDefense": true,
-              "zeroDefBonus": 15
+              "formula": {
+                "ap": 1.5,
+                "products": [
+                  {
+                    "factors": [
+                      "ap",
+                      "debuffTypeCount"
+                    ],
+                    "coefficient": 0.25
+                  }
+                ]
+              }
+            },
+            {
+              "type": "conditional_bonus",
+              "condition": {
+                "type": "stat_equals",
+                "target": "selected",
+                "stat": "def",
+                "value": 0
+              },
+              "percent": 15
             },
             {
               "type": "vulnerable",
               "target": "all_enemies",
-              "base": 0,
-              "apScaling": 0.2
+              "formula": {
+                "ap": 0.2
+              }
             }
           ]
         }
@@ -1268,7 +1416,7 @@
         {
           "type": "split_damage",
           "damageType": "magical",
-          "primaryApScaling": 5.0,
+          "primaryApScaling": 5,
           "secondaryApScaling": 2.5
         }
       ],
@@ -1284,8 +1432,8 @@
             {
               "type": "split_damage",
               "damageType": "magical",
-              "primaryApScaling": 10.0,
-              "secondaryApScaling": 5.0
+              "primaryApScaling": 10,
+              "secondaryApScaling": 5
             },
             {
               "type": "overload",
@@ -1305,7 +1453,7 @@
             {
               "type": "split_damage",
               "damageType": "magical",
-              "primaryApScaling": 5.0,
+              "primaryApScaling": 5,
               "secondaryApScaling": 2.5
             },
             {
@@ -1346,8 +1494,10 @@
         },
         {
           "type": "next_attack_poison",
-          "baseStacks": 1,
-          "apScaling": 0.5
+          "formula": {
+            "ap": 0.5,
+            "base": 1
+          }
         }
       ],
       "upgrades": [
@@ -1365,23 +1515,29 @@
             },
             {
               "type": "next_attack_poison",
-              "baseStacks": 1,
-              "apScaling": 0.5
+              "formula": {
+                "ap": 0.5,
+                "base": 1
+              }
             },
             {
               "type": "percent_buff",
               "target": "self",
               "stat": "atk",
-              "base": 10,
-              "apScaling": 1.0,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "base": 10,
+                "ap": 1
+              }
             },
             {
               "type": "buff",
               "target": "self",
               "stat": "evd",
-              "base": 30,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "base": 30
+              }
             }
           ]
         },
@@ -1398,8 +1554,10 @@
             },
             {
               "type": "next_attack_poison",
-              "baseStacks": 1,
-              "apScaling": 0.5
+              "formula": {
+                "ap": 0.5,
+                "base": 1
+              }
             }
           ]
         }
@@ -1419,9 +1577,11 @@
       "effects": [
         {
           "type": "poison",
-          "baseStacks": 5,
-          "apScaling": 1.0,
-          "target": "all_enemies"
+          "target": "all_enemies",
+          "formula": {
+            "ap": 1,
+            "base": 5
+          }
         }
       ],
       "upgrades": [
@@ -1435,13 +1595,21 @@
           "effects": [
             {
               "type": "poison",
-              "baseStacks": 5,
-              "apScaling": 1.0,
-              "target": "all_enemies"
+              "target": "all_enemies",
+              "formula": {
+                "ap": 1,
+                "base": 5
+              }
             },
             {
-              "type": "poison_damage",
-              "target": "all_enemies"
+              "type": "damage",
+              "target": "all_enemies",
+              "damageType": "fixed",
+              "formula": {
+                "poisonStacks": 1
+              },
+              "ignoreDefense": true,
+              "ignoreShield": true
             }
           ]
         },
@@ -1455,21 +1623,27 @@
           "effects": [
             {
               "type": "poison",
-              "baseStacks": 5,
-              "apScaling": 1.0,
-              "target": "all_enemies"
+              "target": "all_enemies",
+              "formula": {
+                "ap": 1,
+                "base": 5
+              }
             },
             {
               "type": "weakness",
               "target": "all_enemies",
-              "base": 5,
-              "apScaling": 1.0
+              "formula": {
+                "base": 5,
+                "ap": 1
+              }
             },
             {
               "type": "vulnerable",
               "target": "all_enemies",
-              "base": 5,
-              "apScaling": 1.0
+              "formula": {
+                "base": 5,
+                "ap": 1
+              }
             },
             {
               "type": "set_stat",
@@ -1539,15 +1713,33 @@
               "type": "buff",
               "target": "self",
               "stat": "evd",
-              "base": 50,
-              "duration": 1
+              "duration": 1,
+              "formula": {
+                "base": 50
+              }
             },
             {
               "type": "counter_on_dodge",
-              "atkScaling": 1.0,
-              "poisonApScaling": 0.5,
-              "energyGain": 1,
-              "duration": 1
+              "duration": 1,
+              "effects": [
+                {
+                  "type": "damage",
+                  "damageType": "physical",
+                  "formula": {
+                    "atk": 1
+                  }
+                },
+                {
+                  "type": "poison",
+                  "formula": {
+                    "ap": 0.5
+                  }
+                },
+                {
+                  "type": "energy_gain",
+                  "value": 1
+                }
+              ]
             }
           ]
         }
@@ -1568,16 +1760,20 @@
         {
           "type": "damage",
           "damageType": "physical",
-          "base": 0,
-          "atkScaling": 1.0,
-          "apScaling": 1.0,
-          "poisonScaling": 3.0
+          "formula": {
+            "atk": 1,
+            "ap": 1,
+            "poisonStacks": 3
+          }
         },
         {
           "type": "conditional_bonus",
-          "condition": "target_hp_below",
-          "threshold": 0.3,
-          "damageBonus": 50
+          "condition": {
+            "type": "hp_below",
+            "target": "selected",
+            "threshold": 0.3
+          },
+          "percent": 50
         }
       ],
       "upgrades": [
@@ -1592,16 +1788,20 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.0,
-              "apScaling": 1.0,
-              "poisonScaling": 3.0
+              "formula": {
+                "atk": 1,
+                "ap": 1,
+                "poisonStacks": 3
+              }
             },
             {
               "type": "conditional_bonus",
-              "condition": "target_hp_below",
-              "threshold": 0.3,
-              "damageBonus": 50
+              "condition": {
+                "type": "hp_below",
+                "target": "selected",
+                "threshold": 0.3
+              },
+              "percent": 50
             },
             {
               "type": "on_kill",
@@ -1627,19 +1827,23 @@
             {
               "type": "damage",
               "damageType": "physical",
-              "base": 0,
-              "atkScaling": 1.0,
-              "apScaling": 1.0,
-              "poisonScaling": 3.0,
-              "bleedScaling": 3.0,
-              "vulnerableScaling": 3.0,
-              "weaknessScaling": 3.0
+              "formula": {
+                "atk": 1,
+                "ap": 1,
+                "poisonStacks": 3,
+                "bleedStacks": 3,
+                "vulnerableStacks": 3,
+                "weaknessStacks": 3
+              }
             },
             {
               "type": "conditional_bonus",
-              "condition": "target_hp_below",
-              "threshold": 0.3,
-              "damageBonus": 100
+              "condition": {
+                "type": "hp_below",
+                "target": "selected",
+                "threshold": 0.3
+              },
+              "percent": 100
             }
           ]
         }

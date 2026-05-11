@@ -1,12 +1,12 @@
 # 数据结构规格
 
 > 状态：初版规格
-> 适用范围：MVP 与后续正式实现的 runtime 数据契约
+> 适用范围：MVP 与后续正式实现的运行时数据契约
 > 相关文档：`mvp-scope.md`、`battle-state-machine.md`、`effect-dsl.md`、`run-flow.md`
 
 ## 目的
 
-本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌和章节 id 的来源。
+本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌和章节 `id`（唯一标识）的来源。
 
 本文使用 TypeScript 风格描述字段类型，但不要求最终项目必须使用 TypeScript。实现时可以转成 JSON Schema、Zod、Pydantic、C# class、Godot Resource 或其他等价结构。
 
@@ -14,12 +14,10 @@
 
 ### 正式内容表
 
-旧迁移草案已清理，不再保留会污染后续 LLM 判断的非正式 JSON。当前正式内容表如下：
-
 | 来源 | 当前内容 | schema 处理 |
 |------|---------|-------------|
 | `docs/03-content/data/characters.json` | 5 名角色 id、名称、定位、基础属性、初始牌、大招牌 | 作为 `CharacterDef` 的正式内容来源 |
-| `docs/03-content/data/cards.json` | 22 张卡牌，其中 20 张固有卡 + 2 张变形牌，包含费用、目标、效果、升级 | 作为 `CardDef` 的正式内容来源；效果字段后续随 `effect-dsl.md` 统一规范 |
+| `docs/03-content/data/cards.json` | 22 张卡牌，其中 20 张固有卡 + 2 张变形牌，包含费用、目标、效果、升级 | 作为 `CardDef` 的正式内容来源；效果字段遵循 `effect-dsl.md` 的正式 DSL |
 | `docs/03-content/data/chapters.json` | 序章与 1-5 章的章节标题、主地点、固定步摘要 | 作为 `ChapterDef` 的正式内容来源；遭遇表和节点生成细节在 `run-flow.md` 补齐 |
 
 对应的权威规则来源如下：
@@ -274,7 +272,7 @@ interface CardUpgradeDef {
 - 固有卡牌 `sourceType` 为 `innate`，大招为 `ultimate`。
 - 每张可升级卡牌最多 2 个升级方向，每张卡在单次 run 中最多升级 1 次。
 - 装备或药水新增的卡牌也使用 `CardDef`，但运行时必须生成 `CardInstance` 并绑定实际角色。
-- 旧草案中的 `isTransformed` 不属于 `CardDef`，应记录在 `CardInstance.modifications` 或直接变更实例引用。
+- 卡牌是否被战斗内变形不属于 `CardDef` 静态定义，应记录在 `CardInstance.modifications` 或直接变更实例引用。
 
 ### 卡牌实例
 
@@ -313,7 +311,7 @@ interface CardModification {
 
 ## 效果定义
 
-`EffectDef` 是所有卡牌、装备、药水、节点修正、事件和敌人技能共享的效果结构。本文只定义数据外形；精确执行顺序和每个效果类型的完整语义由 `effect-dsl.md` 与 `battle-state-machine.md` 继续细化。
+`EffectDef` 是所有卡牌、装备、药水、节点修正、事件和敌人技能共享的效果结构。本文定义数据外形；精确执行顺序和每个效果类型的完整语义由 `effect-dsl.md` 与 `battle-state-machine.md` 定义。
 
 ```ts
 type EffectType =
@@ -345,6 +343,10 @@ type EffectType =
   | "on_kill_per_target"
   | "heal_as_damage"
   | "damage_reflect"
+  | "next_attack_poison"
+  | "random_debuff_per_hit"
+  | "counter_on_dodge"
+  | "card_transform"
   | "card_operation"
   | "percentage_hp_reduction"
   | "split_damage"
@@ -372,6 +374,29 @@ interface ValueFormula {
   chapter?: number;
   consumedCards?: number;
   currentEnergy?: number;
+  products?: FormulaProductTerm[];
+}
+
+interface FormulaProductTerm {
+  factors: FormulaFactor[];
+  coefficient: number;
+}
+
+type FormulaFactor =
+  | "atk"
+  | "ap"
+  | "hp"
+  | "maxHp"
+  | "def"
+  | "shield"
+  | "poisonStacks"
+  | "bleedStacks"
+  | "vulnerableStacks"
+  | "weaknessStacks"
+  | "debuffTypeCount"
+  | "chapter"
+  | "consumedCards"
+  | "currentEnergy";
 }
 
 interface ConditionDef {
@@ -381,11 +406,14 @@ interface ConditionDef {
     | "hp_above"
     | "target_has_status"
     | "self_has_status"
+    | "target_is_self"
+    | "stat_equals"
     | "turn_mod"
     | "phase_enter"
     | "on_kill"
     | "custom";
   target?: TargetType;
+  stat?: StatId | GlobalStatId;
   threshold?: number;
   statusId?: string;
   value?: number | string | boolean;
@@ -395,35 +423,48 @@ interface EffectDef {
   type: EffectType;
   target?: TargetType;
   damageType?: DamageType;
+  source?: string;
   stat?: StatId | GlobalStatId;
   formula?: ValueFormula;
   value?: number;
   percent?: number;
+  multiplier?: number;
+  hits?: number;
+  randomTarget?: boolean;
+  primaryApScaling?: number;
+  secondaryApScaling?: number;
+  energyPenalty?: number;
+  oncePerBattle?: boolean;
+  ignoreDefense?: boolean;
+  ignoreShield?: boolean;
+  enemyId?: EnemyId;
+  count?: number;
   chance?: number;
   duration?: Duration;
   condition?: ConditionDef;
+  conditionMultiplier?: ConditionMultiplierDef;
+  debuffs?: string[];
   effects?: EffectDef[];
+  transforms?: CardTransformDef[];
   cardOperation?: CardOperationDef;
   customId?: string;
   tags?: string[];
+}
+
+interface CardTransformDef {
+  from: CardId[];
+  to: CardId;
+}
+
+interface ConditionMultiplierDef {
+  condition: ConditionDef;
+  multiplier: number;
 }
 ```
 
 ### 公式规范
 
-旧草案中的：
-
-```json
-{
-  "type": "damage",
-  "damageType": "physical",
-  "base": 0,
-  "atkScaling": 0.8,
-  "apScaling": 1.0
-}
-```
-
-正式 schema 中写为：
+所有可计算数值都写入 `formula`，例如：
 
 ```json
 {
@@ -1105,15 +1146,12 @@ docs/03-content/data/events.json
 - 商店数据不得包含直接卖卡或直接删牌服务。
 - 第 1 章 Boss 奖励必须能表达史诗装备与诅咒装备二选一。
 
-## 后续仍需补齐
+## 内容表缺口
 
-本文只定义结构，不补全部内容。继续开发前仍需：
+本文只定义结构，不补全部内容。以下内容需要单独补正式内容表或状态机规格：
 
-- 将 `docs/03-content/data/cards.json` 的当前效果字段随 `effect-dsl.md` 定稿统一规范为 `EffectDef.formula`。
 - 为装备列表补机器可读 `id`、`statModifiers`、`passiveEffects`、`cardOperations`。
 - 为药水列表补完整 `PotionDef` 正式内容表。
 - 为 `node-modifiers.md` 的 46 个修正补 `id` 和机器可读 `effects`。
 - 为第 1 章普通战、精英战、灼夜特殊精英、Boss 建立 `EncounterDef`。
 - 补第 1 章事件列表和事件结果。
-- 写 `effect-dsl.md`，把每个 `EffectType` 的字段、时机和结算顺序定死。
-- 写 `battle-state-machine.md`，把 `BattleState` 的阶段迁移规则定死。
