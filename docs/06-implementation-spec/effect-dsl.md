@@ -8,7 +8,9 @@
 
 本文定义《Ashlight Echoes》运行时使用的效果 DSL。这里的 DSL 不是给玩家展示的文本，而是卡牌、装备、药水、敌人技能、节点修正、事件结果和奖励共同使用的数据表达格式。
 
-目标是让内容尽量通过 JSON 数据驱动，避免为每张卡、每件装备、每瓶药水单独硬编码逻辑。
+目标是让通用内容通过 JSON 数据驱动，避免为普通伤害、治疗、护盾、状态、抽牌、能量、卡牌操作等重复规则单独硬编码逻辑。
+
+传说装备、诅咒装备、节点修正和少数药水存在规则级特殊机制。它们不强行扩展 DSL，而是使用 `custom` 效果和 `customId` handler registry（处理函数注册表）。所有 `customId` 的语义和触发窗口见 [custom-effect-handlers.md](custom-effect-handlers.md)。
 
 本文只整理并固化现有设计中已经出现的规则。涉及新增机制或现有设计未定死的地方，必须先讨论确认，再写入正式 DSL。
 
@@ -77,7 +79,7 @@ interface ConditionMultiplierDef {
 - `type` 必须存在，并且必须能在效果注册表中找到执行器。
 - `target` 缺省时继承外层动作目标；卡牌通常继承 `CardDef.targetType`。
 - `effects` 用于嵌套触发，如击杀触发、条件触发或阶段进入触发。
-- `customId` 只用于当前 schema 无法表达但设计已经存在的特殊效果；使用前必须在本文件或后续规格中记录语义。
+- `customId` 只用于当前 schema 无法表达但设计已经存在的特殊效果；使用前必须在 [custom-effect-handlers.md](custom-effect-handlers.md) 中记录语义和触发窗口。
 - 执行器不得根据 `description` 文本推断逻辑；描述只用于 UI。
 
 ## 公式规范
@@ -923,7 +925,7 @@ interface CardOperationDef {
 
 召唤或召回敌人单位。
 
-第 1 章 Boss 莱恩哈特二阶段使用该效果召回普通灰烬游魂。
+第 1 章 Boss 莱恩哈特二阶段使用该效果召回 `oathbound_echo`（誓约残影）。
 
 字段：
 
@@ -935,7 +937,7 @@ interface CardOperationDef {
 ```json
 {
   "type": "summon",
-  "enemyId": "ashen_wraith",
+  "enemyId": "oathbound_echo",
   "count": 1
 }
 ```
@@ -944,7 +946,7 @@ interface CardOperationDef {
 
 - `enemyId` 表示要召回的敌人定义 id。
 - `count` 表示召回数量。
-- 第 1 章 MVP 不使用属性覆盖；召回的灰烬游魂使用正式灰烬游魂属性。
+- 第 1 章 MVP 不使用属性覆盖；召回的誓约残影使用正式 `oathbound_echo` 属性。
 
 ## 校验规则
 

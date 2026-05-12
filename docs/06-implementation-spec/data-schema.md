@@ -6,7 +6,7 @@
 
 ## 目的
 
-本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌和章节 `id`（唯一标识）的来源。
+本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌、章节、装备、药水、节点修正和奖励表 `id`（唯一标识）的来源。
 
 本文使用 TypeScript 风格描述字段类型，但不要求最终项目必须使用 TypeScript。实现时可以转成 JSON Schema、Zod、Pydantic、C# class、Godot Resource 或其他等价结构。
 
@@ -19,6 +19,10 @@
 | `docs/03-content/data/characters.json` | 5 名角色 id、名称、定位、基础属性、初始牌、大招牌 | 作为 `CharacterDef` 的正式内容来源 |
 | `docs/03-content/data/cards.json` | 22 张卡牌，其中 20 张固有卡 + 2 张变形牌，包含费用、目标、效果、升级 | 作为 `CardDef` 的正式内容来源；效果字段遵循 `effect-dsl.md` 的正式 DSL |
 | `docs/03-content/data/chapters.json` | 序章与 1-5 章的章节标题、主地点、固定步摘要 | 作为 `ChapterDef` 的正式内容来源；遭遇表和节点生成细节在 `run-flow.md` 补齐 |
+| `docs/03-content/data/equipment.json` | 装备、装备附带卡、诅咒牌和装备池 | 作为 `EquipmentDef`、装备关联 `CardDef` 和装备池的正式内容来源 |
+| `docs/03-content/data/potions.json` | 药水、药水新增卡和药水池 | 作为 `PotionDef`、药水关联 `CardDef` 和药水池的正式内容来源 |
+| `docs/03-content/data/node-modifiers.json` | 战后随机事件、节点选项自带修正和第 1 章可用池 | 作为 `NodeModifierDef` 的正式内容来源 |
+| `docs/03-content/data/reward-tables.json` | 属性成长池、第 1 章奖励表、金币规则和装备品质分布 | 作为 `RewardTableDef` 与成长池的正式内容来源 |
 
 对应的权威规则来源如下：
 
@@ -28,11 +32,11 @@
 | `docs/02-systems/cards.md` | 固有卡牌数量、上场限制、牌区规则、升级规则 | 卡牌与牌区规则权威来源 |
 | `docs/02-systems/battle.md` | 属性列表、能量、AS、伤害、状态和效果类型 | 战斗属性与效果类型权威来源 |
 | `docs/02-systems/roguelike-run.md` | 奖励、金币、成长池、掉落分布、商店服务 | 奖励和经济权威来源 |
-| `docs/02-systems/equipment.md` | 装备稀有度、槽位、掉落、装备列表 | 装备内容和掉落权威来源 |
-| `docs/02-systems/potions.md` | 药水稀有度、背包、使用时机、药水列表 | 药水内容权威来源；后续需补正式药水内容表 |
+| `docs/02-systems/equipment.md` | 装备稀有度、槽位、掉落、装备列表 | 装备设计来源；机器内容见 `docs/03-content/data/equipment.json` |
+| `docs/02-systems/potions.md` | 药水稀有度、背包、使用时机、药水列表 | 药水设计来源；机器内容见 `docs/03-content/data/potions.json` |
 | `docs/02-systems/map-encounters.md` | 章节、步数、节点类型、选项生成、固定步 | 章节和节点权威来源 |
-| `docs/02-systems/node-modifiers.md` | 46 个节点修正与效果描述 | 节点修正内容来源；后续需补正式节点修正内容表 |
-| `docs/03-content/enemies-chapter-1.md` | 第 1 章敌人数值与 AI 行为 | 第 1 章敌人和遭遇内容来源 |
+| `docs/02-systems/node-modifiers.md` | 46 个节点修正与效果描述 | 节点修正设计来源；机器内容见 `docs/03-content/data/node-modifiers.json` |
+| `docs/03-content/enemies-chapter-1.md` | 序章与第 1 章敌人数值、AI 行为和遭遇组合 | 序章与第 1 章敌人和遭遇内容来源 |
 
 ## 统一约定
 
@@ -1148,10 +1152,9 @@ docs/03-content/data/events.json
 
 ## 内容表缺口
 
-本文只定义结构，不补全部内容。以下内容需要单独补正式内容表或状态机规格：
+本文只定义结构，不补全部内容。当前仍需要单独补正式内容表或状态机规格：
 
-- 为装备列表补机器可读 `id`、`statModifiers`、`passiveEffects`、`cardOperations`。
-- 为药水列表补完整 `PotionDef` 正式内容表。
-- 为 `node-modifiers.md` 的 46 个修正补 `id` 和机器可读 `effects`。
 - 为第 1 章普通战、精英战、灼夜特殊精英、Boss 建立 `EncounterDef`。
+- 补第 1 章敌人 `EnemyDef` 机器内容表。
+- 补第 1 章商店 `ShopDef` 机器内容表。
 - 补第 1 章事件列表和事件结果。

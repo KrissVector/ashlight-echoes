@@ -22,10 +22,11 @@
 2. [data-schema.md](data-schema.md)：角色、卡牌、效果、敌人、装备、药水、节点、奖励、存档等运行时数据结构。
 3. [battle-state-machine.md](battle-state-machine.md)：战斗阶段、回合流程、牌区、目标选择、伤害结算、状态时机、胜负判定。
 4. [effect-dsl.md](effect-dsl.md)：卡牌、装备、药水、节点修正等效果的表达格式和执行规则。
-5. [run-flow.md](run-flow.md)：序章、第 1 章节点生成、奖励、商店、事件、存档和章节结算。
-6. `acceptance-cases.md`：MVP 的自动化或手动验收用例，当前尚未建立。
+5. [custom-effect-handlers.md](custom-effect-handlers.md)：`customId` 特殊效果的 handler 注册、触发窗口和全量语义清单。
+6. [run-flow.md](run-flow.md)：序章、第 1 章节点生成、奖励、商店、事件、存档和章节结算。
+7. `acceptance-cases.md`：MVP 的自动化或手动验收用例，当前尚未建立。
 
-当前已建立 [mvp-scope.md](mvp-scope.md)、[data-schema.md](data-schema.md)、[battle-state-machine.md](battle-state-machine.md)、[effect-dsl.md](effect-dsl.md) 和 [run-flow.md](run-flow.md)。其中 [run-flow.md](run-flow.md) 是初版规格，仍需继续按 [../02-systems/map-encounters.md](../02-systems/map-encounters.md) 与 [../02-systems/node-modifiers.md](../02-systems/node-modifiers.md) 校准。
+当前已建立 [mvp-scope.md](mvp-scope.md)、[data-schema.md](data-schema.md)、[battle-state-machine.md](battle-state-machine.md)、[effect-dsl.md](effect-dsl.md)、[custom-effect-handlers.md](custom-effect-handlers.md) 和 [run-flow.md](run-flow.md)。其中 [run-flow.md](run-flow.md) 是初版规格，仍需继续按 [../02-systems/map-encounters.md](../02-systems/map-encounters.md) 与 [../02-systems/node-modifiers.md](../02-systems/node-modifiers.md) 校准。
 
 ## 与设计源头的关系
 

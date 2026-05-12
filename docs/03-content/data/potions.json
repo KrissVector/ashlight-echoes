@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 1,
+  "potions": [
+    {
+      "id": "strength_tonic",
+      "name": "力量药剂",
+      "rarity": "normal",
+      "description": "ATK+3",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "atk", "value": 3, "duration": "run" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "endurance_tonic",
+      "name": "坚韧药剂",
+      "rarity": "normal",
+      "description": "HP+15",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "hp", "value": 15, "duration": "run" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "protection_tonic",
+      "name": "防护药剂",
+      "rarity": "normal",
+      "description": "DEF+2",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "def", "value": 2, "duration": "run" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "agility_tonic",
+      "name": "敏捷药剂",
+      "rarity": "normal",
+      "description": "闪避+3%",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "evd", "value": 3, "duration": "run" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "precision_tonic",
+      "name": "精准药剂",
+      "rarity": "normal",
+      "description": "命中+5%",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "acc", "value": 5, "duration": "run" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "lumina_essence",
+      "name": "星辉精华",
+      "rarity": "normal",
+      "description": "AP+3",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "ap", "value": 3, "duration": "run" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "assault_elixir",
+      "name": "猛攻秘药",
+      "rarity": "rare",
+      "description": "ATK+10%。添加「迅斩」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "atk", "formula": { "base": 10 }, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_swift_slash", "count": 1 } }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "ironwall_elixir",
+      "name": "铁壁秘药",
+      "rarity": "rare",
+      "description": "DEF+8，HP+10%。添加「坚守」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "def", "value": 8, "duration": "run" },
+        { "type": "percent_buff", "target": "selected", "stat": "hp", "formula": { "base": 10 }, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_stand_guard", "count": 1 } }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "spirit_elixir",
+      "name": "灵能秘药",
+      "rarity": "rare",
+      "description": "AP+10%。添加「魔力箭」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "ap", "formula": { "base": 10 }, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_magic_arrow", "count": 1 } }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "lethal_elixir",
+      "name": "致命秘药",
+      "rarity": "rare",
+      "description": "暴击率+8%，暴击伤害+20%",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "crit", "value": 8, "duration": "run" },
+        { "type": "permanent_buff", "target": "selected", "stat": "cdmg", "value": 20, "duration": "run" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "life_elixir",
+      "name": "生命秘药",
+      "rarity": "rare",
+      "description": "HP+15%，每场战斗开始时恢复 5%最大HP",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "hp", "formula": { "base": 15 }, "duration": "run" },
+        { "type": "custom", "customId": "battle_start_heal_owner_5_percent_max_hp" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "venom_elixir",
+      "name": "蚀毒秘药",
+      "rarity": "rare",
+      "description": "改变效果：该角色所有伤害卡牌额外施加 1 层毒",
+      "targetType": "single_character",
+      "effects": [
+        {
+          "type": "card_operation",
+          "cardOperation": {
+            "operation": "modify_card",
+            "targetOwner": "selected_character",
+            "filter": { "tags": ["damage"] },
+            "modification": {
+              "type": "add_effect",
+              "effects": [{ "type": "poison", "formula": { "base": 1 } }],
+              "sourceInstanceId": "potion"
+            }
+          }
+        }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "bloodsuck_elixir",
+      "name": "嗜血秘药",
+      "rarity": "rare",
+      "description": "改变效果：该角色普攻附带 20% 吸血",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "custom", "customId": "selected_character_basic_attack_lifesteal_20" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "focus_elixir",
+      "name": "专注秘药",
+      "rarity": "rare",
+      "description": "暴击率+10%，暴击伤害+25%。该角色暴击时额外抽 1 牌。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "crit", "value": 10, "duration": "run" },
+        { "type": "permanent_buff", "target": "selected", "stat": "cdmg", "value": 25, "duration": "run" },
+        { "type": "custom", "customId": "selected_character_draw_1_on_critical_hit" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "multi_hit_elixir",
+      "name": "多重打击秘药",
+      "rarity": "rare",
+      "description": "改变效果：该角色普攻变为攻击 2 次，每次伤害 60%，视为 2 次普攻但只回复 1 点能量。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "custom", "customId": "selected_character_basic_attack_hits_2_each_60_percent_damage_one_energy_total" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "nirvana_elixir",
+      "name": "涅槃秘药",
+      "rarity": "rare",
+      "description": "添加「涅槃」和「燃命护盾」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_nirvana", "count": 1 } },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_life_burning_shield", "count": 1 } }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["rare_drop_pool"]
+    },
+    {
+      "id": "berserker_blood",
+      "name": "狂战士之血",
+      "rarity": "epic",
+      "description": "ATK+20%。添加「狂暴打击」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "atk", "formula": { "base": 20 }, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_berserk_strike", "count": 1 } }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "archmage_essence",
+      "name": "大魔导精华",
+      "rarity": "epic",
+      "description": "AP+30%。添加「元素风暴」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "ap", "formula": { "base": 30 }, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_elemental_storm", "count": 1 } }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "shadow_soul",
+      "name": "暗影之魂",
+      "rarity": "epic",
+      "description": "暴击率+15%。添加「背刺」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "crit", "value": 15, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_backstab", "count": 1 } }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "guardian_will",
+      "name": "守护者意志",
+      "rarity": "epic",
+      "description": "HP+20%，DEF+5。该角色护盾卡牌额外为全队提供 20% 护盾。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "hp", "formula": { "base": 20 }, "duration": "run" },
+        { "type": "permanent_buff", "target": "selected", "stat": "def", "value": 5, "duration": "run" },
+        {
+          "type": "card_operation",
+          "cardOperation": {
+            "operation": "modify_card",
+            "targetOwner": "selected_character",
+            "filter": { "tags": ["shield"] },
+            "modification": {
+              "type": "add_effect",
+              "effects": [{ "type": "custom", "customId": "shield_card_also_grants_all_allies_20_percent_same_shield" }],
+              "sourceInstanceId": "potion"
+            }
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "life_siphon",
+      "name": "生命虹吸",
+      "rarity": "epic",
+      "description": "改变效果：该角色治疗卡牌对随机敌人造成治疗量 50% 的伤害",
+      "targetType": "single_character",
+      "effects": [
+        {
+          "type": "card_operation",
+          "cardOperation": {
+            "operation": "modify_card",
+            "targetOwner": "selected_character",
+            "filter": { "tags": ["heal"] },
+            "modification": {
+              "type": "add_effect",
+              "effects": [{ "type": "heal_as_damage", "target": "random_enemy", "percent": 50 }],
+              "sourceInstanceId": "potion"
+            }
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "chain_reaction",
+      "name": "连锁反应",
+      "rarity": "epic",
+      "description": "改变效果：该角色击杀敌人时对随机敌人造成击杀目标 30%最大HP 伤害",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "custom", "customId": "selected_character_kill_deals_30_percent_killed_target_max_hp_to_random_enemy" }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "energy_source",
+      "name": "能量源泉",
+      "rarity": "epic",
+      "description": "能量上限+1。添加「聚能」。",
+      "targetType": "none",
+      "effects": [
+        { "type": "permanent_buff", "stat": "maxEnergy", "value": 1, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_focus_energy", "count": 1 } }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "ash_secret_elixir",
+      "name": "灰烬秘药",
+      "rarity": "epic",
+      "description": "该角色所有非消耗型卡牌变为消耗型，但效果翻倍。添加「余烬」和「灰烬风暴」。",
+      "targetType": "single_character",
+      "effects": [
+        {
+          "type": "card_operation",
+          "cardOperation": {
+            "operation": "modify_card",
+            "targetOwner": "selected_character",
+            "filter": {},
+            "modification": {
+              "type": "set_exhaust",
+              "value": true,
+              "sourceInstanceId": "potion"
+            }
+          }
+        },
+        { "type": "custom", "customId": "selected_character_non_exhaust_card_effects_double" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_ember", "count": 1 } },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_ash_storm", "count": 1 } }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "corrosion_elixir",
+      "name": "腐蚀秘药",
+      "rarity": "epic",
+      "description": "AP+15%。该角色施加的毒层数翻倍。添加「腐化领域」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "ap", "formula": { "base": 15 }, "duration": "run" },
+        { "type": "custom", "customId": "selected_character_poison_stacks_applied_double" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_corruption_field", "count": 1 } }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_drop_pool"]
+    },
+    {
+      "id": "card_copy_potion",
+      "name": "卡牌复制药水",
+      "rarity": "legendary",
+      "description": "选择该角色一张卡牌，复制一份永久加入牌池",
+      "targetType": "single_character",
+      "effects": [
+        {
+          "type": "card_operation",
+          "cardOperation": {
+            "operation": "copy_card",
+            "targetOwner": "selected_character",
+            "count": 1,
+            "filter": { "ownerId": "selected" }
+          }
+        }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_drop_pool"]
+    },
+    {
+      "id": "card_removal_potion",
+      "name": "卡牌消除药水",
+      "rarity": "legendary",
+      "description": "选择该角色一张卡牌，从牌池中永久移除",
+      "targetType": "single_character",
+      "effects": [
+        {
+          "type": "card_operation",
+          "cardOperation": {
+            "operation": "remove_card",
+            "targetOwner": "selected_character",
+            "allowIntrinsic": true,
+            "filter": { "ownerId": "selected" }
+          }
+        }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_drop_pool"]
+    },
+    {
+      "id": "universal_remodel_potion",
+      "name": "万能改造药水",
+      "rarity": "legendary",
+      "description": "选择该角色一张卡牌，永久费用-1（最低 0）",
+      "targetType": "single_character",
+      "effects": [
+        {
+          "type": "card_operation",
+          "cardOperation": {
+            "operation": "modify_card",
+            "targetOwner": "selected_character",
+            "filter": { "ownerId": "selected" },
+            "modification": { "type": "cost_delta", "value": -1, "sourceInstanceId": "potion" }
+          }
+        }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_drop_pool"]
+    },
+    {
+      "id": "talent_awakening",
+      "name": "天赋觉醒",
+      "rarity": "legendary",
+      "description": "该角色所有属性+10%（ATK/AP/HP/DEF 各+10%）",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "atk", "formula": { "base": 10 }, "duration": "run" },
+        { "type": "percent_buff", "target": "selected", "stat": "ap", "formula": { "base": 10 }, "duration": "run" },
+        { "type": "percent_buff", "target": "selected", "stat": "hp", "formula": { "base": 10 }, "duration": "run" },
+        { "type": "percent_buff", "target": "selected", "stat": "def", "formula": { "base": 10 }, "duration": "run" }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_drop_pool"]
+    },
+    {
+      "id": "limit_breakthrough",
+      "name": "极限突破",
+      "rarity": "legendary",
+      "description": "该角色 AS 上限永久+1。添加「超越极限」。",
+      "targetType": "single_character",
+      "effects": [
+        { "type": "permanent_buff", "target": "selected", "stat": "as", "value": 1, "duration": "run" },
+        { "type": "card_operation", "cardOperation": { "operation": "add_card", "targetOwner": "selected_character", "cardDefId": "potion_transcend_limit", "count": 1 } }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_drop_pool"]
+    }
+  ],
+  "potionCards": [
+    {
+      "id": "potion_swift_slash",
+      "name": "迅斩",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "80%ATK 伤害，抽 1 牌",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 0.8 } },
+        { "type": "draw", "value": 1 }
+      ],
+      "tags": ["damage", "draw", "potion_card"]
+    },
+    {
+      "id": "potion_stand_guard",
+      "name": "坚守",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "获得 5+50%AP 护盾",
+      "effects": [
+        { "type": "shield", "target": "self", "formula": { "base": 5, "ap": 0.5 } }
+      ],
+      "tags": ["shield", "potion_card"]
+    },
+    {
+      "id": "potion_magic_arrow",
+      "name": "魔力箭",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "60%AP 法术伤害",
+      "effects": [
+        { "type": "damage", "damageType": "magical", "formula": { "ap": 0.6 } }
+      ],
+      "tags": ["damage", "potion_card"]
+    },
+    {
+      "id": "potion_nirvana",
+      "name": "涅槃",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "回复 30% HP（已消耗 3 张以上改为 60%）",
+      "effects": [
+        { "type": "heal", "target": "self", "formula": { "maxHp": 0.3 }, "conditionMultiplier": { "condition": { "type": "custom", "value": "consumed_cards_at_least_3" }, "multiplier": 2 } }
+      ],
+      "tags": ["heal", "exhaust", "potion_card"]
+    },
+    {
+      "id": "potion_life_burning_shield",
+      "name": "燃命护盾",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "获得 100%最大HP 护盾",
+      "effects": [
+        { "type": "shield", "target": "self", "formula": { "maxHp": 1 } }
+      ],
+      "tags": ["shield", "exhaust", "potion_card"]
+    },
+    {
+      "id": "potion_berserk_strike",
+      "name": "狂暴打击",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "200%ATK 伤害，自身受 10%最大HP 伤害",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 2 } },
+        { "type": "damage", "target": "self", "damageType": "fixed", "formula": { "maxHp": 0.1 }, "ignoreDefense": true, "ignoreShield": true }
+      ],
+      "tags": ["damage", "potion_card"]
+    },
+    {
+      "id": "potion_elemental_storm",
+      "name": "元素风暴",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 3,
+      "targetType": "all_enemies",
+      "isExhaust": false,
+      "description": "全体 150%AP 伤害",
+      "effects": [
+        { "type": "damage", "target": "all_enemies", "damageType": "magical", "formula": { "ap": 1.5 } }
+      ],
+      "tags": ["damage", "potion_card"]
+    },
+    {
+      "id": "potion_backstab",
+      "name": "背刺",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "150%ATK 无视闪避，暴击伤害额外+50%",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 1.5 }, "tags": ["ignore_evasion", "critical_damage_plus_50"] }
+      ],
+      "tags": ["damage", "potion_card"]
+    },
+    {
+      "id": "potion_focus_energy",
+      "name": "聚能",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "下一张卡牌伤害+50%",
+      "effects": [
+        { "type": "custom", "customId": "next_card_damage_plus_50_percent" }
+      ],
+      "tags": ["exhaust", "potion_card"]
+    },
+    {
+      "id": "potion_ember",
+      "name": "余烬",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "从消耗堆随机取回 1 张牌",
+      "effects": [
+        { "type": "custom", "customId": "return_random_card_from_exhaust_to_hand" }
+      ],
+      "tags": ["exhaust", "potion_card"]
+    },
+    {
+      "id": "potion_ash_storm",
+      "name": "灰烬风暴",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 3,
+      "targetType": "all_enemies",
+      "isExhaust": true,
+      "description": "全体 200%AP 伤害+3 层脆弱",
+      "effects": [
+        { "type": "damage", "target": "all_enemies", "damageType": "magical", "formula": { "ap": 2 } },
+        { "type": "vulnerable", "target": "all_enemies", "formula": { "base": 3 } }
+      ],
+      "tags": ["damage", "vulnerable", "exhaust", "potion_card"]
+    },
+    {
+      "id": "potion_corruption_field",
+      "name": "腐化领域",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 3,
+      "targetType": "all_enemies",
+      "isExhaust": true,
+      "description": "全体敌人施加 (2+10%AP) 层毒、流血、虚弱、脆弱",
+      "effects": [
+        { "type": "poison", "target": "all_enemies", "formula": { "base": 2, "ap": 0.1 } },
+        { "type": "bleed", "target": "all_enemies", "formula": { "base": 2, "ap": 0.1 } },
+        { "type": "weakness", "target": "all_enemies", "formula": { "base": 2, "ap": 0.1 } },
+        { "type": "vulnerable", "target": "all_enemies", "formula": { "base": 2, "ap": 0.1 } }
+      ],
+      "tags": ["poison", "bleed", "weakness", "vulnerable", "exhaust", "potion_card"]
+    },
+    {
+      "id": "potion_transcend_limit",
+      "name": "超越极限",
+      "ownerId": null,
+      "sourceType": "potion",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "本回合 AS 上限再+1",
+      "effects": [
+        { "type": "as_max_increase", "target": "self", "value": 1, "duration": 1 },
+        { "type": "as_gain", "target": "self", "value": 1 }
+      ],
+      "tags": ["exhaust", "potion_card"]
+    }
+  ],
+  "pools": {
+    "pool_potions_common_all": ["strength_tonic", "endurance_tonic", "protection_tonic", "agility_tonic", "precision_tonic", "lumina_essence"],
+    "pool_potions_rare_all": ["assault_elixir", "ironwall_elixir", "spirit_elixir", "lethal_elixir", "life_elixir", "venom_elixir", "bloodsuck_elixir", "focus_elixir", "multi_hit_elixir", "nirvana_elixir"],
+    "pool_potions_epic_all": ["berserker_blood", "archmage_essence", "shadow_soul", "guardian_will", "life_siphon", "chain_reaction", "energy_source", "ash_secret_elixir", "corrosion_elixir"],
+    "pool_potions_legendary_all": ["card_copy_potion", "card_removal_potion", "universal_remodel_potion", "talent_awakening", "limit_breakthrough"]
+  }
+}

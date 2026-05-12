@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "growthOptions": [
+    {
+      "id": "growth_normal_atk_3",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "atk",
+      "op": "add_flat",
+      "value": 3
+    },
+    {
+      "id": "growth_normal_ap_3",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "ap",
+      "op": "add_flat",
+      "value": 3
+    },
+    {
+      "id": "growth_normal_def_2",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "def",
+      "op": "add_flat",
+      "value": 2
+    },
+    {
+      "id": "growth_normal_hp_15",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "hp",
+      "op": "add_flat",
+      "value": 15
+    },
+    {
+      "id": "growth_normal_crit_3",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "crit",
+      "op": "add_flat",
+      "value": 3
+    },
+    {
+      "id": "growth_normal_cdmg_15",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "cdmg",
+      "op": "add_flat",
+      "value": 15
+    },
+    {
+      "id": "growth_normal_evd_3",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "evd",
+      "op": "add_flat",
+      "value": 3
+    },
+    {
+      "id": "growth_normal_acc_5",
+      "rarity": "normal",
+      "targetType": "single_character",
+      "stat": "acc",
+      "op": "add_flat",
+      "value": 5
+    },
+    {
+      "id": "growth_normal_gold_20",
+      "rarity": "normal",
+      "targetType": "instant",
+      "op": "add_flat",
+      "value": { "gold": 20 }
+    },
+    {
+      "id": "growth_rare_atk_6",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "atk",
+      "op": "add_flat",
+      "value": 6
+    },
+    {
+      "id": "growth_rare_ap_6",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "ap",
+      "op": "add_flat",
+      "value": 6
+    },
+    {
+      "id": "growth_rare_def_5",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "def",
+      "op": "add_flat",
+      "value": 5
+    },
+    {
+      "id": "growth_rare_hp_30",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "hp",
+      "op": "add_flat",
+      "value": 30
+    },
+    {
+      "id": "growth_rare_crit_8",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "crit",
+      "op": "add_flat",
+      "value": 8
+    },
+    {
+      "id": "growth_rare_cdmg_35",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "cdmg",
+      "op": "add_flat",
+      "value": 35
+    },
+    {
+      "id": "growth_rare_evd_8",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "evd",
+      "op": "add_flat",
+      "value": 8
+    },
+    {
+      "id": "growth_rare_spd_2",
+      "rarity": "rare",
+      "targetType": "single_character",
+      "stat": "spd",
+      "op": "add_flat",
+      "value": 2
+    },
+    {
+      "id": "growth_rare_gold_50",
+      "rarity": "rare",
+      "targetType": "instant",
+      "op": "add_flat",
+      "value": { "gold": 50 }
+    },
+    {
+      "id": "growth_epic_atk_12",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "stat": "atk",
+      "op": "add_flat",
+      "value": 12
+    },
+    {
+      "id": "growth_epic_ap_12",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "stat": "ap",
+      "op": "add_flat",
+      "value": 12
+    },
+    {
+      "id": "growth_epic_def_8",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "stat": "def",
+      "op": "add_flat",
+      "value": 8
+    },
+    {
+      "id": "growth_epic_hp_60",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "stat": "hp",
+      "op": "add_flat",
+      "value": 60
+    },
+    {
+      "id": "growth_epic_as_1",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "stat": "as",
+      "op": "add_flat",
+      "value": 1
+    },
+    {
+      "id": "growth_epic_crit_15",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "stat": "crit",
+      "op": "add_flat",
+      "value": 15
+    },
+    {
+      "id": "growth_epic_cdmg_60",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "stat": "cdmg",
+      "op": "add_flat",
+      "value": 60
+    },
+    {
+      "id": "growth_epic_er_1",
+      "rarity": "epic",
+      "targetType": "global",
+      "stat": "er",
+      "op": "add_flat",
+      "value": 1
+    },
+    {
+      "id": "growth_epic_all_stats_small",
+      "rarity": "epic",
+      "targetType": "single_character",
+      "op": "add_flat",
+      "value": { "atk": 3, "ap": 3, "def": 2, "hp": 15 }
+    },
+    {
+      "id": "growth_legendary_as_2",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "stat": "as",
+      "op": "add_flat",
+      "value": 2
+    },
+    {
+      "id": "growth_legendary_er_2",
+      "rarity": "legendary",
+      "targetType": "global",
+      "stat": "er",
+      "op": "add_flat",
+      "value": 2
+    },
+    {
+      "id": "growth_legendary_max_energy_1",
+      "rarity": "legendary",
+      "targetType": "global",
+      "stat": "maxEnergy",
+      "op": "add_flat",
+      "value": 1
+    },
+    {
+      "id": "growth_legendary_atk_15_percent",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "stat": "atk",
+      "op": "add_percent",
+      "value": 15
+    },
+    {
+      "id": "growth_legendary_ap_15_percent",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "stat": "ap",
+      "op": "add_percent",
+      "value": 15
+    },
+    {
+      "id": "growth_legendary_def_15",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "stat": "def",
+      "op": "add_flat",
+      "value": 15
+    },
+    {
+      "id": "growth_legendary_hp_25_percent",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "stat": "hp",
+      "op": "add_percent",
+      "value": 25
+    },
+    {
+      "id": "growth_legendary_crit_30",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "stat": "crit",
+      "op": "add_flat",
+      "value": 30
+    },
+    {
+      "id": "growth_legendary_cdmg_80",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "stat": "cdmg",
+      "op": "add_flat",
+      "value": 80
+    },
+    {
+      "id": "growth_legendary_all_stats_large",
+      "rarity": "legendary",
+      "targetType": "single_character",
+      "op": "add_percent",
+      "value": {
+        "atk": 8,
+        "ap": 8,
+        "hp": 10,
+        "asFlat": 1,
+        "defFlat": 5,
+        "critFlat": 15,
+        "cdmgFlat": 30
+      }
+    }
+  ],
+  "growthPools": {
+    "pool_growth_normal": [
+      "growth_normal_atk_3",
+      "growth_normal_ap_3",
+      "growth_normal_def_2",
+      "growth_normal_hp_15",
+      "growth_normal_crit_3",
+      "growth_normal_cdmg_15",
+      "growth_normal_evd_3",
+      "growth_normal_acc_5",
+      "growth_normal_gold_20"
+    ],
+    "pool_growth_rare": [
+      "growth_rare_atk_6",
+      "growth_rare_ap_6",
+      "growth_rare_def_5",
+      "growth_rare_hp_30",
+      "growth_rare_crit_8",
+      "growth_rare_cdmg_35",
+      "growth_rare_evd_8",
+      "growth_rare_spd_2",
+      "growth_rare_gold_50"
+    ],
+    "pool_growth_epic": [
+      "growth_epic_atk_12",
+      "growth_epic_ap_12",
+      "growth_epic_def_8",
+      "growth_epic_hp_60",
+      "growth_epic_as_1",
+      "growth_epic_crit_15",
+      "growth_epic_cdmg_60",
+      "growth_epic_er_1",
+      "growth_epic_all_stats_small"
+    ],
+    "pool_growth_legendary": [
+      "growth_legendary_as_2",
+      "growth_legendary_er_2",
+      "growth_legendary_max_energy_1",
+      "growth_legendary_atk_15_percent",
+      "growth_legendary_ap_15_percent",
+      "growth_legendary_def_15",
+      "growth_legendary_hp_25_percent",
+      "growth_legendary_crit_30",
+      "growth_legendary_cdmg_80",
+      "growth_legendary_all_stats_large"
+    ]
+  },
+  "rewardTables": [
+    {
+      "id": "reward_prologue_tutorial",
+      "rewards": []
+    },
+    {
+      "id": "reward_ch1_normal_battle",
+      "rewards": [
+        {
+          "type": "growth_choice",
+          "count": 3,
+          "rarityWeights": { "normal": 80, "rare": 20 },
+          "config": {
+            "choiceCount": 1,
+            "refreshCost": 5,
+            "maxRefreshPerOption": 1
+          }
+        },
+        {
+          "type": "gold",
+          "count": 10
+        },
+        {
+          "type": "potion_drop",
+          "chance": 30,
+          "count": 1,
+          "rarityWeights": { "normal": 70, "rare": 30 },
+          "config": {
+            "poolByRarity": {
+              "normal": "pool_potions_common_all",
+              "rare": "pool_potions_rare_all"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "reward_ch1_elite_battle",
+      "rewards": [
+        {
+          "type": "growth_choice",
+          "count": 3,
+          "rarityWeights": { "rare": 80, "epic": 20 },
+          "config": {
+            "choiceCount": 1,
+            "refreshCost": 5,
+            "maxRefreshPerOption": 1
+          }
+        },
+        {
+          "type": "gold",
+          "count": 30
+        },
+        {
+          "type": "equipment_drop",
+          "count": 1,
+          "rarityWeights": { "rare": 100 },
+          "poolId": "pool_equipment_rare_all"
+        },
+        {
+          "type": "potion_drop",
+          "chance": 30,
+          "count": 1,
+          "rarityWeights": { "rare": 70, "epic": 30 },
+          "config": {
+            "poolByRarity": {
+              "rare": "pool_potions_rare_all",
+              "epic": "pool_potions_epic_all"
+            }
+          }
+        },
+        {
+          "type": "card_upgrade",
+          "chance": 0,
+          "config": {
+            "enabledOnlyWhenEncounterDeclaresUpgrade": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "reward_ch1_shakuya_special_elite",
+      "rewards": [
+        {
+          "type": "growth_choice",
+          "count": 3,
+          "rarityWeights": { "rare": 80, "epic": 20 },
+          "config": {
+            "choiceCount": 1,
+            "refreshCost": 5,
+            "maxRefreshPerOption": 1
+          }
+        },
+        {
+          "type": "gold",
+          "count": 30
+        },
+        {
+          "type": "equipment_drop",
+          "count": 1,
+          "rarityWeights": { "epic": 100 },
+          "poolId": "pool_equipment_epic_all"
+        },
+        {
+          "type": "potion_drop",
+          "chance": 30,
+          "count": 1,
+          "rarityWeights": { "rare": 70, "epic": 30 },
+          "config": {
+            "poolByRarity": {
+              "rare": "pool_potions_rare_all",
+              "epic": "pool_potions_epic_all"
+            }
+          }
+        },
+        {
+          "type": "unlock",
+          "config": {
+            "unlocks": [
+              { "type": "ultimate", "targetId": "shakuya" }
+            ],
+            "cardId": "flame_raven"
+          }
+        },
+        {
+          "type": "save",
+          "config": {
+            "slot": "auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reward_ch1_boss",
+      "rewards": [
+        {
+          "type": "growth_choice",
+          "count": 3,
+          "rarityWeights": { "epic": 75, "legendary": 25 },
+          "config": {
+            "choiceCount": 1,
+            "refreshCost": 5,
+            "maxRefreshPerOption": 1
+          }
+        },
+        {
+          "type": "gold",
+          "count": 100
+        },
+        {
+          "type": "potion_drop",
+          "chance": 100,
+          "count": 1,
+          "rarityWeights": { "epic": 75, "legendary": 25 },
+          "config": {
+            "poolByRarity": {
+              "epic": "pool_potions_epic_all",
+              "legendary": "pool_potions_legendary_all"
+            },
+            "allowImmediateUseIfBagFull": true
+          }
+        },
+        {
+          "type": "equipment_drop",
+          "count": 1,
+          "config": {
+            "choiceMode": "choose_one",
+            "choices": [
+              {
+                "id": "boss_epic_equipment_choice",
+                "label": "史诗装备",
+                "rarityWeights": { "epic": 100 },
+                "poolId": "pool_equipment_epic_all"
+              },
+              {
+                "id": "boss_cursed_equipment_choice",
+                "label": "诅咒装备",
+                "rarityWeights": { "curse": 100 },
+                "poolId": "pool_equipment_cursed_all"
+              }
+            ]
+          }
+        },
+        {
+          "type": "unlock",
+          "config": {
+            "unlocks": [
+              { "type": "chapter", "targetId": "chapter_2" },
+              { "type": "meta_flag", "targetId": "chapter_2_placeholder_unlocked" }
+            ]
+          }
+        },
+        {
+          "type": "save",
+          "config": {
+            "slot": "auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reward_recruitment_battle_hatsuba",
+      "rewards": [
+        {
+          "type": "growth_choice",
+          "count": 3,
+          "rarityWeights": { "normal": 50, "rare": 30, "epic": 20 },
+          "config": {
+            "targetCharacterId": "hatsuba",
+            "repeatTimes": 3,
+            "choiceCount": 1,
+            "refreshCost": 5,
+            "maxRefreshPerOption": 1
+          }
+        },
+        {
+          "type": "unlock",
+          "config": {
+            "unlocks": [
+              { "type": "character", "targetId": "hatsuba" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reward_recruitment_battle_ruri",
+      "rewards": [
+        {
+          "type": "growth_choice",
+          "count": 3,
+          "rarityWeights": { "normal": 50, "rare": 30, "epic": 20 },
+          "config": {
+            "targetCharacterId": "ruri",
+            "repeatTimes": 6,
+            "choiceCount": 1,
+            "refreshCost": 5,
+            "maxRefreshPerOption": 1
+          }
+        },
+        {
+          "type": "unlock",
+          "config": {
+            "unlocks": [
+              { "type": "character", "targetId": "ruri" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "reward_recruitment_battle_kagegetsu",
+      "rewards": [
+        {
+          "type": "growth_choice",
+          "count": 3,
+          "rarityWeights": { "normal": 50, "rare": 30, "epic": 20 },
+          "config": {
+            "targetCharacterId": "kagegetsu",
+            "repeatTimes": 9,
+            "choiceCount": 1,
+            "refreshCost": 5,
+            "maxRefreshPerOption": 1
+          }
+        },
+        {
+          "type": "unlock",
+          "config": {
+            "unlocks": [
+              { "type": "character", "targetId": "kagegetsu" }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "chapterEquipmentRarityRules": {
+    "eliteDrops": {
+      "chapter_1": { "rare": 100 },
+      "chapter_2": { "rare": 80, "epic": 20 },
+      "chapter_3": { "rare": 50, "epic": 50 },
+      "chapter_4": { "epic": 100 },
+      "chapter_5": { "epic": 90, "legendary": 10 }
+    },
+    "shopEquipment": {
+      "chapter_1": { "normal": 100 },
+      "chapter_2": { "normal": 80, "rare": 20 },
+      "chapter_3": { "normal": 60, "rare": 30, "epic": 10 },
+      "chapter_4": { "normal": 40, "rare": 40, "epic": 20 },
+      "chapter_5": { "normal": 30, "rare": 40, "epic": 25, "legendary": 5 }
+    }
+  },
+  "goldRules": {
+    "normalBattleVictory": 10,
+    "eliteBattleVictory": 30,
+    "bossBattleVictory": 100,
+    "growthNormalGold": 20,
+    "growthRareGold": 50,
+    "growthRefreshCost": 5,
+    "shopManualSaveCost": 10,
+    "shopCleanseDebuffCost": 25,
+    "curseEquipmentRemovalCost": 25
+  }
+}

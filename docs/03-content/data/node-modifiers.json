@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 1,
+  "nodeModifiers": [
+    {
+      "id": "post_vigor",
+      "name": "精神抖擞",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "percent_buff", "target": "all_allies", "stat": "hp", "formula": { "base": 10 }, "duration": "battle" },
+        { "type": "percent_buff", "target": "all_allies", "stat": "atk", "formula": { "base": 10 }, "duration": "battle" },
+        { "type": "percent_buff", "target": "all_allies", "stat": "ap", "formula": { "base": 10 }, "duration": "battle" }
+      ],
+      "description": "下场战斗最大HP+10%、ATK+10%、AP+10%",
+      "tags": ["next_battle"]
+    },
+    {
+      "id": "post_focus",
+      "name": "凝神聚气",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "buff", "target": "all_allies", "stat": "acc", "formula": { "base": 50 }, "duration": "battle" },
+        { "type": "buff", "target": "all_allies", "stat": "crit", "formula": { "base": 50 }, "duration": "battle" },
+        { "type": "buff", "target": "all_allies", "stat": "cdmg", "formula": { "base": 100 }, "duration": "battle" }
+      ],
+      "description": "下场战斗命中+50%、暴击率+50%、暴击伤害+100%",
+      "tags": ["next_battle"]
+    },
+    {
+      "id": "post_lumina_blessing",
+      "name": "星辉眷顾",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "run",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "next_battle_victory_double_gold_growth_choices_and_equipment_drops" }
+      ],
+      "description": "下场战斗胜利后双倍奖励（金币×2、属性成长选2次、装备掉2次）",
+      "tags": ["next_battle_reward"]
+    },
+    {
+      "id": "post_supply_found",
+      "name": "发现补给",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "run",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "gain_gold_20_plus_10x_chapter" }
+      ],
+      "description": "获得 20+10×章节数 金币",
+      "tags": ["instant"]
+    },
+    {
+      "id": "post_residual_shelter",
+      "name": "残留庇护",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "shield", "target": "all_allies", "formula": { "maxHp": 0.5 } }
+      ],
+      "description": "下场战斗全员起始获得 50%最大HP 的护盾",
+      "tags": ["next_battle", "battle_start"]
+    },
+    {
+      "id": "post_inspiration",
+      "name": "灵感涌现",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "next_battle_initial_draw_plus_2" }
+      ],
+      "description": "下场战斗初始多抽 2 张牌（起手 5 张）",
+      "tags": ["next_battle", "battle_start"]
+    },
+    {
+      "id": "post_high_morale",
+      "name": "战意高昂",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "as_gain", "target": "all_allies", "value": 2 }
+      ],
+      "description": "下场战斗中，我方全员首回合 AS+2",
+      "tags": ["next_battle", "first_turn"]
+    },
+    {
+      "id": "post_shard_guidance",
+      "name": "碎片指引",
+      "source": ["post_node_random"],
+      "polarity": "buff",
+      "applyTo": "next_options",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "next_node_selection_option_count_plus_1" }
+      ],
+      "description": "下次节点选择时额外多显示 1 个选项（三/四选一）",
+      "tags": ["next_options"]
+    },
+    {
+      "id": "post_exhausted_body_mind",
+      "name": "身心俱疲",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "percent_buff", "target": "all_allies", "stat": "hp", "formula": { "base": -20 }, "duration": "battle" },
+        { "type": "buff", "target": "all_allies", "stat": "acc", "formula": { "base": -20 }, "duration": "battle" },
+        { "type": "weakness", "target": "all_allies", "formula": { "chapter": 5 } }
+      ],
+      "description": "最大HP-20%、命中-20%，战斗开始时我方附带 5×章节数 层虚弱",
+      "tags": ["next_battle", "battle_start"]
+    },
+    {
+      "id": "post_pursuers",
+      "name": "追兵将至",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "run",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "dispatch_characters_to_block_pursuers_next_node_unavailable" }
+      ],
+      "description": "派遣角色阻拦（≤3人派1人，≥4人派2人），被派遣者下场不可出战",
+      "tags": ["next_node"]
+    },
+    {
+      "id": "post_bad_omen",
+      "name": "不祥预感",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "next_options",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "next_node_selection_only_combat_options" }
+      ],
+      "description": "下次节点选择只出现战斗类选项",
+      "tags": ["next_options"]
+    },
+    {
+      "id": "post_curse_entangled",
+      "name": "诅咒缠身",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "player_damage_taken_plus_30_percent_next_battle" }
+      ],
+      "description": "下场战斗中，我方受到的所有伤害+30%",
+      "tags": ["next_battle"]
+    },
+    {
+      "id": "post_anxious_mind",
+      "name": "心神不宁",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "after_player_card_play_30_percent_exhaust_random_hand_card" }
+      ],
+      "description": "下场战斗中，每次出牌后 30%概率将一张随机手牌消耗（Exhaust）",
+      "tags": ["next_battle"]
+    },
+    {
+      "id": "post_abyss_curse",
+      "name": "深渊诅咒",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "player_damage_taken_plus_20_percent_each_battle" }
+      ],
+      "cleanseRule": { "type": "shop_cleanse", "price": 25 },
+      "description": "每场战斗受到的所有伤害+20%。击败章节 Boss 或进入商店净化可消除。",
+      "tags": ["persistent"]
+    },
+    {
+      "id": "post_corrosion_infection",
+      "name": "腐蚀侵染",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "run",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "disable_random_equipment_on_random_character" }
+      ],
+      "cleanseRule": { "type": "shop_cleanse", "price": 25 },
+      "description": "随机一名角色的随机一件装备失效。进入商店修理可消除。",
+      "tags": ["persistent", "equipment"]
+    },
+    {
+      "id": "post_death_sentence",
+      "name": "死亡宣告",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "run",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "mark_random_character_death_after_10_nodes" }
+      ],
+      "cleanseRule": { "type": "shop_cleanse", "price": 25 },
+      "description": "随机一名角色被标记，10 个节点后死亡。存活时进商店净化；死亡后进商店复活。",
+      "tags": ["persistent"]
+    },
+    {
+      "id": "post_power_drain",
+      "name": "力量流失",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "run",
+      "duration": "run",
+      "effects": [
+        { "type": "custom", "customId": "random_character_atk_ap_minus_20_percent_until_5_battles_or_shop" }
+      ],
+      "cleanseRule": { "type": "after_battles", "value": 5, "price": 25 },
+      "description": "被标记角色 ATK 和 AP 永久-20%。经过 5 场战斗后自然消退，或进入商店治疗提前解除。",
+      "tags": ["persistent"]
+    },
+    {
+      "id": "post_miasma_invasion",
+      "name": "瘴气侵体",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "chapterLimit": ["chapter_1", "chapter_2"],
+      "effects": [
+        { "type": "poison", "target": "all_allies", "formula": { "chapter": 5 } }
+      ],
+      "description": "战斗开始时我方全体 5×章节数 层毒",
+      "tags": ["next_battle", "battle_start"]
+    },
+    {
+      "id": "post_fog_shroud",
+      "name": "迷雾笼罩",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "next_options",
+      "duration": "run",
+      "chapterLimit": ["chapter_4"],
+      "effects": [
+        { "type": "custom", "customId": "next_node_selection_blind_all_information" }
+      ],
+      "description": "下次节点选择完全盲选（无法看到任何信息）",
+      "tags": ["next_options"]
+    },
+    {
+      "id": "post_explosion_encounter",
+      "name": "遭遇爆炸",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "chapterLimit": ["chapter_5"],
+      "effects": [
+        { "type": "percentage_hp_reduction", "target": "all_allies", "percent": 50 }
+      ],
+      "description": "下场战斗开始时HP-50%",
+      "tags": ["next_battle", "battle_start"]
+    },
+    {
+      "id": "post_heatwave",
+      "name": "热浪灼身",
+      "source": ["post_node_random"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "chapterLimit": ["chapter_5"],
+      "effects": [
+        { "type": "custom", "customId": "player_allies_lose_5_percent_max_hp_each_turn_next_battle" }
+      ],
+      "description": "下场战斗全员每回合损失 5%最大HP",
+      "tags": ["next_battle"]
+    },
+    {
+      "id": "node_swarm",
+      "name": "蜂拥而至",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "enemy",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "enemy_count_multiplier_3" }
+      ],
+      "description": "怪物数量×3",
+      "allowedNodeTypes": ["normal_battle", "elite_battle"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_endless_horde",
+      "name": "无穷无尽",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "enemy",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "enemy_count_multiplier_5" }
+      ],
+      "description": "怪物数量×5",
+      "allowedNodeTypes": ["normal_battle"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_bloodthirst_frenzy",
+      "name": "嗜血狂化",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "enemy",
+      "duration": "battle",
+      "effects": [
+        { "type": "stat_multiply", "target": "all_enemies", "stat": "atk", "multiplier": 2, "duration": "battle" },
+        { "type": "stat_multiply", "target": "all_enemies", "stat": "ap", "multiplier": 2, "duration": "battle" }
+      ],
+      "description": "敌人ATK和AP翻倍",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_desperate_charge",
+      "name": "亡命冲锋",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "enemy",
+      "duration": "battle",
+      "effects": [
+        { "type": "stat_multiply", "target": "all_enemies", "stat": "atk", "multiplier": 2, "duration": "battle" },
+        { "type": "stat_multiply", "target": "all_enemies", "stat": "ap", "multiplier": 2, "duration": "battle" },
+        { "type": "percent_buff", "target": "all_enemies", "stat": "hp", "formula": { "base": -50 }, "duration": "battle" }
+      ],
+      "description": "敌人ATK和AP翻倍，但最大生命值-50%",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_treasure_guard",
+      "name": "宝物守卫",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "enemy",
+      "duration": "battle",
+      "effects": [
+        { "type": "stat_multiply", "target": "all_enemies", "stat": "hp", "multiplier": 2, "duration": "battle" },
+        { "type": "stat_multiply", "target": "all_enemies", "stat": "atk", "multiplier": 2, "duration": "battle" },
+        { "type": "stat_multiply", "target": "all_enemies", "stat": "ap", "multiplier": 2, "duration": "battle" },
+        { "type": "custom", "customId": "equipment_and_gold_drops_double" }
+      ],
+      "description": "精英限定，敌人属性×200%，掉落翻倍",
+      "allowedNodeTypes": ["elite_battle", "special_elite"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_undying_body",
+      "name": "不死之躯",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "enemy",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "enemy_all_units_heal_3_percent_max_hp_each_turn" }
+      ],
+      "description": "敌方全体每回合恢复 3%最大HP",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_ambush",
+      "name": "遭遇伏击",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "enemy_highest_spd_gets_first_strike_player_first_turn_cannot_act" }
+      ],
+      "description": "敌方最高SPD抢攻，我方第1回合无法普攻和出牌",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_hidden_killing_intent",
+      "name": "暗藏杀机",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "percentage_hp_reduction", "target": "all_allies", "percent": 50 }
+      ],
+      "description": "战斗开始时我方HP-50%",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite"],
+      "tags": ["battle_modifier", "battle_start", "chapter_1_available"]
+    },
+    {
+      "id": "node_heavy_ambush",
+      "name": "重重埋伏",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "player_first_turn_cannot_act" },
+        { "type": "percentage_hp_reduction", "target": "all_allies", "percent": 20 }
+      ],
+      "description": "遭遇伏击（第1回合无法行动）+ HP-20%",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite"],
+      "tags": ["battle_modifier", "battle_start", "chapter_1_available"]
+    },
+    {
+      "id": "node_energy_depletion",
+      "name": "能量枯竭",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "initial_energy_zero_first_turn_basic_attack_no_energy_gain" }
+      ],
+      "description": "我方初始能量为 0，且首回合普攻不回复能量",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_shield_field",
+      "name": "护盾领域",
+      "source": ["node_option"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "shield", "target": "all_allies", "formula": { "maxHp": 0.5 } }
+      ],
+      "description": "战斗开始时我方全员获得 50%最大HP 的护盾",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "battle_start", "chapter_1_available"]
+    },
+    {
+      "id": "node_energy_surge",
+      "name": "能量充盈",
+      "source": ["node_option"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "player_energy_recovery_plus_5_each_turn" }
+      ],
+      "description": "每回合能量回复+5（第3章出现概率提升）",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_energy_overflow",
+      "name": "能量溢出",
+      "source": ["node_option"],
+      "polarity": "buff",
+      "applyTo": "player",
+      "duration": "battle",
+      "chapterLimit": ["chapter_3"],
+      "effects": [
+        { "type": "custom", "customId": "player_energy_recovers_to_max_each_turn" }
+      ],
+      "description": "每回合能量回复至上限（第3章限定，小概率）",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier"]
+    },
+    {
+      "id": "node_poison_mist",
+      "name": "毒物弥漫",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "poison", "target": "all_units", "formula": { "chapter": 3 } }
+      ],
+      "description": "每回合开始敌我全体附带 3×章节数 层毒",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "turn_start", "chapter_1_available"]
+    },
+    {
+      "id": "node_dust_cloud",
+      "name": "烟尘弥漫",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "buff", "target": "all_units", "stat": "acc", "formula": { "base": -50 }, "duration": "battle" }
+      ],
+      "description": "敌我全体命中率-50%",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_void_corrosion",
+      "name": "虚空腐蚀",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "percentage_hp_reduction", "target": "all_units", "percent": 10 }
+      ],
+      "description": "每回合开始敌我双方-10%当前HP",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "turn_start", "chapter_1_available"]
+    },
+    {
+      "id": "node_rune_malfunction",
+      "name": "符文失控",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "both_sides_can_only_basic_attack_no_cards_no_enemy_skills" }
+      ],
+      "description": "敌我双方只能普攻（我方无法出牌，敌方无法技能）",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_anti_magic_field",
+      "name": "禁魔领域",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "set_stat", "target": "all_units", "stat": "ap", "value": 0, "duration": "battle" }
+      ],
+      "description": "敌我双方AP固定为0",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_regeneration_ground",
+      "name": "再生之地",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "heal", "target": "all_units", "formula": { "maxHp": 0.05 } }
+      ],
+      "description": "每回合结束敌我全体恢复 5%最大HP",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "turn_end", "chapter_1_available"]
+    },
+    {
+      "id": "node_berserk_field",
+      "name": "狂暴领域",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "percent_buff", "target": "all_units", "stat": "atk", "formula": { "base": 50 }, "duration": "battle" },
+        { "type": "percent_buff", "target": "all_units", "stat": "ap", "formula": { "base": 50 }, "duration": "battle" },
+        { "type": "set_stat", "target": "all_units", "stat": "def", "value": 0, "duration": "battle" }
+      ],
+      "description": "敌我全员ATK+50%、AP+50%，DEF无效化",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_damage_resonance",
+      "name": "伤害共振",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "all_damage_plus_50_percent_all_healing_plus_50_percent" }
+      ],
+      "description": "所有伤害+50%，所有治疗+50%",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_cursed_altar",
+      "name": "诅咒祭坛",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "after_card_or_skill_use_user_takes_fixed_damage_5x_chapter" }
+      ],
+      "description": "每次使用卡牌/技能后，使用者受到 5×章节数 固定伤害",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_vulnerable_field",
+      "name": "脆弱领域",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "vulnerable", "target": "all_units", "formula": { "chapter": 3 } }
+      ],
+      "description": "战斗开始时敌我全员附带 3×章节数 层脆弱",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "battle_start", "chapter_1_available"]
+    },
+    {
+      "id": "node_death_ripple",
+      "name": "死亡涟漪",
+      "source": ["node_option"],
+      "polarity": "mixed",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "on_any_unit_death_deal_fixed_damage_10x_chapter_to_all_units" }
+      ],
+      "description": "每次有单位死亡时，对全场造成 10×章节数 固定伤害",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite", "boss"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    },
+    {
+      "id": "node_mirror_land",
+      "name": "镜像之地",
+      "source": ["node_option"],
+      "polarity": "debuff",
+      "applyTo": "enemy",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "enemy_copies_player_highest_hp_atk_ap_def_values" }
+      ],
+      "description": "敌方复制我方阵容属性（HP/ATK/AP/DEF 取我方最高值）",
+      "allowedNodeTypes": ["normal_battle", "elite_battle", "special_elite"],
+      "tags": ["battle_modifier", "chapter_1_available"]
+    }
+  ],
+  "pools": {
+    "pool_ch1_post_node_random_modifiers": [
+      "post_vigor",
+      "post_focus",
+      "post_lumina_blessing",
+      "post_supply_found",
+      "post_residual_shelter",
+      "post_inspiration",
+      "post_high_morale",
+      "post_shard_guidance",
+      "post_exhausted_body_mind",
+      "post_pursuers",
+      "post_bad_omen",
+      "post_curse_entangled",
+      "post_anxious_mind",
+      "post_abyss_curse",
+      "post_corrosion_infection",
+      "post_death_sentence",
+      "post_power_drain",
+      "post_miasma_invasion"
+    ],
+    "pool_ch1_node_modifiers": [
+      "node_swarm",
+      "node_endless_horde",
+      "node_bloodthirst_frenzy",
+      "node_desperate_charge",
+      "node_treasure_guard",
+      "node_undying_body",
+      "node_ambush",
+      "node_hidden_killing_intent",
+      "node_heavy_ambush",
+      "node_energy_depletion",
+      "node_shield_field",
+      "node_energy_surge",
+      "node_poison_mist",
+      "node_dust_cloud",
+      "node_void_corrosion",
+      "node_rune_malfunction",
+      "node_anti_magic_field",
+      "node_regeneration_ground",
+      "node_berserk_field",
+      "node_damage_resonance",
+      "node_cursed_altar",
+      "node_vulnerable_field",
+      "node_death_ripple",
+      "node_mirror_land"
+    ]
+  }
+}

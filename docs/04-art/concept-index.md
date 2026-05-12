@@ -12,9 +12,9 @@ Migrated concept art from the prototype project.
 
 ## Enemies
 
-- `concept/enemies/ashen_wraith.png`
-- `concept/enemies/fallen_knight.png`
-- `concept/enemies/ashen_general_heild.png`
+- `concept/enemies/oathbound_echo.png`
+- `concept/enemies/oathbroken_duelist.png`
+- `concept/enemies/oathbreaker_reinhardt.png`
 
 ## Cards and UI
 
@@ -29,4 +29,3 @@ Migrated concept art from the prototype project.
 - `concept/world/luminash_map_concept.png`
 
 These are visual references, not final production assets.
-

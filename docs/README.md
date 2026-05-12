@@ -68,9 +68,9 @@
 | 文档 | 有效性 | 作用 |
 |------|--------|------|
 | [characters.md](03-content/characters.md) | 当前有效 | 角色定位、属性、初始牌和解锁章节说明。数值以 `data/characters.json` 为准。 |
-| [enemies-chapter-1.md](03-content/enemies-chapter-1.md) | 当前有效 | 第 1 章普通敌人、精英敌人和 Boss 的数值、AI、叙事和奖励方向。 |
+| [enemies-chapter-1.md](03-content/enemies-chapter-1.md) | 当前有效 | 序章与第 1 章普通敌人、精英敌人、灼夜大招解锁战和 Boss 的数值、AI 与叙事方向。 |
 | [build-archetypes.md](03-content/build-archetypes.md) | 当前有效 | 构筑原型和系统联动方向，用于指导内容扩展和平衡。 |
-| [data/](03-content/data/README.md) | 当前有效 | 正式机器内容表。当前包含角色、卡牌和章节。 |
+| [data/](03-content/data/README.md) | 当前有效 | 正式机器内容表。当前包含角色、卡牌、章节、装备、药水、节点修正和奖励表。 |
 
 `03-content/data/` 中的 JSON 是机器可读内容表，不是草案。`id`（唯一标识）、名称、初始牌、章节主地点、卡牌效果等实现时应读取这里的数据。
 
@@ -138,7 +138,7 @@
 | 战斗结算规则 | `02-systems/battle.md` | `battle-state-machine.md`、`effect-dsl.md` |
 | 卡牌效果表达 | `effect-dsl.md` | `data-schema.md`、`03-content/data/cards.json` |
 | 角色 / 卡牌 / 章节内容 | `03-content/*.md` 或 `03-content/data/*.json` | `data-schema.md` 如字段变化 |
-| 装备 / 药水内容 | `02-systems/equipment.md` / `potions.md` | 后续机器内容表 |
+| 装备 / 药水内容 | `02-systems/equipment.md` / `potions.md` | `03-content/data/equipment.json`、`03-content/data/potions.json` |
 | MVP 范围 | `mvp-scope.md` | README、验收用例 |
 
 ## 当前主要缺口
@@ -147,9 +147,8 @@
 
 - 第 1 章事件节点正式列表、文案库和事件结果表。
 - 战后随机事件触发概率和抽取权重。
-- 21 个战后随机事件与 25 个节点自带修正的机器可读表。
 - 第 1 章普通战、精英战、特殊精英、Boss 的机器 encounter 表。
-- 装备、药水、商店、奖励、事件的机器内容表。
+- 商店、事件的机器内容表。
 - `acceptance-cases.md` 尚未建立。
 
 补这些内容时，必须先回到对应设计源头确认规则，再写实现规格和数据表。

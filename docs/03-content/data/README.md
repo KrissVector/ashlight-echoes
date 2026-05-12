@@ -7,6 +7,10 @@
 - `characters.json`：正式角色内容表。
 - `cards.json`：正式卡牌内容表。
 - `chapters.json`：正式章节主地点与固定步内容表。
+- `equipment.json`：正式装备内容表，包含装备附带卡、诅咒牌和装备池。
+- `potions.json`：正式药水内容表，包含药水新增卡和药水池。
+- `node-modifiers.json`：正式节点修正内容表，包含战后随机事件、节点选项自带修正和第 1 章可用池。
+- `reward-tables.json`：正式奖励内容表，包含属性成长池、第 1 章奖励表、金币规则和装备品质分布。
 
 如果这些 JSON 与同目录或 `docs/02-systems/` 的正文规则冲突，按以下方式处理：
 

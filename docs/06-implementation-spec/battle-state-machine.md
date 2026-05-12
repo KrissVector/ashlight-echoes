@@ -837,7 +837,7 @@ target.remainingAs = target.asMax
 - 新召唤单位初始 HP 为满，护盾为 0，状态为空。
 - 若在敌方行动阶段召唤，新单位不在当前敌方行动遍历中行动，从下一次敌方回合开始行动。
 
-第 1 章不使用属性覆盖。召回灰烬游魂时使用正式灰烬游魂属性。
+第 1 章不使用属性覆盖。莱恩哈特召回亡魂时使用正式 `oathbound_echo` 属性。
 
 ## 死亡处理
 
@@ -930,4 +930,4 @@ target.remainingAs = target.asMax
 15. `next_attack_poison` 对下一次攻击中每个命中的目标附毒。
 16. `random_debuff_per_hit` 只在命中段触发。
 17. `counter_on_dodge` 回合内可多次触发，但不会触发反击反击。
-18. 莱恩哈特二阶段 `summon` 召回普通灰烬游魂，新召回单位从下一次敌方回合开始行动。
+18. 莱恩哈特二阶段 `summon` 召回 `oathbound_echo`，新召回单位从下一次敌方回合开始行动。

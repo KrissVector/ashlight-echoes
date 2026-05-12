@@ -642,8 +642,14 @@ rarity -> target -> growth option
 |----|------|
 | `enc_prologue_reisa_tutorial_1` | 序章第 1 战，玲纱单人教程 |
 | `enc_prologue_reisa_shakuya_tutorial_2` | 序章第 2 战，玲纱 + 灼夜教程 |
-| `enc_ch1_normal_ashen_wraith_pack` | 第 1 章普通战，灰烬游魂群 |
-| `enc_ch1_elite_fallen_knight` | 第 1 章精英战，堕落骑士 |
+| `enc_ch1_normal_wall_echoes` | 第 1 章普通战，誓约残影巡逻 |
+| `enc_ch1_normal_crossfire` | 第 1 章普通战，灰誓弩手后排 |
+| `enc_ch1_normal_armory_guard` | 第 1 章普通战，旧军械库守卫 |
+| `enc_ch1_normal_rift_hounds` | 第 1 章普通战，虚缝烬犬群 |
+| `enc_ch1_normal_mixed_patrol` | 第 1 章普通战，混合巡逻 |
+| `enc_ch1_elite_oathbroken_duelist` | 第 1 章精英战，银誓断刃 |
+| `enc_ch1_elite_bound_oath_bulwark` | 第 1 章精英战，缚誓壁垒 |
+| `enc_ch1_elite_bell_tower_binder` | 第 1 章精英战，钟楼缚魂师 |
 | `enc_ch1_shakuya_ultimate_unlock` | 第 1 章第 6 步灼夜大招解锁战 |
 | `enc_ch1_boss_reinhardt` | 第 1 章 Boss，断誓之盾·莱恩哈特 |
 

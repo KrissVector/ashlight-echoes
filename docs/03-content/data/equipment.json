@@ -1,0 +1,1831 @@
+{
+  "schemaVersion": 1,
+  "equipment": [
+    {
+      "id": "iron_dagger",
+      "name": "铁制短刀",
+      "rarity": "normal",
+      "description": "ATK+5",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 5 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "steel_battle_blade",
+      "name": "精钢战刃",
+      "rarity": "normal",
+      "description": "ATK+10",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "rune_fragment",
+      "name": "符文碎片",
+      "rarity": "normal",
+      "description": "AP+5",
+      "statModifiers": [
+        { "stat": "ap", "op": "add_flat", "value": 5 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "arcane_crystal",
+      "name": "魔导结晶",
+      "rarity": "normal",
+      "description": "AP+10",
+      "statModifiers": [
+        { "stat": "ap", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "leather_armor_charm",
+      "name": "皮甲护符",
+      "rarity": "normal",
+      "description": "DEF+3",
+      "statModifiers": [
+        { "stat": "def", "op": "add_flat", "value": 3 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "iron_shield_fragment",
+      "name": "铁盾碎片",
+      "rarity": "normal",
+      "description": "DEF+6",
+      "statModifiers": [
+        { "stat": "def", "op": "add_flat", "value": 6 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "life_vial",
+      "name": "生命药瓶",
+      "rarity": "normal",
+      "description": "HP+20",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_flat", "value": 20 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "reinforced_chestguard",
+      "name": "强化护心镜",
+      "rarity": "normal",
+      "description": "HP+45",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_flat", "value": 45 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "sharp_whetstone",
+      "name": "锐利磨石",
+      "rarity": "normal",
+      "description": "暴击率+10%",
+      "statModifiers": [
+        { "stat": "crit", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "hunter_eye",
+      "name": "猎手之眼",
+      "rarity": "normal",
+      "description": "暴击伤害+30%",
+      "statModifiers": [
+        { "stat": "cdmg", "op": "add_flat", "value": 30 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "light_feather_boots",
+      "name": "轻羽靴",
+      "rarity": "normal",
+      "description": "闪避+5%",
+      "statModifiers": [
+        { "stat": "evd", "op": "add_flat", "value": 5 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "eagle_eye_lens",
+      "name": "鹰眼镜片",
+      "rarity": "normal",
+      "description": "命中率+10%",
+      "statModifiers": [
+        { "stat": "acc", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["chapter_1_shop_pool"]
+    },
+    {
+      "id": "death_curve_blade",
+      "name": "夺命弯刃",
+      "rarity": "rare",
+      "description": "暴击率+15%",
+      "statModifiers": [
+        { "stat": "crit", "op": "add_flat", "value": 15 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "armor_breaking_maul",
+      "name": "破甲重锤",
+      "rarity": "rare",
+      "description": "暴击伤害+60%",
+      "statModifiers": [
+        { "stat": "cdmg", "op": "add_flat", "value": 60 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "shadowstep_boots",
+      "name": "影步之靴",
+      "rarity": "rare",
+      "description": "闪避+10%",
+      "statModifiers": [
+        { "stat": "evd", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "phantom_cloak",
+      "name": "幻影披风",
+      "rarity": "rare",
+      "description": "闪避+15%",
+      "statModifiers": [
+        { "stat": "evd", "op": "add_flat", "value": 15 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "war_pattern_bracer",
+      "name": "战纹臂甲",
+      "rarity": "rare",
+      "description": "ATK+12%",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 12 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "blood_oath_blade",
+      "name": "血契之刃",
+      "rarity": "rare",
+      "description": "ATK+15%",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 15 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "beast_fang",
+      "name": "凶兽之牙",
+      "rarity": "rare",
+      "description": "ATK+20%",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 20 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "star_iron_greatsword",
+      "name": "星铁阔剑",
+      "rarity": "rare",
+      "description": "ATK+20",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 20 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "star_ruin_page",
+      "name": "星墟书页",
+      "rarity": "rare",
+      "description": "AP+15%",
+      "statModifiers": [
+        { "stat": "ap", "op": "add_percent", "value": 15 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "arcane_focuser",
+      "name": "奥术聚焦器",
+      "rarity": "rare",
+      "description": "AP+20%",
+      "statModifiers": [
+        { "stat": "ap", "op": "add_percent", "value": 20 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "guardian_chestplate",
+      "name": "守卫胸甲",
+      "rarity": "rare",
+      "description": "DEF+10",
+      "statModifiers": [
+        { "stat": "def", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "wall_shield",
+      "name": "坚壁重盾",
+      "rarity": "rare",
+      "description": "DEF+15",
+      "statModifiers": [
+        { "stat": "def", "op": "add_flat", "value": 15 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "life_source_stone",
+      "name": "生命源石",
+      "rarity": "rare",
+      "description": "HP+15%",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_percent", "value": 15 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "lumina_heart",
+      "name": "星辉心脏",
+      "rarity": "rare",
+      "description": "HP+20%",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_percent", "value": 20 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "giant_belt",
+      "name": "巨人腰带",
+      "rarity": "rare",
+      "description": "HP+50",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_flat", "value": 50 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "sure_hit_arrow",
+      "name": "必中之矢",
+      "rarity": "rare",
+      "description": "攻击不会被闪避",
+      "statModifiers": [],
+      "passiveEffects": [
+        { "type": "custom", "customId": "attacks_cannot_be_evaded", "duration": "run" }
+      ],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "assassin_gloves",
+      "name": "刺客手套",
+      "rarity": "rare",
+      "description": "暴击率+10%，暴击伤害+30%",
+      "statModifiers": [
+        { "stat": "crit", "op": "add_flat", "value": 10 },
+        { "stat": "cdmg", "op": "add_flat", "value": 30 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "swift_wind_ring",
+      "name": "迅风指环",
+      "rarity": "rare",
+      "description": "AS 上限+1",
+      "statModifiers": [
+        { "stat": "as", "op": "add_flat", "value": 1 }
+      ],
+      "passiveEffects": [],
+      "cardOperations": [],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["chapter_1_elite_pool"]
+    },
+    {
+      "id": "thunder_axe",
+      "name": "雷鸣战斧",
+      "rarity": "epic",
+      "description": "ATK+10，暴击率+15%。暴击时回复 1 能量。附带「雷击」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 10 },
+        { "stat": "crit", "op": "add_flat", "value": 15 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "gain_1_energy_on_critical_hit", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_thunder_strike", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "vampire_fang_blade",
+      "name": "吸血牙刃",
+      "rarity": "epic",
+      "description": "ATK+8。普攻吸血 50%。ATK-10%。装备者所有伤害卡牌附带 15% 吸血。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 8 },
+        { "stat": "atk", "op": "add_percent", "value": -10 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "basic_attack_lifesteal_50", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": { "tags": ["damage"] },
+          "modification": {
+            "type": "add_effect",
+            "effects": [{ "type": "lifesteal", "percent": 15 }],
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "last_stand_oath",
+      "name": "背水之盟",
+      "rarity": "epic",
+      "description": "ATK+15，HP+30。开局 HP-30%，HP<40% 时 ATK+50%。附带「孤注一掷」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 15 },
+        { "stat": "hp", "op": "add_flat", "value": 30 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "battle_start_current_hp_minus_30_percent", "duration": "run" },
+        {
+          "type": "percent_buff",
+          "target": "self",
+          "stat": "atk",
+          "formula": { "base": 50 },
+          "duration": "battle",
+          "condition": { "type": "hp_below", "target": "self", "threshold": 0.4 }
+        }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_all_in", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "serpent_venom_coating",
+      "name": "蛇毒涂层",
+      "rarity": "epic",
+      "description": "ATK+8，AP+8。普攻和卡牌造成伤害附加 1 层毒。附带「蚀毒」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 8 },
+        { "stat": "ap", "op": "add_flat", "value": 8 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "all_attacks_apply_1_poison", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_corrosive_poison", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "gambler_sword",
+      "name": "赌徒之剑",
+      "rarity": "epic",
+      "description": "ATK+15。命中-20%，命中+30%伤害，未命中瘫痪。附带「赌命一击」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 15 },
+        { "stat": "acc", "op": "add_flat", "value": -20 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "hit_damage_plus_30_miss_stun_self", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_gamble_strike", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "mana_conduit",
+      "name": "魔力导管",
+      "rarity": "epic",
+      "description": "AP+15%。ER+2，每回合抽牌-1。附带「超载释放」。",
+      "statModifiers": [
+        { "stat": "ap", "op": "add_percent", "value": 15 },
+        { "stat": "er", "op": "add_flat", "value": 2 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "draw_one_less_card_each_player_turn", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_overload_release", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "giant_heart",
+      "name": "巨人之心",
+      "rarity": "epic",
+      "description": "HP+50。ATK 增加最大 HP 的 15%。装备者护盾类卡牌额外获得 HP×10% 的护盾。",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_flat", "value": 50 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "atk_bonus_from_max_hp_15_percent", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": { "tags": ["shield"] },
+          "modification": {
+            "type": "add_effect",
+            "effects": [{ "type": "shield", "target": "self", "formula": { "maxHp": 0.1 } }],
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "myriad_fusion",
+      "name": "万象融合",
+      "rarity": "epic",
+      "description": "ATK+5，AP+5。ATK 和 AP 取较高值。物理卡牌附带 50% 法术伤害，法术卡牌附带 50% 物理伤害。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 5 },
+        { "stat": "ap", "op": "add_flat", "value": 5 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "atk_and_ap_use_higher_value", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": { "tags": ["damage"] },
+          "modification": {
+            "type": "add_effect",
+            "effects": [{ "type": "custom", "customId": "mixed_damage_bonus_50_percent_other_attack_stat" }],
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "bloodthirst_hunter_blade",
+      "name": "嗜血猎刃",
+      "rarity": "epic",
+      "description": "ATK+8，暴击率+20%，暴击伤害+40%。暴击吸血 15%。附带「猎杀本能」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 8 },
+        { "stat": "crit", "op": "add_flat", "value": 20 },
+        { "stat": "cdmg", "op": "add_flat", "value": 40 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "critical_hit_lifesteal_15", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_hunting_instinct", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "crystal_bulwark",
+      "name": "水晶壁垒",
+      "rarity": "epic",
+      "description": "DEF+8，HP+30。获得护盾+50%，受暴击双倍伤害。附带「晶化」。",
+      "statModifiers": [
+        { "stat": "def", "op": "add_flat", "value": 8 },
+        { "stat": "hp", "op": "add_flat", "value": 30 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "shield_gain_plus_50_percent_and_critical_damage_taken_double", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_crystallize", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "soul_eating_blade",
+      "name": "噬魂之刃",
+      "rarity": "epic",
+      "description": "暴击率+10%。ATK-15，击杀永久+3ATK（跨战斗）。附带「噬魂斩」。",
+      "statModifiers": [
+        { "stat": "crit", "op": "add_flat", "value": 10 },
+        { "stat": "atk", "op": "add_flat", "value": -15 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "owner_kill_grants_run_atk_plus_3", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_soul_reap", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "spring_of_life",
+      "name": "生命之泉",
+      "rarity": "epic",
+      "description": "HP+20%，AP+10。每回合全队恢复 20+AP×20% HP。ATK-30%。装备者治疗卡牌效果+30%。",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_percent", "value": 20 },
+        { "stat": "ap", "op": "add_flat", "value": 10 },
+        { "stat": "atk", "op": "add_percent", "value": -30 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "turn_end_all_allies_heal_20_plus_ap_20_percent", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": { "tags": ["heal"] },
+          "modification": {
+            "type": "add_effect",
+            "effects": [{ "type": "custom", "customId": "heal_effect_plus_30_percent" }],
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "meditation_crown",
+      "name": "冥想之冠",
+      "rarity": "epic",
+      "description": "ATK+10，AP+10。本回合未受伤则下回合 ATK/AP+30%。附带「静心」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 10 },
+        { "stat": "ap", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "if_unhurt_this_turn_next_turn_atk_ap_plus_30_percent", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_meditate", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "combo_bracer",
+      "name": "连击护腕",
+      "rarity": "epic",
+      "description": "ATK+10，AS+1。普攻命中后下次普攻伤害+20%（可叠加）。普攻第三次及以后命中时附带 1 层流血。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 10 },
+        { "stat": "as", "op": "add_flat", "value": 1 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "basic_attack_combo_damage_plus_20_percent_stackable", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": { "tags": ["basic_attack"] },
+          "modification": {
+            "type": "add_effect",
+            "effects": [{ "type": "custom", "customId": "third_and_later_basic_attack_applies_1_bleed" }],
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "endblade",
+      "name": "末路之刃",
+      "rarity": "epic",
+      "description": "ATK+12，暴击率+10%。敌人 HP<20% 时伤害+200%。附带「处决」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 12 },
+        { "stat": "crit", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "damage_plus_200_percent_against_enemy_hp_below_20", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_execution", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "overflow_orb",
+      "name": "溢能宝珠",
+      "rarity": "epic",
+      "description": "AP+50。能量每溢出 1 点，本回合 AP+10%。附带「能量爆发」。",
+      "statModifiers": [
+        { "stat": "ap", "op": "add_flat", "value": 50 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "overflow_energy_each_point_grants_ap_plus_10_percent_this_turn", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_energy_burst", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "pain_crown",
+      "name": "苦痛王冠",
+      "rarity": "epic",
+      "description": "ATK+10，HP+50。每损失 10%最大HP，ATK+8%。装备者所有卡牌在自身 HP<50% 时费用-1。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 10 },
+        { "stat": "hp", "op": "add_flat", "value": 50 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "atk_plus_8_percent_per_10_percent_missing_hp", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": {},
+          "modification": {
+            "type": "cost_delta",
+            "value": -1,
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool", "conditional_card_cost_hp_below_50"]
+    },
+    {
+      "id": "assassin_creed",
+      "name": "刺客信条",
+      "rarity": "epic",
+      "description": "ATK+15，暴击伤害+30%。对满血敌人首次伤害+100%。附带「暗杀」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 15 },
+        { "stat": "cdmg", "op": "add_flat", "value": 30 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "first_damage_to_full_hp_enemy_plus_100_percent", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_assassinate", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "backlash_shield",
+      "name": "反噬之盾",
+      "rarity": "epic",
+      "description": "HP+40，DEF+5。受伤时对攻击者施加 2×章节数 层脆弱。DEF-5。护盾卡牌附带 1 回合 20% 反伤。",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_flat", "value": 40 },
+        { "stat": "def", "op": "add_flat", "value": 5 },
+        { "stat": "def", "op": "add_flat", "value": -5 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "when_damaged_apply_vulnerable_to_attacker_2x_chapter", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": { "tags": ["shield"] },
+          "modification": {
+            "type": "add_effect",
+            "effects": [{ "type": "damage_reflect", "source": "taken_damage_percent_20", "duration": 1 }],
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "greedy_hand",
+      "name": "贪婪之手",
+      "rarity": "epic",
+      "description": "暴击率+15%，暴击伤害+50%。金币奖励+50%。ATK-15%，AP-15%。附带「搜刮」。",
+      "statModifiers": [
+        { "stat": "crit", "op": "add_flat", "value": 15 },
+        { "stat": "cdmg", "op": "add_flat", "value": 50 },
+        { "stat": "atk", "op": "add_percent", "value": -15 },
+        { "stat": "ap", "op": "add_percent", "value": -15 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "gold_reward_plus_50_percent", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_loot", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "ashen_book",
+      "name": "灰烬之书",
+      "rarity": "epic",
+      "description": "ATK+10，AP+10。每消耗 1 张牌，本场 ATK 和 AP 永久+5。附带「灰烬绽放」「薪火相传」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 10 },
+        { "stat": "ap", "op": "add_flat", "value": 10 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "each_exhausted_card_grants_battle_atk_ap_plus_5", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_ashen_bloom", "count": 1 },
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_passing_flame", "count": 1 }
+      ],
+      "price": { "min": 100, "max": 180, "sellRatio": 0.4 },
+      "tags": ["epic_pool", "special_elite_pool", "boss_epic_pool"]
+    },
+    {
+      "id": "perpetual_core",
+      "name": "永动之核",
+      "rarity": "legendary",
+      "description": "ATK+15，AP+15，能量上限+2。普攻抽 1 牌，出牌自动普攻 1 次。附带「超频」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 15 },
+        { "stat": "ap", "op": "add_flat", "value": 15 },
+        { "stat": "maxEnergy", "op": "add_flat", "value": 2 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "basic_attack_draw_1_card_and_play_card_triggers_free_basic_attack", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_overclock", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "riftspear",
+      "name": "裂空之枪",
+      "rarity": "legendary",
+      "description": "ATK+30%，AS+1。普攻溅射 50%（无视防御和闪避）。附带「贯穿突刺」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 30 },
+        { "stat": "as", "op": "add_flat", "value": 1 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "basic_attack_splash_50_percent_ignore_defense_and_evasion", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_piercing_thrust", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "worldbreaker_fist",
+      "name": "灭世之拳",
+      "rarity": "legendary",
+      "description": "ATK+100%。普攻无视闪避。附带「碎灭拳」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 100 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "basic_attack_ignore_evasion", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_shattering_fist", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "hand_of_fate",
+      "name": "命运之手",
+      "rarity": "legendary",
+      "description": "ATK+10，AP+10，暴击率+15%，暴击伤害+50%。每回合多抽 2 张选保留。附带「命运编织」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 10 },
+        { "stat": "ap", "op": "add_flat", "value": 10 },
+        { "stat": "crit", "op": "add_flat", "value": 15 },
+        { "stat": "cdmg", "op": "add_flat", "value": 50 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "draw_2_extra_each_turn_choose_keep", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_fate_weaving", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "twin_pact",
+      "name": "双生契约",
+      "rarity": "legendary",
+      "description": "HP+20%，ATK+10%，AP+10%。绑定一名队友，共享HP池、ATK/AP取最高。附带「生命链接」。",
+      "statModifiers": [
+        { "stat": "hp", "op": "add_percent", "value": 20 },
+        { "stat": "atk", "op": "add_percent", "value": 10 },
+        { "stat": "ap", "op": "add_percent", "value": 10 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "bind_ally_shared_hp_pool_atk_ap_take_higher", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_life_link", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "causality_armament",
+      "name": "因果律武装",
+      "rarity": "legendary",
+      "description": "ATK+20%，AP+20%。伤害延迟 1 回合结算，+50%，无视一切防御。附带「因果崩坏」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 20 },
+        { "stat": "ap", "op": "add_percent", "value": 20 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "damage_delayed_one_turn_plus_50_ignore_all_defense", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_causality_collapse", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "undying_soul",
+      "name": "不灭战魂",
+      "rarity": "legendary",
+      "description": "ATK+15%，HP+20%。HP归零触发不灭 1 回合，每场限 1 次。附带「绝地反击」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 15 },
+        { "stat": "hp", "op": "add_percent", "value": 20 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "once_per_battle_undying_one_turn_on_hp_zero", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_desperate_counterattack", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "void_prism",
+      "name": "虚空棱镜",
+      "rarity": "legendary",
+      "description": "ATK+15，AP+15。伤害取 ATK/AP 更高结果。卡牌费用+1。装备者所有卡牌伤害类型变为全属性。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 15 },
+        { "stat": "ap", "op": "add_flat", "value": 15 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "damage_uses_higher_atk_or_ap_result", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": {},
+          "modification": { "type": "cost_delta", "value": 1, "sourceInstanceId": "equipment" }
+        },
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": { "tags": ["damage"] },
+          "modification": {
+            "type": "add_effect",
+            "effects": [{ "type": "custom", "customId": "damage_type_all_stat_use_higher_scaling" }],
+            "sourceInstanceId": "equipment"
+          }
+        }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "worldburn_crown",
+      "name": "焚世之冠",
+      "rarity": "legendary",
+      "description": "ATK+20%，AP+20%。每消耗 1 张牌，回 1 能量并抽 1 牌。第 5 张消耗时对全体造成 300%ATK 伤害。附带「燃尽」「最终一箭」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 20 },
+        { "stat": "ap", "op": "add_percent", "value": 20 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "each_exhausted_card_gain_1_energy_draw_1_and_fifth_exhausted_deals_300_atk_aoe", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_burn_out", "count": 1 },
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_final_arrow", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "soul_devourer",
+      "name": "噬魂者",
+      "rarity": "legendary",
+      "description": "ATK+15%，AP+15%。击杀敌人后吸收目标 50% 属性，仅持续本场战斗。附带「吞噬」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 15 },
+        { "stat": "ap", "op": "add_percent", "value": 15 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "owner_kill_absorbs_50_percent_target_stats_this_battle", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "eq_devour", "count": 1 }
+      ],
+      "price": { "min": 200, "max": 350, "sellRatio": 0.4 },
+      "tags": ["legendary_pool"]
+    },
+    {
+      "id": "blood_pact_sacrifice",
+      "name": "血契祭品",
+      "rarity": "curse",
+      "description": "血祭其它队员当前 HP，装备角色获得属性和治疗。每次血祭后获得「血之代价」。",
+      "statModifiers": [],
+      "passiveEffects": [
+        { "type": "custom", "customId": "blood_sacrifice_other_allies_current_hp_50_percent_to_owner_atk_ap_and_heal", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_blood_price", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "mark_of_destruction",
+      "name": "毁灭之印",
+      "rarity": "curse",
+      "description": "ATK+100%，AP+100%。造成伤害时对其它全体造成 30% 溅射，并向牌库加入「失控」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 100 },
+        { "stat": "ap", "op": "add_percent", "value": 100 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "damage_splash_30_percent_to_all_others_add_out_of_control_and_exhaust_one_draw_pile_card", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_out_of_control", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "void_heart",
+      "name": "虚空心脏",
+      "rarity": "curse",
+      "description": "ATK+15%，AP+30%。自身所有卡牌费用-2。每次出牌扣除自身 20% 当前HP，每打出 3 张牌获得「虚空脉冲」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 15 },
+        { "stat": "ap", "op": "add_percent", "value": 30 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "play_card_lose_20_percent_current_hp_every_3_cards_add_void_pulse_to_hand", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": {},
+          "modification": { "type": "cost_delta", "value": -2, "sourceInstanceId": "equipment" }
+        },
+        { "operation": "add_card", "targetOwner": "equipment_owner", "cardDefId": "curse_void_pulse", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "shura_blood",
+      "name": "修罗之血",
+      "rarity": "curse",
+      "description": "ATK+20，暴击率+50%，暴击伤害+200%。每回合-30% 当前HP，击杀获得「嗜血冲动」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_flat", "value": 20 },
+        { "stat": "crit", "op": "add_flat", "value": 50 },
+        { "stat": "cdmg", "op": "add_flat", "value": 200 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "turn_start_lose_30_percent_current_hp_kill_add_bloodlust_impulse", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_bloodlust_impulse", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "lone_wolf_soul",
+      "name": "孤狼战魂",
+      "rarity": "curse",
+      "description": "ATK+50%，AP+50%，AS+3。普攻和伤害牌 50% 概率攻击随机队友。牌库增加 2 张「战狼本能」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 50 },
+        { "stat": "ap", "op": "add_percent", "value": 50 },
+        { "stat": "as", "op": "add_flat", "value": 3 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "attacks_50_percent_chance_target_random_ally_when_not_solo", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_wolf_instinct", "count": 2 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "life_eating_blade",
+      "name": "噬命之刃",
+      "rarity": "curse",
+      "description": "ATK+30%，AP+20%。每回合-20%最大HP上限。击杀获取敌人 30% HP 上限并获得「血引」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 30 },
+        { "stat": "ap", "op": "add_percent", "value": 20 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "turn_start_reduce_max_hp_20_percent_kill_gain_enemy_hp_30_percent_and_blood_lead", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_blood_lead", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "ruin_scepter",
+      "name": "破灭权杖",
+      "rarity": "curse",
+      "description": "AP+100%，暴击率+50%，暴击伤害+100%。其它队友 DEF-100，该角色所有卡牌费用+2。加入 2 张「魔力封锁」。",
+      "statModifiers": [
+        { "stat": "ap", "op": "add_percent", "value": 100 },
+        { "stat": "crit", "op": "add_flat", "value": 50 },
+        { "stat": "cdmg", "op": "add_flat", "value": 100 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "other_allies_def_minus_100", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": {},
+          "modification": { "type": "cost_delta", "value": 2, "sourceInstanceId": "equipment" }
+        },
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_mana_lock", "count": 2 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "glutton_fang",
+      "name": "暴食之牙",
+      "rarity": "curse",
+      "description": "ATK+25%，AP+25%。每回合添加「饥饿」，击杀回复并吸收属性。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 25 },
+        { "stat": "ap", "op": "add_percent", "value": 25 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "turn_start_add_hunger_kill_heal_enemy_max_hp_and_gain_enemy_atk_ap_20_percent", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_hunger", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "void_eye",
+      "name": "虚无之眼",
+      "rarity": "curse",
+      "description": "ATK+30%，AP+60%，暴击率+20%。伤害无视 DEF，自身 DEF=0 且无法获得护盾，自身所有卡牌变为消耗型，消耗牌时获得「虚空残响」。",
+      "statModifiers": [
+        { "stat": "atk", "op": "add_percent", "value": 30 },
+        { "stat": "ap", "op": "add_percent", "value": 60 },
+        { "stat": "crit", "op": "add_flat", "value": 20 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "damage_ignore_defense_def_set_0_cannot_gain_shield_exhaust_card_add_void_echo", "duration": "run" }
+      ],
+      "cardOperations": [
+        {
+          "operation": "modify_card",
+          "targetOwner": "equipment_owner",
+          "filter": {},
+          "modification": { "type": "set_exhaust", "value": true, "sourceInstanceId": "equipment" }
+        },
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_void_echo", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "sacrificial_heart",
+      "name": "献祭之心",
+      "rarity": "curse",
+      "description": "AS+2。每次行动扣除随机队友 20% 生命值上限的 HP，击杀或队友因自身原因死亡时获得祭品层。每 10 层获得「邪神凝视」。",
+      "statModifiers": [
+        { "stat": "as", "op": "add_flat", "value": 2 }
+      ],
+      "passiveEffects": [
+        { "type": "custom", "customId": "each_action_damages_random_ally_max_hp_20_gain_sacrifice_on_kill_or_ally_death", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_evil_god_gaze", "count": 1 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    },
+    {
+      "id": "fate_roulette",
+      "name": "命运赌盘",
+      "rarity": "curse",
+      "description": "每场战斗开始随机 10 种效果之一。加入 2 张「命运硬币」。",
+      "statModifiers": [],
+      "passiveEffects": [
+        { "type": "custom", "customId": "battle_start_roll_one_of_ten_fate_roulette_effects", "duration": "run" }
+      ],
+      "cardOperations": [
+        { "operation": "add_curse_card", "targetOwner": "equipment_owner", "cardDefId": "curse_fate_coin", "count": 2 }
+      ],
+      "price": { "min": 0, "max": 0, "sellRatio": -25 },
+      "tags": ["curse_pool"]
+    }
+  ],
+  "equipmentCards": [
+    {
+      "id": "eq_thunder_strike",
+      "name": "雷击",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "对单体造成 120%ATK 伤害，必定暴击",
+      "effects": [
+        { "type": "guaranteed_crit", "count": 1 },
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 1.2 } }
+      ],
+      "tags": ["damage", "equipment_card"]
+    },
+    {
+      "id": "eq_all_in",
+      "name": "孤注一掷",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "自身 HP 降至 1，本回合 ATK+100%",
+      "effects": [
+        { "type": "custom", "customId": "set_self_current_hp_to_1" },
+        { "type": "percent_buff", "target": "self", "stat": "atk", "formula": { "base": 100 }, "duration": 1 }
+      ],
+      "tags": ["equipment_card"]
+    },
+    {
+      "id": "eq_corrosive_poison",
+      "name": "蚀毒",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "对单体施加 3+50%AP 层毒，抽 1 牌",
+      "effects": [
+        { "type": "poison", "formula": { "base": 3, "ap": 0.5 } },
+        { "type": "draw", "value": 1 }
+      ],
+      "tags": ["poison", "draw", "equipment_card"]
+    },
+    {
+      "id": "eq_gamble_strike",
+      "name": "赌命一击",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 3,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "对单体造成 200%ATK 伤害，50%概率伤害翻倍，50%概率打自己",
+      "effects": [
+        { "type": "custom", "customId": "gamble_strike_200_atk_50_double_50_self_hit" }
+      ],
+      "tags": ["damage", "equipment_card"]
+    },
+    {
+      "id": "eq_overload_release",
+      "name": "超载释放",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "本回合 AP+80%，下回合无法出牌",
+      "effects": [
+        { "type": "percent_buff", "target": "self", "stat": "ap", "formula": { "base": 80 }, "duration": 1 },
+        { "type": "custom", "customId": "next_player_turn_cannot_play_cards" }
+      ],
+      "tags": ["equipment_card"]
+    },
+    {
+      "id": "eq_hunting_instinct",
+      "name": "猎杀本能",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "本回合所有攻击必定暴击",
+      "effects": [
+        { "type": "custom", "customId": "all_attacks_guaranteed_crit_this_turn" }
+      ],
+      "tags": ["equipment_card"]
+    },
+    {
+      "id": "eq_crystallize",
+      "name": "晶化",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "all_allies",
+      "isExhaust": false,
+      "description": "为全队施加 30%该角色最大HP 的护盾",
+      "effects": [
+        { "type": "shield", "target": "all_allies", "formula": { "maxHp": 0.3 } }
+      ],
+      "tags": ["shield", "equipment_card"]
+    },
+    {
+      "id": "eq_soul_reap",
+      "name": "噬魂斩",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 3,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "150%ATK 伤害，击杀后本场 ATK 永久+10",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 1.5 } },
+        { "type": "on_kill", "effects": [{ "type": "buff", "target": "self", "stat": "atk", "formula": { "base": 10 }, "duration": "battle" }] }
+      ],
+      "tags": ["damage", "equipment_card"]
+    },
+    {
+      "id": "eq_meditate",
+      "name": "静心",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "本回合无法被敌人指定攻击，抽 1 牌",
+      "effects": [
+        { "type": "custom", "customId": "self_cannot_be_targeted_by_enemy_single_target_attacks_this_turn" },
+        { "type": "draw", "value": 1 }
+      ],
+      "tags": ["draw", "equipment_card"]
+    },
+    {
+      "id": "eq_execution",
+      "name": "处决",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 4,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "对 HP<30% 的单体造成 500%ATK 伤害",
+      "effects": [
+        {
+          "type": "damage",
+          "damageType": "physical",
+          "formula": { "atk": 5 },
+          "condition": { "type": "hp_below", "target": "selected", "threshold": 0.3 }
+        }
+      ],
+      "tags": ["damage", "equipment_card", "requires_target_hp_below_30"]
+    },
+    {
+      "id": "eq_energy_burst",
+      "name": "能量爆发",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "将所有剩余能量转化为 AP（每点能量=+20%AP），持续本回合",
+      "effects": [
+        { "type": "percent_buff", "target": "self", "stat": "ap", "formula": { "currentEnergy": 20 }, "duration": 1 },
+        { "type": "custom", "customId": "spend_all_current_energy" }
+      ],
+      "tags": ["equipment_card"]
+    },
+    {
+      "id": "eq_assassinate",
+      "name": "暗杀",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 3,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "对满血敌人造成 300%ATK 伤害，无视闪避",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 3 }, "condition": { "type": "hp_above", "target": "selected", "threshold": 0.999 }, "tags": ["ignore_evasion"] }
+      ],
+      "tags": ["damage", "equipment_card", "requires_full_hp_target"]
+    },
+    {
+      "id": "eq_loot",
+      "name": "搜刮",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "战斗胜利后额外获得 15×章节数 金币",
+      "effects": [
+        { "type": "custom", "customId": "on_battle_victory_gain_gold_15x_chapter" }
+      ],
+      "tags": ["equipment_card"]
+    },
+    {
+      "id": "eq_ashen_bloom",
+      "name": "灰烬绽放",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "all_enemies",
+      "isExhaust": true,
+      "description": "全体伤害=已消耗数×30",
+      "effects": [
+        { "type": "damage", "target": "all_enemies", "damageType": "fixed", "formula": { "consumedCards": 30 } }
+      ],
+      "tags": ["damage", "exhaust", "equipment_card"]
+    },
+    {
+      "id": "eq_passing_flame",
+      "name": "薪火相传",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "消耗另一张手牌，ATK/AP 永久+8（本场）",
+      "effects": [
+        { "type": "custom", "customId": "exhaust_another_hand_card" },
+        { "type": "buff", "target": "self", "stat": "atk", "formula": { "base": 8 }, "duration": "battle" },
+        { "type": "buff", "target": "self", "stat": "ap", "formula": { "base": 8 }, "duration": "battle" }
+      ],
+      "tags": ["exhaust", "equipment_card"]
+    },
+    {
+      "id": "eq_overclock",
+      "name": "超频",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "本回合 AS+2、ER+3",
+      "effects": [
+        { "type": "as_gain", "target": "self", "value": 2 },
+        { "type": "buff", "target": "self", "stat": "er", "formula": { "base": 3 }, "duration": 1 }
+      ],
+      "tags": ["equipment_card"]
+    },
+    {
+      "id": "eq_piercing_thrust",
+      "name": "贯穿突刺",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 3,
+      "targetType": "all_enemies",
+      "isExhaust": false,
+      "description": "全体 200%ATK 伤害（无视防御），自身本回合无法再普攻",
+      "effects": [
+        { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 2 }, "ignoreDefense": true },
+        { "type": "custom", "customId": "self_cannot_basic_attack_this_turn" }
+      ],
+      "tags": ["damage", "equipment_card"]
+    },
+    {
+      "id": "eq_shattering_fist",
+      "name": "碎灭拳",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 5,
+      "targetType": "single_enemy",
+      "isExhaust": true,
+      "description": "单体 500%ATK 伤害（无视 DEF 和护盾）",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 5 }, "ignoreDefense": true, "ignoreShield": true }
+      ],
+      "tags": ["damage", "equipment_card"]
+    },
+    {
+      "id": "eq_fate_weaving",
+      "name": "命运编织",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "查看牌库顶 5 张，选 2 张加入手牌，其余放回牌库底",
+      "effects": [
+        { "type": "custom", "customId": "look_top_5_deck_choose_2_to_hand_rest_bottom" }
+      ],
+      "tags": ["draw", "equipment_card"]
+    },
+    {
+      "id": "eq_life_link",
+      "name": "生命链接",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 1,
+      "targetType": "single_ally",
+      "isExhaust": false,
+      "description": "绑定双方互换当前 HP 比例。1回合冷却",
+      "effects": [
+        { "type": "custom", "customId": "swap_hp_ratio_with_bound_ally_one_turn_cooldown" }
+      ],
+      "tags": ["equipment_card"]
+    },
+    {
+      "id": "eq_causality_collapse",
+      "name": "因果崩坏",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 4,
+      "targetType": "all_enemies",
+      "isExhaust": true,
+      "description": "立即双倍结算所有累积延迟伤害",
+      "effects": [
+        { "type": "custom", "customId": "resolve_all_delayed_damage_double" }
+      ],
+      "tags": ["damage", "equipment_card"]
+    },
+    {
+      "id": "eq_desperate_counterattack",
+      "name": "绝地反击",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 0,
+      "targetType": "all_enemies",
+      "isExhaust": false,
+      "description": "仅不灭状态可用，全体 300%ATK 伤害",
+      "effects": [
+        { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 3 }, "condition": { "type": "self_has_status", "statusId": "undying_soul" } }
+      ],
+      "tags": ["damage", "equipment_card", "requires_undying"]
+    },
+    {
+      "id": "eq_burn_out",
+      "name": "燃尽",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "消耗手中所有其他牌，每张回 1 能+抽 1 牌",
+      "effects": [
+        { "type": "custom", "customId": "exhaust_all_other_hand_cards_gain_1_energy_and_draw_1_per_card" }
+      ],
+      "tags": ["exhaust", "draw", "equipment_card"]
+    },
+    {
+      "id": "eq_final_arrow",
+      "name": "最终一箭",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 4,
+      "targetType": "single_enemy",
+      "isExhaust": true,
+      "description": "400%ATK，已消耗 5 张以上翻倍",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 4 }, "conditionMultiplier": { "condition": { "type": "custom", "value": "consumed_cards_at_least_5" }, "multiplier": 2 } }
+      ],
+      "tags": ["damage", "exhaust", "equipment_card"]
+    },
+    {
+      "id": "eq_devour",
+      "name": "吞噬",
+      "ownerId": null,
+      "sourceType": "equipment",
+      "rarity": "special",
+      "cost": 2,
+      "targetType": "single_enemy",
+      "isExhaust": false,
+      "description": "150%ATK 伤害，击杀时吸收目标 100% 属性",
+      "effects": [
+        { "type": "damage", "damageType": "physical", "formula": { "atk": 1.5 } },
+        { "type": "on_kill", "effects": [{ "type": "custom", "customId": "absorb_killed_target_100_percent_stats_this_battle" }] }
+      ],
+      "tags": ["damage", "equipment_card"]
+    },
+    {
+      "id": "curse_blood_price",
+      "name": "血之代价",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "不可打出，在手中时该角色每回合减少 10% 最大HP",
+      "effects": [
+        { "type": "custom", "customId": "unplayable_in_hand_owner_loses_10_percent_max_hp_each_turn" }
+      ],
+      "tags": ["curse", "unplayable"]
+    },
+    {
+      "id": "curse_out_of_control",
+      "name": "失控",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "不可打出，能量上限-1（可叠加）",
+      "effects": [
+        { "type": "custom", "customId": "unplayable_in_hand_max_energy_minus_1_stackable" }
+      ],
+      "tags": ["curse", "unplayable"]
+    },
+    {
+      "id": "curse_void_pulse",
+      "name": "虚空脉冲",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 3,
+      "targetType": "all_enemies",
+      "isExhaust": false,
+      "description": "对全体敌人造成 (10%AP+10%ATK)×本场已出牌数 的伤害，抽 1 牌",
+      "effects": [
+        { "type": "custom", "customId": "void_pulse_damage_atk_ap_10_percent_times_cards_played_this_battle" },
+        { "type": "draw", "value": 1 }
+      ],
+      "tags": ["curse", "damage", "draw"]
+    },
+    {
+      "id": "curse_bloodlust_impulse",
+      "name": "嗜血冲动",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "本回合不打出即消失，自身当前HP-50%，AS恢复至上限",
+      "effects": [
+        { "type": "percentage_hp_reduction", "target": "self", "percent": 50 },
+        { "type": "as_reset", "target": "self" }
+      ],
+      "tags": ["curse"]
+    },
+    {
+      "id": "curse_wolf_instinct",
+      "name": "战狼本能",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 1,
+      "targetType": "all_units",
+      "isExhaust": false,
+      "description": "对随机目标攻击 3 次，每次 120%ATK+60%AP 伤害，附加 2+10%AP 层流血",
+      "effects": [
+        { "type": "damage", "target": "all_units", "damageType": "physical", "formula": { "atk": 1.2, "ap": 0.6 }, "hits": 3, "randomTarget": true },
+        { "type": "bleed", "formula": { "base": 2, "ap": 0.1 } }
+      ],
+      "tags": ["curse", "damage", "bleed"]
+    },
+    {
+      "id": "curse_blood_lead",
+      "name": "血引",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "本回合自身所有伤害+30%，恢复 10%AP 的HP",
+      "effects": [
+        { "type": "custom", "customId": "self_all_damage_plus_30_percent_this_turn" },
+        { "type": "heal", "target": "self", "formula": { "ap": 0.1 } }
+      ],
+      "tags": ["curse"]
+    },
+    {
+      "id": "curse_mana_lock",
+      "name": "魔力封锁",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "不可打出，在手中时所有卡牌费用+1",
+      "effects": [
+        { "type": "custom", "customId": "unplayable_in_hand_all_card_cost_plus_1" }
+      ],
+      "tags": ["curse", "unplayable"]
+    },
+    {
+      "id": "curse_hunger",
+      "name": "饥饿",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "不可打出，每回合扣除 10% 最大HP",
+      "effects": [
+        { "type": "custom", "customId": "unplayable_in_hand_owner_loses_10_percent_max_hp_each_turn" }
+      ],
+      "tags": ["curse", "unplayable"]
+    },
+    {
+      "id": "curse_void_echo",
+      "name": "虚空残响",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": true,
+      "description": "随机获得一张卡牌（游戏全牌库随机，包括所有角色和装备的牌）",
+      "effects": [
+        { "type": "custom", "customId": "random_card_from_global_card_pool_to_hand" }
+      ],
+      "tags": ["curse"]
+    },
+    {
+      "id": "curse_evil_god_gaze",
+      "name": "邪神凝视",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "all_units",
+      "isExhaust": true,
+      "description": "对全场除自己外的所有目标造成 1000%ATK+1000%AP 伤害",
+      "effects": [
+        { "type": "damage", "target": "all_units", "damageType": "fixed", "formula": { "atk": 10, "ap": 10 }, "tags": ["exclude_self"] }
+      ],
+      "tags": ["curse", "damage"]
+    },
+    {
+      "id": "curse_fate_coin",
+      "name": "命运硬币",
+      "ownerId": null,
+      "sourceType": "curse",
+      "rarity": "curse",
+      "cost": 0,
+      "targetType": "self",
+      "isExhaust": false,
+      "description": "50%概率抽 3 牌，50%概率弃全部手牌",
+      "effects": [
+        { "type": "custom", "customId": "fate_coin_50_draw_3_50_discard_all_hand" }
+      ],
+      "tags": ["curse"]
+    }
+  ],
+  "pools": {
+    "pool_equipment_common_all": ["iron_dagger", "steel_battle_blade", "rune_fragment", "arcane_crystal", "leather_armor_charm", "iron_shield_fragment", "life_vial", "reinforced_chestguard", "sharp_whetstone", "hunter_eye", "light_feather_boots", "eagle_eye_lens"],
+    "pool_equipment_rare_all": ["death_curve_blade", "armor_breaking_maul", "shadowstep_boots", "phantom_cloak", "war_pattern_bracer", "blood_oath_blade", "beast_fang", "star_iron_greatsword", "star_ruin_page", "arcane_focuser", "guardian_chestplate", "wall_shield", "life_source_stone", "lumina_heart", "giant_belt", "sure_hit_arrow", "assassin_gloves", "swift_wind_ring"],
+    "pool_equipment_epic_all": ["thunder_axe", "vampire_fang_blade", "last_stand_oath", "serpent_venom_coating", "gambler_sword", "mana_conduit", "giant_heart", "myriad_fusion", "bloodthirst_hunter_blade", "crystal_bulwark", "soul_eating_blade", "spring_of_life", "meditation_crown", "combo_bracer", "endblade", "overflow_orb", "pain_crown", "assassin_creed", "backlash_shield", "greedy_hand", "ashen_book"],
+    "pool_equipment_legendary_all": ["perpetual_core", "riftspear", "worldbreaker_fist", "hand_of_fate", "twin_pact", "causality_armament", "undying_soul", "void_prism", "worldburn_crown", "soul_devourer"],
+    "pool_equipment_cursed_all": ["blood_pact_sacrifice", "mark_of_destruction", "void_heart", "shura_blood", "lone_wolf_soul", "life_eating_blade", "ruin_scepter", "glutton_fang", "void_eye", "sacrificial_heart", "fate_roulette"]
+  }
+}
