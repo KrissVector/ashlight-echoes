@@ -12,7 +12,7 @@ Migrated concept art from the prototype project.
 
 ## Enemies
 
-- `concept/enemies/oathbound_echo.png`
+- `concept/enemies/oathbound_echo.png`：灰烬骑士参考图（旧文件名保留）
 - `concept/enemies/oathbroken_duelist.png`
 - `concept/enemies/oathbreaker_reinhardt.png`
 

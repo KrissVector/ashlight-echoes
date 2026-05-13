@@ -57,7 +57,7 @@
 | [battle.md](02-systems/battle.md) | 当前有效 | 战斗规则设计源头：能量、AS、手牌、命中、暴击、DEF、护盾、毒、流血、虚弱、脆弱等。 |
 | [cards.md](02-systems/cards.md) | 当前有效 | 卡牌系统设计源头：固有牌、大招、共享牌库、牌区、费用、升级、消耗、变形。 |
 | [map-encounters.md](02-systems/map-encounters.md) | 当前有效 | 地图模块设计源头：每步二/三选一、随机候选节点、固定步、战后随机事件、节点选项自带修正、事件节点、商店、Boss。 |
-| [node-modifiers.md](02-systems/node-modifiers.md) | 当前有效 | 节点修正设计源头：21 个战后随机事件、25 个节点自带修正，以及两者的触发时机和控制方式。 |
+| [node-modifiers.md](02-systems/node-modifiers.md) | 当前有效 | 节点修正设计源头：22 个战后随机事件、25 个节点自带修正，以及两者的触发时机和控制方式。 |
 | [roguelike-run.md](02-systems/roguelike-run.md) | 当前有效 | 肉鸽 run（单局流程）、奖励、成长池、金币经济、商店和整体章节推进设计源头。 |
 | [equipment.md](02-systems/equipment.md) | 当前有效 | 装备系统、稀有度、装备列表、掉落、商店回收、诅咒装备。 |
 | [potions.md](02-systems/potions.md) | 当前有效 | 药水系统、背包、使用时机、药水列表、商店和战斗掉落入口。 |
@@ -68,7 +68,7 @@
 | 文档 | 有效性 | 作用 |
 |------|--------|------|
 | [characters.md](03-content/characters.md) | 当前有效 | 角色定位、属性、初始牌和解锁章节说明。数值以 `data/characters.json` 为准。 |
-| [enemies-chapter-1.md](03-content/enemies-chapter-1.md) | 当前有效 | 序章与第 1 章普通敌人、精英敌人、灼夜大招解锁战和 Boss 的数值、AI 与叙事方向。 |
+| [enemies-chapter-1.md](03-content/enemies-chapter-1.md) | 当前有效 | 序章与第 1 章普通敌人、精英敌人、步 6 追杀剧情节点和 Boss 的数值、AI 与叙事方向。 |
 | [build-archetypes.md](03-content/build-archetypes.md) | 当前有效 | 构筑原型和系统联动方向，用于指导内容扩展和平衡。 |
 | [data/](03-content/data/README.md) | 当前有效 | 正式机器内容表。当前包含角色、卡牌、章节、装备、药水、节点修正和奖励表。 |
 
@@ -110,7 +110,7 @@
 
 | 名称 | 来源文档 | 时机 | 玩家控制 | 说明 |
 |------|----------|------|----------|------|
-| 战后随机事件 | `node-modifiers.md` | 节点完成后概率触发 | 不可控 | 21 个增益/减益（buff/debuff），属于节点修正来源之一，只对我方生效。 |
+| 战后随机事件 | `node-modifiers.md` | 节点完成后概率触发 | 不可控 | 22 个增益/减益（buff/debuff），属于节点修正来源之一；默认只对我方生效，明确写敌我双方的条目作为战场规则对双方生效。 |
 | 节点选项自带修正 | `node-modifiers.md` | 候选节点生成时展示，进入节点前生效 | 可控 | 25 个节点修正，玩家选择节点时能看到并主动承担代价/收益。 |
 | 事件节点 | `map-encounters.md` | 玩家选择 `event`（事件节点类型）节点后进入 | 可控 | 非战斗文字交互节点，做选择后获得奖励、惩罚或中性结果。 |
 
@@ -139,7 +139,7 @@
 | 卡牌效果表达 | `effect-dsl.md` | `data-schema.md`、`03-content/data/cards.json` |
 | 角色 / 卡牌 / 章节内容 | `03-content/*.md` 或 `03-content/data/*.json` | `data-schema.md` 如字段变化 |
 | 装备 / 药水内容 | `02-systems/equipment.md` / `potions.md` | `03-content/data/equipment.json`、`03-content/data/potions.json` |
-| MVP 范围 | `mvp-scope.md` | README、验收用例 |
+| MVP 范围 | `mvp-scope.md` | README、MVP 验收标准 |
 
 ## 当前主要缺口
 
@@ -149,9 +149,10 @@
 - 战后随机事件触发概率和抽取权重。
 - 第 1 章普通战、精英战、特殊精英、Boss 的机器 encounter 表。
 - 商店、事件的机器内容表。
-- `acceptance-cases.md` 尚未建立。
 
 补这些内容时，必须先回到对应设计源头确认规则，再写实现规格和数据表。
+
+MVP 暂不单独维护 `acceptance-cases.md`。形成可玩版本后，以项目负责人实际游玩体验为主要验收方式；验收标准见 `mvp-scope.md`。
 
 ## 给 LLM 的工作规则
 

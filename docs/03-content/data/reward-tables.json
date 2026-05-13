@@ -465,12 +465,13 @@
           }
         },
         {
-          "type": "unlock",
+          "type": "card_upgrade",
+          "count": 1,
           "config": {
-            "unlocks": [
-              { "type": "ultimate", "targetId": "shakuya" }
-            ],
-            "cardId": "flame_raven"
+            "targetOwner": "shakuya",
+            "targetCardId": "flame_raven",
+            "upgradeIds": ["flame_raven_up1", "flame_raven_up2"],
+            "choiceCount": 1
           }
         },
         {

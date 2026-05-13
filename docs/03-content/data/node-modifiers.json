@@ -97,6 +97,32 @@
       "tags": ["next_battle", "first_turn"]
     },
     {
+      "id": "post_last_stand",
+      "name": "血战到底",
+      "source": ["post_node_random", "event"],
+      "polarity": "buff",
+      "applyTo": "both",
+      "duration": "battle",
+      "effects": [
+        { "type": "custom", "customId": "last_stand_all_units_start_full_energy_killer_crit_plus_10_cdmg_plus_20_missing_hp_atk_plus_0_5_percent" }
+      ],
+      "description": "下场战斗开始时，玩家公共能量回复至上限；敌我全体获得血战到底：每个单位击杀 1 个敌人时，自身暴击率+10%、暴击伤害+20%；每个单位生命值每减少 1%，自身 ATK+0.5%",
+      "tags": ["next_battle", "battle_start", "both_sides", "on_kill", "low_hp"]
+    },
+    {
+      "id": "story_breakout_hp_80",
+      "name": "突出重围",
+      "source": ["event"],
+      "polarity": "debuff",
+      "applyTo": "player",
+      "duration": "battle",
+      "effects": [
+        { "type": "percentage_hp_reduction", "target": "all_allies", "percent": 20 }
+      ],
+      "description": "第 1 章步 6「突出重围」分支固定修正：本场战斗开始时，我方全体当前 HP 变为最大 HP 的 80%",
+      "tags": ["story_fixed", "chapter_1_step_6", "battle_start"]
+    },
+    {
       "id": "post_shard_guidance",
       "name": "碎片指引",
       "source": ["post_node_random"],
@@ -658,6 +684,7 @@
       "post_residual_shelter",
       "post_inspiration",
       "post_high_morale",
+      "post_last_stand",
       "post_shard_guidance",
       "post_exhausted_body_mind",
       "post_pursuers",

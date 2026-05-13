@@ -147,10 +147,12 @@ step 2: 玲纱 + 灼夜双人教程战
 |------|------|
 | 步 1-4 | 随机生成 2 个候选节点 |
 | 步 5-12 | 随机生成 3 个候选节点 |
-| 首次步 6 | 固定为灼夜大招解锁战，候选列表只有 1 个节点 |
+| 步 6 | 固定为灼夜追杀剧情节点，候选列表固定为 2 个分支：「血战到底！」与「突出重围」 |
 | 步 13 | 固定为 Boss，候选列表只有 1 个节点 |
 
-“首次步 6”指本 run 中灼夜大招尚未解锁，且局外成长没有让灼夜大招开局解锁。
+第 1 章步 6 的剧情前提是灼夜和玲纱被血旗佣兵团癫狂残党追上。选择「血战到底！」进入小 Boss 战；选择「突出重围」进入 3 个普通癫狂强盗的追逃战。
+
+选择「血战到底！」并胜利后，后续第 1 章普通战遭遇池才允许加入 `enc_ch1_normal_maddened_bandits_post_unlock`。该遭遇不得出现在第 1 章步 1-5。
 
 ## 节点类型
 
@@ -161,7 +163,8 @@ type NodeType =
   | "special_elite"
   | "event"
   | "shop"
-  | "boss";
+  | "boss"
+  | "story";
 ```
 
 第 1 章随机候选节点只从以下类型中生成：
@@ -171,7 +174,7 @@ type NodeType =
 - `event`
 - `shop`
 
-`special_elite` 和 `boss` 只通过固定步或明确规则加入，不参与普通权重随机。
+`special_elite`、`boss` 和 `story` 只通过固定步或明确规则加入，不参与普通权重随机。`story` 节点本身不直接进入战斗，而是生成固定剧情分支选项。
 
 ## 候选节点生成
 
@@ -202,16 +205,19 @@ function generateNodeOptions(run: RunState): NodeOptionDef[]
 if chapter_1 step 13:
   return [boss option]
 
-if chapter_1 step 6 and shakuya ultimate is not unlocked:
-  return [special_elite option]
+if chapter_1 step 6:
+  return [
+    fixed option "血战到底！" -> special_elite enc_ch1_shakuya_ultimate_unlock,
+    fixed option "突出重围" -> normal_battle enc_ch1_shakuya_breakout
+  ]
 ```
 
 固定步不参与普通候选数量、权重和保底修正。
 
 固定步仍然计入历史：
 
-- 第 6 步特殊精英按精英候选计入连续精英规则。
-- 第 6 步特殊精英按纯战斗步计入连续纯战斗规则。
+- 第 6 步选择「血战到底！」时，按特殊精英计入连续精英规则，并按纯战斗步计入连续纯战斗规则。
+- 第 6 步选择「突出重围」时，按普通战计入普通战历史，并按纯战斗步计入连续纯战斗规则。
 - 第 13 步 Boss 是章节终点，不影响下一步生成。
 
 ### 候选数量
@@ -311,7 +317,7 @@ interface CompletedStepRecord {
 |----------|----------|
 | `normal_battle` | `encounterId`，来自第 1 章普通战遭遇池 |
 | `elite_battle` | `encounterId`，来自第 1 章精英战遭遇池 |
-| `special_elite` | `encounterId = enc_ch1_shakuya_ultimate_unlock` |
+| `special_elite` | 第 1 章步 6「血战到底！」固定分支使用 `encounterId = enc_ch1_shakuya_ultimate_unlock` |
 | `event` | `eventId`，来自第 1 章事件池 |
 | `shop` | `shopId`，来自第 1 章商店规则 |
 | `boss` | `encounterId = enc_ch1_boss_reinhardt` |
@@ -430,16 +436,49 @@ Boss 药水奖励背包满时，允许当场使用新药水或丢弃 / 放弃，
 4. 30% 概率掉落 1 瓶药水，品质：稀有 70 / 史诗 30。
 5. 若 encounter 明确配置 `card_upgrade` 奖励，则触发卡牌升级选择；没有配置时不临时发放卡牌升级。
 
-### 灼夜大招解锁战奖励
+### 第 1 章步 6 追杀剧情分支奖励
 
-第 1 章第 6 步特殊精英胜利后：
+#### 选择「血战到底！」
+
+该分支绑定 `enc_ch1_shakuya_ultimate_unlock`。战斗开始时：
+
+1. 固定应用「血战到底」战场修正：
+   - 玩家公共能量回复至能量上限。
+   - 敌我全体获得击杀者自身叠暴击 / 暴击伤害、低血提高 ATK 的双方战场规则。
+2. 解锁玲纱大招 `immovable` 和灼夜大招 `flame_raven`：
+   - 先按正常规则抽取起手手牌；起手抽牌数量不因本次大招解锁减少。
+   - 起手抽牌完成后，解锁两张大招，并写入本 run 可用大招。
+   - 每张新解锁的大招在本场战斗中额外创建 1 张加入手牌，并创建 1 张加入 `drawPile`；手牌中的大招不占用起手抽牌数量。
+   - 本场战斗中两张大招开局即可从手牌使用，之后也可以从牌库抽到。
+
+胜利后：
 
 1. 按精英战发放属性成长、金币和药水掉落。
 2. 装备掉落改为史诗装备 100%。
-3. 解锁灼夜大招 `flame_raven`：
-   - 加入本 run 可用大招。
-   - 后续战斗中灼夜大招进入牌库。
-4. 自动存档。
+3. 触发 1 次灼夜大招升级选择：
+   - 只在 `flame_raven_up1` 和 `flame_raven_up2` 中选择。
+   - 选择后立即替换本 run 中的灼夜大招。
+4. 设置剧情标记 `shakuya_amulet_origin_revealed = true`：
+   - 写入当前 run 的 `runFlags`。
+   - 写入局外 `ProfileSave.metaFlags`，用于后续回到灼夜故乡时识别“父母遗物护身符来自地下古代遗迹，是背后势力想夺回研究的完成品样本”的剧情状态。
+5. 将 `enc_ch1_normal_maddened_bandits_post_unlock` 加入本 run 后续第 1 章普通战候选池。
+6. 设置 `ch1_step6_last_stand_cleared = true`。第 1 章 Boss 开场不重复解锁玲纱和灼夜的大招。
+7. 自动存档。
+
+#### 选择「突出重围」
+
+该分支绑定 `enc_ch1_shakuya_breakout`。战斗开始时：
+
+1. 固定应用「突出重围」剧情修正 `story_breakout_hp_80`：我方全体当前 HP 变为最大 HP 的 80%。
+2. 本分支不立即解锁玲纱和灼夜的大招，也不发放灼夜大招升级机会。
+
+胜利后：
+
+1. 按第 1 章普通战发放奖励。
+2. 设置 `ch1_step6_breakout_cleared = true`。
+3. 自动存档。
+
+若玩家选择「突出重围」，玲纱大招 `immovable` 和灼夜大招 `flame_raven` 都在第 1 章 Boss 战开场解锁：仍然先按正常规则抽起手手牌，再把新解锁的大招加入手牌和本场战斗牌库。若玩家已在「血战到底！」分支解锁两人大招，Boss 开场不重复解锁。
 
 ### Boss 奖励
 
@@ -531,13 +570,13 @@ rarity -> target -> growth option
 
 - 时机：节点完成后概率触发，发生在节点奖励结算后、节点间药水窗口前。
 - 玩家控制：不可控。
-- 影响范围：仅对我方生效。
-- 内容来源：`node-modifiers.md` 的“战后随机事件（21 个）”。
+- 影响范围：默认仅对我方生效；若修正条目明确写“敌我双方”，则作为战场规则对双方生效。
+- 内容来源：`node-modifiers.md` 的“战后随机事件（22 个）”。
 - 结果：获得 buff 或 debuff，可能影响下一场战斗、下一次节点选择、多个节点或直到商店 / Boss 清除。
 
 当前已定内容：
 
-- 8 个 buff 类。
+- 9 个 buff 类。
 - 5 个单场 debuff 类。
 - 4 个永久型 debuff 类。
 - 4 个章节限定类，其中第 1-2 章限定为“瘴气侵体”。
@@ -582,7 +621,7 @@ rarity -> target -> growth option
 自动存档触发点：
 
 - 序章完成并进入第 1 章时。
-- 灼夜大招解锁战胜利后。
+- 第 1 章步 6 任一分支胜利后。
 - 第 1 章 Boss 胜利后。
 
 自动存档写入 `autoSaveSlotId`，覆盖上一次自动存档。
@@ -642,15 +681,21 @@ rarity -> target -> growth option
 |----|------|
 | `enc_prologue_reisa_tutorial_1` | 序章第 1 战，玲纱单人教程 |
 | `enc_prologue_reisa_shakuya_tutorial_2` | 序章第 2 战，玲纱 + 灼夜教程 |
-| `enc_ch1_normal_wall_echoes` | 第 1 章普通战，誓约残影巡逻 |
+| `enc_ch1_normal_shambling_outskirts` | 第 1 章普通战，荒原低压游荡怪 |
+| `enc_ch1_normal_scavenger_pack` | 第 1 章普通战，食腐尸鬼续航压力 |
+| `enc_ch1_normal_plague_pit` | 第 1 章普通战，染疫尸鬼毒素压力 |
+| `enc_ch1_normal_wasteland_vultures` | 第 1 章普通战，荒原尸鹫高速闪避 |
+| `enc_ch1_normal_wall_knights` | 第 1 章普通战，灰烬骑士巡逻 |
 | `enc_ch1_normal_crossfire` | 第 1 章普通战，灰誓弩手后排 |
 | `enc_ch1_normal_armory_guard` | 第 1 章普通战，旧军械库守卫 |
 | `enc_ch1_normal_rift_hounds` | 第 1 章普通战，虚缝烬犬群 |
 | `enc_ch1_normal_mixed_patrol` | 第 1 章普通战，混合巡逻 |
+| `enc_ch1_normal_maddened_bandits_post_unlock` | 第 1 章普通战，「血战到底！」胜利后解锁的癫狂强盗 |
 | `enc_ch1_elite_oathbroken_duelist` | 第 1 章精英战，银誓断刃 |
 | `enc_ch1_elite_bound_oath_bulwark` | 第 1 章精英战，缚誓壁垒 |
 | `enc_ch1_elite_bell_tower_binder` | 第 1 章精英战，钟楼缚魂师 |
-| `enc_ch1_shakuya_ultimate_unlock` | 第 1 章第 6 步灼夜大招解锁战 |
+| `enc_ch1_shakuya_ultimate_unlock` | 第 1 章第 6 步「血战到底！」，癫狂的强盗首领追夺灼夜的遗物护身符 |
+| `enc_ch1_shakuya_breakout` | 第 1 章第 6 步「突出重围」，灼夜和玲纱从后方突围撤退 |
 | `enc_ch1_boss_reinhardt` | 第 1 章 Boss，断誓之盾·莱恩哈特 |
 
 ### Reward Table
@@ -659,14 +704,14 @@ rarity -> target -> growth option
 |----|------|
 | `reward_ch1_normal_battle` | 第 1 章普通战奖励 |
 | `reward_ch1_elite_battle` | 第 1 章普通精英奖励 |
-| `reward_ch1_shakuya_special_elite` | 灼夜大招解锁战奖励 |
+| `reward_ch1_shakuya_special_elite` | 第 1 章步 6「血战到底！」奖励 |
 | `reward_ch1_boss` | 第 1 章 Boss 奖励 |
 
 ### Pool
 
 | id | 用途 |
 |----|------|
-| `pool_ch1_normal_encounters` | 第 1 章普通战遭遇池 |
+| `pool_ch1_normal_encounters` | 第 1 章普通战遭遇池；`enc_ch1_normal_maddened_bandits_post_unlock` 仅在「血战到底！」胜利后加入 |
 | `pool_ch1_elite_encounters` | 第 1 章精英战遭遇池 |
 | `pool_ch1_events` | 第 1 章事件池 |
 | `pool_ch1_node_modifiers` | 第 1 章节点选项修正池 |
@@ -684,9 +729,9 @@ rarity -> target -> growth option
 进入可玩版本前，数据加载器必须校验：
 
 - `chapters.json` 中 `chapter_1.totalSteps = 13`。
-- `chapter_1.fixedSteps` 包含步 6 特殊精英和步 13 Boss。
+- `chapter_1.fixedSteps` 包含步 6 追杀剧情节点和步 13 Boss；步 6 必须有「血战到底！」与「突出重围」两个固定分支。
 - 第 1 章普通战、精英战、事件、商店内容池非空。
-- 固定步 encounter id 存在。
+- 固定步及其固定分支绑定的 encounter id 存在。
 - 每个 encounter 都有 reward table。
 - 第 1 章节点修正池非空，且修正能绑定到合法节点类型。
 - 第 1 章事件池非空。
@@ -717,16 +762,16 @@ Run 层必须记录以下事件，供调试、复盘和验收：
 - run 失败。
 - 章节通关。
 
-## MVP 验收用例
+## MVP 游玩验收关注点
 
-至少需要覆盖：
+形成可玩版本后，实际游玩时重点确认：
 
 1. 新游戏从序章第 1 战开始，玲纱单人上场。
 2. 序章第 2 战前灼夜加入。
 3. 序章完成后自动进入第 1 章并存档。
 4. 第 1 章步 1 生成 2 个候选，且至少 1 个普通战。
 5. 第 1 章步 5 生成 3 个候选。
-6. 首次第 1 章步 6 只显示灼夜大招解锁战。
+6. 首次第 1 章步 6 固定显示 2 个分支：「血战到底！」和「突出重围」。
 7. 第 1 章步 12 至少 1 个商店。
 8. 第 1 章步 13 只显示 Boss。
 9. 候选节点保存后读档不重新随机。
@@ -734,7 +779,7 @@ Run 层必须记录以下事件，供调试、复盘和验收：
 11. 纯战斗候选不会连续超过 3 步。
 12. 普通战奖励包含成长三选一、10 金币和 30% 药水判定。
 13. 精英战奖励包含成长三选一、30 金币、装备和 30% 药水判定。
-14. 灼夜大招解锁战胜利后解锁 `flame_raven` 并自动存档。
+14. 选择「血战到底！」时，战斗开始先抽起手手牌，再解锁 `immovable` 和 `flame_raven` 并把两张大招加入手牌和牌库；胜利后触发 1 次灼夜大招升级选择并自动存档。选择「突出重围」时，第 1 章 Boss 战开场用同样流程补解锁两人大招。
 15. Boss 胜利后发放 Boss 奖励、保存通关、显示第 2 章未开放占位。
 16. 商店不会直接出售卡牌或直接删牌。
 17. 背包满时获得药水，必须选择丢弃旧药水或放弃新药水。

@@ -96,7 +96,7 @@
       "targetType": "self",
       "isExhaust": false,
       "isUltimate": false,
-      "description": "自身获得(8+100%AP)护盾",
+      "description": "自身获得(8+100%AP)护盾，自身存在感+200，持续1回合",
       "effects": [
         {
           "type": "shield",
@@ -105,6 +105,12 @@
             "base": 8,
             "ap": 1
           }
+        },
+        {
+          "type": "presence_gain",
+          "target": "self",
+          "value": 200,
+          "duration": 1
         }
       ],
       "upgrades": [
@@ -114,7 +120,7 @@
           "cost": 2,
           "targetType": "self",
           "isExhaust": false,
-          "description": "自身获得(12+150%AP)护盾，嘲讽所有敌人1回合",
+          "description": "自身获得(12+150%AP)护盾，自身存在感+200，持续1回合，嘲讽所有敌人1回合",
           "effects": [
             {
               "type": "shield",
@@ -123,6 +129,12 @@
                 "base": 12,
                 "ap": 1.5
               }
+            },
+            {
+              "type": "presence_gain",
+              "target": "self",
+              "value": 200,
+              "duration": 1
             },
             {
               "type": "taunt",
@@ -137,7 +149,7 @@
           "cost": 2,
           "targetType": "self",
           "isExhaust": false,
-          "description": "自身获得(10+200%AP)护盾，然后已有护盾+(10+200%AP)%",
+          "description": "自身获得(10+200%AP)护盾，自身存在感+200，持续1回合，然后已有护盾+(10+200%AP)%",
           "effects": [
             {
               "type": "shield",
@@ -146,6 +158,12 @@
                 "base": 10,
                 "ap": 2
               }
+            },
+            {
+              "type": "presence_gain",
+              "target": "self",
+              "value": 200,
+              "duration": 1
             },
             {
               "type": "shield_amplify",

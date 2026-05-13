@@ -35,7 +35,7 @@
 | `docs/02-systems/equipment.md` | 装备稀有度、槽位、掉落、装备列表 | 装备设计来源；机器内容见 `docs/03-content/data/equipment.json` |
 | `docs/02-systems/potions.md` | 药水稀有度、背包、使用时机、药水列表 | 药水设计来源；机器内容见 `docs/03-content/data/potions.json` |
 | `docs/02-systems/map-encounters.md` | 章节、步数、节点类型、选项生成、固定步 | 章节和节点权威来源 |
-| `docs/02-systems/node-modifiers.md` | 46 个节点修正与效果描述 | 节点修正设计来源；机器内容见 `docs/03-content/data/node-modifiers.json` |
+| `docs/02-systems/node-modifiers.md` | 47 个节点修正与效果描述 | 节点修正设计来源；机器内容见 `docs/03-content/data/node-modifiers.json` |
 | `docs/03-content/enemies-chapter-1.md` | 序章与第 1 章敌人数值、AI 行为和遭遇组合 | 序章与第 1 章敌人和遭遇内容来源 |
 
 ## 统一约定
@@ -86,7 +86,8 @@ type StatId =
   | "crit"
   | "cdmg"
   | "evd"
-  | "acc";
+  | "acc"
+  | "presence";
 
 type GlobalStatId =
   | "er"
@@ -142,6 +143,7 @@ interface CharacterStats {
   cdmg: number;
   evd: number;
   acc: number;
+  presence: number;
 }
 
 interface RunGlobalStats {
@@ -182,6 +184,7 @@ interface CharacterDef {
 
 - `initialCards` 包含 4 张固有卡牌，其中 1 张必须等于 `ultimateCardId`。
 - 固有卡牌基础无副本。
+- `baseStats.presence` 是敌方默认单体攻击选目标时使用的基础存在感权重。具体数值只以 `docs/03-content/data/characters.json` 为准，其它文档不得重复维护数值表。
 - 角色自身不会自然新增固有卡牌；新增、复制、删除、改造来自装备、药水、升级或剧情。
 - MVP 可先加载全部角色定义，但 UI 只允许使用已解锁角色。
 
@@ -204,7 +207,8 @@ interface CharacterDef {
     "crit": 5,
     "cdmg": 150,
     "evd": 5,
-    "acc": 100
+    "acc": 100,
+    "presence": 150
   },
   "initialCards": [
     "shield_strike",
@@ -330,6 +334,7 @@ type EffectType =
   | "poison_detonate"
   | "bleed_detonate"
   | "taunt"
+  | "mark"
   | "lifesteal"
   | "as_gain"
   | "as_reset"
@@ -339,6 +344,7 @@ type EffectType =
   | "permanent_buff"
   | "stat_multiply"
   | "debuff"
+  | "presence_gain"
   | "draw"
   | "energy_gain"
   | "guaranteed_crit"
@@ -487,6 +493,7 @@ interface ConditionMultiplierDef {
 - `formula` 中所有字段相加后得到基础数值，再按战斗系统规则取整。
 - `percent` 表示百分数，如 `30` 表示 30%。
 - 层数效果如毒、流血、虚弱、脆弱也使用 `formula` 计算施加层数。
+- 攻击附加流血时，必须先结算伤害；只有目标在伤害结算后没有护盾，流血才会施加。非攻击来源直接施加流血不受该限制。
 - `poison_detonate` 读取毒层但不清空毒层。
 - `bleed_detonate` 消耗全部流血层。
 
@@ -629,11 +636,27 @@ interface EnemyDef {
   typeTags: string[];
   stats: CharacterStats;
   ai: EnemyAIDef;
+  passiveEffects?: EnemyPassiveDef[];
   visualKeywords?: string[];
 }
 
+interface EnemyPassiveDef {
+  id: string;
+  trigger:
+    | "on_hit_by_basic_attack"
+    | "on_hit_by_card"
+    | "on_damaged"
+    | "turn_start"
+    | "turn_end";
+  condition?: ConditionDef;
+  targetSelector: TargetSelectorDef;
+  effects: EffectDef[];
+  cooldown?: number;
+  oncePerTurn?: boolean;
+}
+
 interface EnemyAIDef {
-  type: "priority_list" | "phase_priority_list" | "custom";
+  type: "weighted_actions" | "phase_weighted_actions" | "custom";
   actions?: EnemyActionDef[];
   phases?: EnemyPhaseDef[];
   customId?: string;
@@ -649,7 +672,7 @@ interface EnemyPhaseDef {
 interface EnemyActionDef {
   id: string;
   name: string;
-  priority: number;
+  weight: number;
   condition: ConditionDef;
   targetSelector: TargetSelectorDef;
   effects: EffectDef[];
@@ -664,6 +687,8 @@ interface TargetSelectorDef {
     | "lowest_hp_ally"
     | "highest_atk_or_ap_ally"
     | "taunt_target"
+    | "presence_weighted_enemy"
+    | "marked_enemy"
     | "self"
     | "all_allies"
     | "all_enemies"
@@ -671,7 +696,17 @@ interface TargetSelectorDef {
 }
 ```
 
-注意：从敌人视角看，`ally` 是敌方阵营，`enemy` 是我方阵营。实现时可以改名为 `opponent` 避免歧义，但数据含义必须固定。
+注意：
+
+- 从敌人视角看，`ally` 是敌方阵营，`enemy` 是我方阵营。实现时可以改名为 `opponent` 避免歧义，但数据含义必须固定。
+- 敌人行动不使用固定优先级。每次敌人需要行动时，先筛选 `condition`、`cooldown`、`oncePerBattle` 均允许的行动，再按 `weight` 做加权随机。
+- `weight` 是相对权重，不要求总和为 100。多个行动权重都为 100 时，表示这些行动在条件同时满足时等概率。
+- `condition: always` 的行动也参与同一轮权重随机；它不是“保底优先级”，除非其它行动条件都不满足。
+- 数组顺序不得影响敌人行动选择。
+- 若敌人拥有固定触发的大招机制，该机制应在普通权重抽取前检查。触发条件满足时执行大招，本次行动不再筛选或抽取普通技能。
+- `presence_weighted_enemy` 表示从敌人视角按玩家角色存在感权重选择单体目标。嘲讽目标存在时，目标池先限制为嘲讽目标，再按存在感权重抽取。
+- `marked_enemy` 表示从敌人视角优先选择带有该敌人关注标记的玩家角色；若多个合法标记目标存在，按存在感权重在这些目标中抽取；若没有标记目标，回退到 `presence_weighted_enemy`。
+- `passiveEffects` 用于简单被动触发，例如染疫尸鬼被普通攻击命中时对攻击者施加毒。复杂 Boss 或精英机制仍可使用 `ai.customId` 或清晰隔离的 `EnemyActionResolver`。
 
 ## 章节、节点和遭遇
 
@@ -705,6 +740,18 @@ interface FixedStepDef {
   nodeType: NodeType;
   encounterId?: EncounterId;
   optionCount: number;
+  fixedOptions?: FixedStepOptionDef[];
+}
+
+interface FixedStepOptionDef {
+  optionId: string;
+  label: string;
+  nodeType: NodeType;
+  encounterId?: EncounterId;
+  eventId?: string;
+  shopId?: string;
+  modifierIds: NodeModifierId[];
+  summary?: string;
 }
 
 interface NodeOptionRuleDef {
@@ -732,11 +779,27 @@ interface EncounterDef {
   name: string;
   enemyGroups: EnemyGroupDef[];
   forcedCharacters?: CharacterId[];
+  battleStartModifierIds?: NodeModifierId[];
+  battleStartUltimateUnlocks?: BattleStartUltimateUnlockDef[];
   rewardTableId: string;
   beforeDialogueId?: string;
   afterDialogueId?: string;
   unlocksOnClear?: UnlockDef[];
   tags?: string[];
+}
+
+interface BattleStartUltimateUnlockDef {
+  characterId: CharacterId;
+  ultimateCardId: CardId;
+  addToOpeningHand: boolean;
+  addToDrawPile: boolean;
+  condition?: BattleStartUltimateUnlockConditionDef;
+}
+
+interface BattleStartUltimateUnlockConditionDef {
+  type: "ultimate_not_unlocked";
+  characterId: CharacterId;
+  ultimateCardId: CardId;
 }
 
 interface EnemyGroupDef {
@@ -752,8 +815,12 @@ MVP 必须至少定义：
 - 序章教程战 2。
 - 第 1 章普通战遭遇。
 - 第 1 章精英战遭遇。
-- 第 1 章第 6 步灼夜大招解锁战。
+- 第 1 章第 6 步灼夜追杀剧情节点：固定 2 个分支，分别绑定 `enc_ch1_shakuya_ultimate_unlock` 与 `enc_ch1_shakuya_breakout`。
 - 第 1 章 Boss 战。
+
+`battleStartUltimateUnlocks` 用于“战斗开始时解锁大招”的剧情战。执行顺序必须是：先按正常规则抽起手手牌，再解锁这些大招；若 `addToOpeningHand = true`，每张新解锁的大招额外加入手牌 1 张，不占用起手抽牌数量；若 `addToDrawPile = true`，每张新解锁的大招同时加入本场 `drawPile` 1 张，并用战斗 RNG 洗入剩余牌库。
+
+若 `condition.type = "ultimate_not_unlocked"`，只有目标大招在当前 run 中尚未解锁时才执行该项。第 1 章 Boss 使用该条件处理「步 6 选择突出重围后，玲纱和灼夜大招在 Boss 战开场解锁；若步 6 已选择血战到底，则 Boss 不重复解锁」。
 
 ## 节点修正定义
 
@@ -801,7 +868,7 @@ interface CleanseRuleDef {
 }
 ```
 
-节点修正必须从 `node-modifiers.md` 的 46 项规则转成机器可读数据。第 1 章只加载 `chapterLimit` 允许出现的修正。
+节点修正必须从 `node-modifiers.md` 的 47 项规则转成机器可读数据。第 1 章只加载 `chapterLimit` 允许出现的修正。
 
 ## 奖励定义
 
@@ -854,6 +921,7 @@ interface UnlockDef {
 - 战后属性成长为三选一，三个选项独立生成。
 - 每个成长选项最多单独刷新 1 次。
 - 金币、药水、装备、卡牌升级按 `roguelike-run.md`、`equipment.md`、`potions.md` 的当前规则生成。
+- `card_upgrade` 可通过 `config.targetCardId`、`config.upgradeIds` 和 `config.choiceCount` 指定只升级某一张牌，例如第 1 章步 6「血战到底！」胜利后只在 `flame_raven_up1` 与 `flame_raven_up2` 中二选一。
 - Boss 奖励表不得只写一个“随机装备”；必须能表达第 1 章史诗装备与诅咒装备二选一。
 
 ## 商店定义

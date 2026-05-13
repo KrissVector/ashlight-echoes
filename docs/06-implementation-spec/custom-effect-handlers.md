@@ -89,6 +89,13 @@ interface CustomEffectHandler {
 | `shop_service` | 商店服务执行时 | 净化、修理、诅咒装备处理 |
 | `effect_resolution` | 当前 custom 效果被主动结算时 | 装备卡、药水牌、诅咒牌的主动效果 |
 
+## 敌人机制
+
+| `customId` | 窗口 | 语义 |
+|------------|------|------|
+| `enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit` | `after_damage` | 用于癫狂的强盗和癫狂的强盗首领。该敌人的攻击段命中并完成本段伤害后，读取同段 `DamageRecord`；若 `shieldDamage = 0` 且 `targetShieldAfterDamage <= 0`，视为目标命中前没有护盾，对该目标施加 2 层脆弱和 2 层虚弱；若目标命中前已有护盾，即使本次伤害打破护盾也不施加，并记录 `VOID_CORROSION_BLOCKED_BY_SHIELD`。 |
+| `enemy_void_corrosion_self_1_vulnerable_1_weakness_on_attack_hit` | `on_damaged` | 用于癫狂的强盗和癫狂的强盗首领。该敌人每次被攻击段命中后，自身获得 1 层脆弱和 1 层虚弱。多段攻击每段独立触发；毒、流血等非攻击状态伤害不触发。 |
+
 ## 装备被动
 
 | `customId` | 窗口 | 语义 |
@@ -110,7 +117,7 @@ interface CustomEffectHandler {
 | `heal_effect_plus_30_percent` | `on_heal` | 装备者治疗卡牌产生的理论治疗量 +30%。 |
 | `if_unhurt_this_turn_next_turn_atk_ap_plus_30_percent` | `turn_end`, `turn_start`, `on_damaged` | 若装备者本方回合内未受伤，则下一个本方回合 ATK/AP +30%，持续 1 回合。 |
 | `basic_attack_combo_damage_plus_20_percent_stackable` | `before_basic_attack`, `on_hit` | 装备者普攻命中后，下一次普攻伤害 +20%，可叠加；本场战斗结束清空。 |
-| `third_and_later_basic_attack_applies_1_bleed` | `on_hit` | 装备者本回合第 3 次及之后普攻命中时，对目标施加 1 层流血。 |
+| `third_and_later_basic_attack_applies_1_bleed` | `on_hit` | 装备者本回合第 3 次及之后普攻命中时，若目标在本次普攻伤害结算后没有护盾，则施加 1 层流血。 |
 | `damage_plus_200_percent_against_enemy_hp_below_20` | `before_damage` | 装备者对当前 HP 比例低于 20% 的敌人造成的伤害 +200%。 |
 | `overflow_energy_each_point_grants_ap_plus_10_percent_this_turn` | `turn_start`, `before_energy_gain` | 玩家能量将超过上限时，每溢出 1 点，本回合装备者 AP +10%。 |
 | `atk_plus_8_percent_per_10_percent_missing_hp` | `before_damage` | 装备者每损失 10% 最大 HP，当前伤害计算中的 ATK +8%。 |
@@ -194,6 +201,7 @@ interface CustomEffectHandler {
 | `next_battle_victory_double_gold_growth_choices_and_equipment_drops` | `before_reward` | 下场战斗胜利奖励中，金币 ×2、属性成长奖励发放 2 次、装备掉落发放 2 次。触发后移除。 |
 | `gain_gold_20_plus_10x_chapter` | `effect_resolution` | 立即获得 `20 + 10 × 当前章节数` 金币。 |
 | `next_battle_initial_draw_plus_2` | `battle_start` | 下场战斗起手抽牌数量 +2。触发后移除。 |
+| `last_stand_all_units_start_full_energy_killer_crit_plus_10_cdmg_plus_20_missing_hp_atk_plus_0_5_percent` | `battle_start`, `on_kill`, `on_damaged`, `on_heal`, `before_damage` | 下场战斗开始时，玩家公共能量回复至能量上限。敌我全体获得“血战到底”。任意单位击杀 1 个敌对单位后，只有击杀者自身获得暴击率 +10%、暴击伤害 +20%，本场可叠加；敌方击杀我方召唤物或角色时，也只强化完成击杀的敌方单位。每个单位按自身当前失血比例获得 ATK 百分比加成：`ATK加成% = (1 - 当前HP / 最大HP) × 100 × 0.5`，随 HP 变化动态重算。战斗结束后移除。 |
 | `next_node_selection_option_count_plus_1` | `node_option_generation` | 下一次节点候选数量 +1。触发后移除。 |
 | `dispatch_characters_to_block_pursuers_next_node_unavailable` | `node_complete` | 立即要求派遣角色阻拦追兵；当前可用角色 ≤3 时派 1 人，≥4 时派 2 人。被派遣角色下一节点不可上场。 |
 | `next_node_selection_only_combat_options` | `node_option_generation` | 下一次候选节点只从普通战、精英战、特殊精英中生成；固定步仍优先。触发后移除。 |

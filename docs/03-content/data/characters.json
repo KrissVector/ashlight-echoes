@@ -17,7 +17,8 @@
         "crit": 5,
         "cdmg": 150,
         "evd": 5,
-        "acc": 100
+        "acc": 100,
+        "presence": 150
       },
       "initialCards": [
         "shield_strike",
@@ -43,7 +44,8 @@
         "crit": 5,
         "cdmg": 150,
         "evd": 5,
-        "acc": 100
+        "acc": 100,
+        "presence": 100
       },
       "initialCards": [
         "battle_frenzy",
@@ -69,7 +71,8 @@
         "crit": 5,
         "cdmg": 150,
         "evd": 5,
-        "acc": 100
+        "acc": 100,
+        "presence": 80
       },
       "initialCards": [
         "healing_light",
@@ -95,7 +98,8 @@
         "crit": 5,
         "cdmg": 150,
         "evd": 5,
-        "acc": 100
+        "acc": 100,
+        "presence": 80
       },
       "initialCards": [
         "arcane_missile",
@@ -121,7 +125,8 @@
         "crit": 5,
         "cdmg": 150,
         "evd": 5,
-        "acc": 100
+        "acc": 100,
+        "presence": 60
       },
       "initialCards": [
         "shadow_dash",

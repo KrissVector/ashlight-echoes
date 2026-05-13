@@ -39,8 +39,26 @@
       "fixedSteps": [
         {
           "step": 6,
-          "type": "special_elite",
-          "summary": "灼夜大招解锁战"
+          "type": "story",
+          "summary": "灼夜追杀剧情节点",
+          "fixedOptions": [
+            {
+              "optionId": "ch1_step6_last_stand",
+              "label": "血战到底！",
+              "nodeType": "special_elite",
+              "encounterId": "enc_ch1_shakuya_ultimate_unlock",
+              "modifierIds": ["post_last_stand"],
+              "summary": "迎战癫狂的强盗首领与血旗佣兵团残党"
+            },
+            {
+              "optionId": "ch1_step6_breakout",
+              "label": "突出重围",
+              "nodeType": "normal_battle",
+              "encounterId": "enc_ch1_shakuya_breakout",
+              "modifierIds": ["story_breakout_hp_80"],
+              "summary": "从后方突围撤退"
+            }
+          ]
         },
         {
           "step": 13,

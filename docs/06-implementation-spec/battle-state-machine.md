@@ -116,6 +116,7 @@ setup
 5. 建立共享牌区：
    - `drawPile` 包含所有上场且已解锁角色的可用卡牌实例。
    - 未解锁的大招卡不进入本场战斗牌库。
+   - 若 encounter 配置“战斗开始时解锁大招”，这些大招在起手抽牌前仍视为未解锁，不进入初始 `drawPile`。
    - `hand`、`discardPile`、`exhaustPile`、`temporaryZone` 初始为空。
    - `drawPile` 使用战斗 RNG 洗牌。
 6. 设置公共能量：
@@ -124,7 +125,18 @@ setup
    - `currentEnergy = 0`
 7. 所有单位 `remainingAs = 0`，等各自阵营回合开始时刷新。
 8. `round = 1`。
-9. 进入 `first_strike`。
+9. 应用 encounter 和节点修正中的 `battle_start` 效果：
+   - 例如「血战到底」会把玩家公共能量回复至能量上限，并给敌我全体挂载低血 ATK 和击杀者暴击成长规则。
+   - 例如「突出重围」会在我方 HP 回满后，把我方当前 HP 调整为最大 HP 的 80%。
+10. 若本场 encounter 配置“战斗开始时解锁大招”，先筛选条件满足的大招解锁项；若至少 1 项满足，执行起手大招解锁流程：
+   - 先按正常起手抽牌数量从当前 `drawPile` 抽牌到 `hand`；当前设计为 3 张，受“起手多抽”等已生效修正影响。
+   - 本次起手抽牌不包含即将解锁的大招。
+   - 设置 `openingHandDrawn = true`，第 1 个 `player_turn_start` 不再重复抽起手手牌。
+   - 条件不满足的项不解锁、不加手牌、不加牌库；若全部条件都不满足，本特殊流程不执行，起手抽牌仍按普通战斗时机处理。
+   - 解锁本次筛选出的指定大招，并写入当前 run 的角色大招解锁状态。
+   - 每张新解锁的大招创建 1 张战斗卡牌实例加入 `hand`，并创建 1 张战斗卡牌实例加入 `drawPile`；加入手牌的大招不占用起手抽牌数量，也不触发手牌上限导致的自动弃置。
+   - 新加入 `drawPile` 的大招必须使用战斗 RNG 洗入剩余牌库。
+11. 进入 `first_strike`。
 
 ## 抢攻阶段
 
@@ -186,7 +198,7 @@ side_turn_start(side):
   3. 结算该阵营存活单位的流血
   4. 胜负检查
   5. 刷新该阵营存活单位 remainingAs
-  6. 若 side = player，恢复公共能量并抽牌
+  6. 若 side = player，恢复公共能量并抽牌；若 `round = 1` 且 `openingHandDrawn = true`，只恢复公共能量，不重复抽牌
   7. 进入该阵营行动阶段
 ```
 
@@ -318,8 +330,29 @@ basic_attack(sourceUnitId, selectedEnemyId):
 敌人 AI 必须尊重嘲讽：
 
 - 若 AI 行为是单体攻击或单体技能，且存在合法嘲讽目标，则目标必须从嘲讽目标中选择。
-- 若多个嘲讽目标存在，按该敌人 AI 的目标选择规则在嘲讽目标中选择。
+- 若多个嘲讽目标存在，按存在感权重在嘲讽目标中选择。
 - 全体攻击不受嘲讽影响。
+
+### 敌方单体目标选择和存在感
+
+默认单体攻击目标使用存在感权重随机：
+
+```text
+targetWeight = character.baseStats.presence + battlePresenceModifiers
+selectedChance = targetWeight / sum(targetWeight of legal targets)
+```
+
+基础存在感来自 `CharacterDef.baseStats.presence`，具体数值只读取 `docs/03-content/data/characters.json`，不得在状态机实现中硬编码。
+
+目标选择顺序：
+
+1. 全体技能不做单体目标选择。
+2. 若存在嘲讽目标，单体攻击或单体技能的合法目标池先限制为嘲讽目标。
+3. 若技能明确写“优先攻击标记目标”，且没有嘲讽目标覆盖，则优先从标记目标中选择；多个标记目标按存在感权重抽取。
+4. 若技能明确写“HP 比例最低”“ATK 最高”等目标规则，则按技能规则选择。
+5. 若技能没有特殊目标规则，则从合法目标中按存在感权重随机选择。
+
+`presence_gain` 会给目标增加临时存在感。具体卡牌效果以 `docs/03-content/data/cards.json` 为准。
 
 第 1 章敌人当前可以先用代码模块表达 AI，但必须隔离在清晰的 `EnemyActionResolver` 中，后续迁移到机器可读敌人表时不得重写战斗主循环。
 
@@ -399,6 +432,8 @@ interface ActionContext {
 
 `lifesteal`、`heal_as_damage`、`on_kill`、`on_kill_per_target`、`random_debuff_per_hit` 等效果读取当前 `ActionContext` 中已经发生的结果。
 
+`DamageRecord` 必须记录 `targetUnitId`、`shieldDamage`、`hpDamage`、`targetShieldAfterDamage` 和 `targetHpAfterDamage`。攻击附加流血需要读取这些字段，判断伤害结算后目标是否仍有护盾。
+
 ## 效果执行顺序
 
 同一个 `effects` 数组按声明顺序执行，但以下效果属于动作级修正或结果读取：
@@ -408,6 +443,7 @@ interface ActionContext {
 - `heal_as_damage`：读取当前动作已产生的理论治疗量。
 - `on_kill` / `on_kill_per_target`：读取当前动作已击杀目标。
 - `random_debuff_per_hit`：读取当前动作已命中的 hit 记录。
+- 攻击附加的 `bleed`：读取当前动作已命中的伤害记录；只有目标在对应伤害段结算后没有护盾时才施加。
 
 嵌套 `effects` 创建子动作上下文，但必须保留父动作引用，便于日志和触发来源追踪。嵌套效果不得回写父动作的已读结果，除非该效果明确是父动作触发器的一部分。
 
@@ -669,6 +705,22 @@ target.statusStacks += stacks
 
 层数效果可重复叠加。
 
+### 攻击附加流血
+
+`bleed` 如果作为攻击动作的一部分施加，必须绑定到同一动作中已经命中的伤害记录。
+
+处理规则：
+
+1. 先按伤害结算管线完成命中、伤害、护盾和 HP 扣减。
+2. 找到该目标在当前动作中对应的 `DamageRecord`。
+3. 若没有命中记录或没有实际伤害记录，跳过流血。
+4. 若 `DamageRecord.targetShieldAfterDamage > 0`，跳过流血，并记录 `BLEED_BLOCKED_BY_SHIELD`。
+5. 若 `DamageRecord.targetShieldAfterDamage <= 0`，按 `formula` 计算并施加流血层。
+
+多段攻击中，每段攻击附加流血都按该段伤害结算后的护盾状态独立判断。若同一个 `bleed` 效果服务于一个多段伤害动作，只有造成命中且结算后目标没有护盾的段可以施加流血。
+
+非攻击来源直接施加流血时，不读取 `DamageRecord`，直接按层数效果规则施加。
+
 `buff`、`percent_buff`、`set_stat`、`stat_multiply` 创建临时属性修正。修正必须记录：
 
 - 来源效果 id。
@@ -837,7 +889,7 @@ target.remainingAs = target.asMax
 - 新召唤单位初始 HP 为满，护盾为 0，状态为空。
 - 若在敌方行动阶段召唤，新单位不在当前敌方行动遍历中行动，从下一次敌方回合开始行动。
 
-第 1 章不使用属性覆盖。莱恩哈特召回亡魂时使用正式 `oathbound_echo` 属性。
+第 1 章不使用属性覆盖。莱恩哈特召回亡魂时使用正式 `ashen_knight` 属性。
 
 ## 死亡处理
 
@@ -909,9 +961,9 @@ target.remainingAs = target.asMax
 - 每个原子动作后必须胜负检查。
 - 触发器不得无限递归；同一触发链必须有深度上限或明确的递归阻断规则。
 
-## MVP 验收用例
+## MVP 游玩验收关注点
 
-至少需要自动化或半自动化覆盖：
+形成可玩版本后，实际游玩或调试时重点确认：
 
 1. 第一回合能量为 0，玩家必须普攻或使用免费抢攻牌才能获得出牌资源。
 2. 普攻消耗 1 AS、获得 1 能量，命中失败也获得能量。
@@ -919,7 +971,7 @@ target.remainingAs = target.asMax
 4. Deck 为空时，Discard 洗回 Deck。
 5. 消耗牌进入 Exhaust，不再洗回 Deck。
 6. `return_to_hand` 可以覆盖 `isExhaust`。
-7. 毒和流血无视 DEF 与护盾，直接扣 HP。
+7. 毒和已施加流血的结算伤害无视 DEF 与护盾，直接扣 HP。
 8. 流血在目标阵营回合开始结算，毒在目标阵营回合结束结算。
 9. `conditional_bonus` 即使写在 `damage` 后面，也能绑定同一张卡全部伤害。
 10. `嗜血之刃·猎杀` 同时满足两个条件时，总增伤为 +200%。
@@ -930,4 +982,4 @@ target.remainingAs = target.asMax
 15. `next_attack_poison` 对下一次攻击中每个命中的目标附毒。
 16. `random_debuff_per_hit` 只在命中段触发。
 17. `counter_on_dodge` 回合内可多次触发，但不会触发反击反击。
-18. 莱恩哈特二阶段 `summon` 召回 `oathbound_echo`，新召回单位从下一次敌方回合开始行动。
+18. 莱恩哈特二阶段 `summon` 召回 `ashen_knight`，新召回单位从下一次敌方回合开始行动。

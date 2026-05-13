@@ -24,9 +24,10 @@
 4. [effect-dsl.md](effect-dsl.md)：卡牌、装备、药水、节点修正等效果的表达格式和执行规则。
 5. [custom-effect-handlers.md](custom-effect-handlers.md)：`customId` 特殊效果的 handler 注册、触发窗口和全量语义清单。
 6. [run-flow.md](run-flow.md)：序章、第 1 章节点生成、奖励、商店、事件、存档和章节结算。
-7. `acceptance-cases.md`：MVP 的自动化或手动验收用例，当前尚未建立。
 
 当前已建立 [mvp-scope.md](mvp-scope.md)、[data-schema.md](data-schema.md)、[battle-state-machine.md](battle-state-machine.md)、[effect-dsl.md](effect-dsl.md)、[custom-effect-handlers.md](custom-effect-handlers.md) 和 [run-flow.md](run-flow.md)。其中 [run-flow.md](run-flow.md) 是初版规格，仍需继续按 [../02-systems/map-encounters.md](../02-systems/map-encounters.md) 与 [../02-systems/node-modifiers.md](../02-systems/node-modifiers.md) 校准。
+
+MVP 暂不单独维护 `acceptance-cases.md`。形成可玩版本后，以项目负责人实际游玩体验为主要验收方式；验收标准见 [mvp-scope.md](mvp-scope.md)。
 
 ## 与设计源头的关系
 
