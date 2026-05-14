@@ -13,7 +13,7 @@ Migrated concept art from the prototype project.
 ## Enemies
 
 - `concept/enemies/oathbound_echo.png`：灰烬骑士参考图（旧文件名保留）
-- `concept/enemies/oathbroken_duelist.png`
+- `concept/enemies/ashen_commander.png`：骑士统领参考图
 - `concept/enemies/oathbreaker_reinhardt.png`
 
 ## Cards and UI

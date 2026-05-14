@@ -146,6 +146,18 @@ interface CharacterStats {
   presence: number;
 }
 
+interface EnemyStats {
+  hp: number;
+  atk: number;
+  ap: number;
+  def: number;
+  spd: number;
+  crit: number;
+  cdmg: number;
+  evd: number;
+  acc: number;
+}
+
 interface RunGlobalStats {
   er: number;
   maxEnergy: number;
@@ -634,7 +646,7 @@ interface EnemyDef {
   role: EnemyRole;
   chapterId: ChapterId;
   typeTags: string[];
-  stats: CharacterStats;
+  stats: EnemyStats;
   ai: EnemyAIDef;
   passiveEffects?: EnemyPassiveDef[];
   visualKeywords?: string[];
@@ -643,9 +655,14 @@ interface EnemyDef {
 interface EnemyPassiveDef {
   id: string;
   trigger:
+    | "battle_start"
+    | "aura"
+    | "before_targeted"
     | "on_hit_by_basic_attack"
     | "on_hit_by_card"
     | "on_damaged"
+    | "on_shield_break"
+    | "on_ally_death"
     | "turn_start"
     | "turn_end";
   condition?: ConditionDef;
@@ -693,20 +710,23 @@ interface TargetSelectorDef {
     | "all_allies"
     | "all_enemies"
     | "custom";
+  customId?: string;
 }
 ```
 
 注意：
 
 - 从敌人视角看，`ally` 是敌方阵营，`enemy` 是我方阵营。实现时可以改名为 `opponent` 避免歧义，但数据含义必须固定。
+- 敌人使用 `EnemyStats`，不使用角色的 `as`。敌方单位每回合最多执行 1 次 AI 行动；多段攻击属于一次行动内部的多段效果。
 - 敌人行动不使用固定优先级。每次敌人需要行动时，先筛选 `condition`、`cooldown`、`oncePerBattle` 均允许的行动，再按 `weight` 做加权随机。
 - `weight` 是相对权重，不要求总和为 100。多个行动权重都为 100 时，表示这些行动在条件同时满足时等概率。
 - `condition: always` 的行动也参与同一轮权重随机；它不是“保底优先级”，除非其它行动条件都不满足。
 - 数组顺序不得影响敌人行动选择。
-- 若敌人拥有固定触发的大招机制，该机制应在普通权重抽取前检查。触发条件满足时执行大招，本次行动不再筛选或抽取普通技能。
+- 若敌人拥有周期强招，该强招也应作为普通权重行动表达，例如使用“每 N 回合”条件进入候选池；不要绕过权重池做固定触发。
 - `presence_weighted_enemy` 表示从敌人视角按玩家角色存在感权重选择单体目标。嘲讽目标存在时，目标池先限制为嘲讽目标，再按存在感权重抽取。
 - `marked_enemy` 表示从敌人视角优先选择带有该敌人关注标记的玩家角色；若多个合法标记目标存在，按存在感权重在这些目标中抽取；若没有标记目标，回退到 `presence_weighted_enemy`。
-- `passiveEffects` 用于简单被动触发，例如染疫尸鬼被普通攻击命中时对攻击者施加毒。复杂 Boss 或精英机制仍可使用 `ai.customId` 或清晰隔离的 `EnemyActionResolver`。
+- `customId` 用于需要清晰命名的自定义目标选择，例如最低 HP 比例玩家、当前被瞄准目标、攻击者或固定剧情目标。
+- `passiveEffects` 用于被动触发、开场效果和光环，例如染疫尸鬼反施毒、灰壳开场护盾、精英敌人援护。复杂 Boss 或精英机制仍可使用 `ai.customId` 或清晰隔离的 `EnemyActionResolver`。
 
 ## 章节、节点和遭遇
 
@@ -788,6 +808,20 @@ interface EncounterDef {
   tags?: string[];
 }
 
+interface EncounterPoolEntryDef {
+  encounterId: EncounterId;
+  stepRange?: [number, number];
+  requiredFlags?: string[];
+  forbiddenFlags?: string[];
+  tags?: string[];
+}
+
+interface EncounterDataFile {
+  schemaVersion: number;
+  encounters: EncounterDef[];
+  pools: Record<string, EncounterPoolEntryDef[]>;
+}
+
 interface BattleStartUltimateUnlockDef {
   characterId: CharacterId;
   ultimateCardId: CardId;
@@ -805,7 +839,7 @@ interface BattleStartUltimateUnlockConditionDef {
 interface EnemyGroupDef {
   enemyId: EnemyId;
   count: number;
-  overrides?: Partial<CharacterStats>;
+  overrides?: Partial<EnemyStats>;
 }
 ```
 
@@ -911,6 +945,7 @@ interface UnlockDef {
     | "character"
     | "ultimate"
     | "chapter"
+    | "run_flag"
     | "meta_flag";
   targetId: string;
 }
@@ -1057,6 +1092,8 @@ interface RunSave {
   phase: RunPhase;
   currentChapterId: ChapterId;
   currentStep: number;
+  availableNodeOptions: NodeOptionDef[];
+  encounterSelectionHistory: EncounterSelectionHistoryEntry[];
   gold: number;
   globalStats: RunGlobalStats;
   roster: RunCharacterState[];
@@ -1116,6 +1153,14 @@ interface RouteHistoryEntry {
   result: "cleared" | "failed" | "skipped";
 }
 
+interface EncounterSelectionHistoryEntry {
+  chapterId: ChapterId;
+  poolId: string;
+  encounterId: EncounterId;
+  step: number;
+  optionId: string;
+}
+
 interface ActiveModifierState {
   modifierId: NodeModifierId;
   source: NodeModifierSource;
@@ -1125,6 +1170,8 @@ interface ActiveModifierState {
   params?: Record<string, number | string | boolean>;
 }
 ```
+
+`availableNodeOptions` 必须随 run 存档写入，读档后不得重新生成当前候选。`encounterSelectionHistory` 用于普通战池和精英战池的“未抽取优先”规则：只有玩家选择了绑定该 encounter 的节点，才记为已抽取；只展示给玩家但未被选择，不写入该历史。
 
 ## 战斗状态快照
 
@@ -1162,10 +1209,10 @@ interface CombatantState {
   combatantId: string;
   defId: CharacterId | EnemyId;
   side: "player" | "enemy";
-  stats: CharacterStats;
+  stats: CharacterStats | EnemyStats;
   currentHp: number;
   shield: number;
-  remainingAs: number;
+  remainingAs?: number;
   statuses: StatusInstance[];
   alive: boolean;
 }
@@ -1180,6 +1227,8 @@ interface StatusInstance {
 ```
 
 MVP 可以不支持战斗中手动存档；但为了调试、自动测试和崩溃恢复，战斗状态结构应保持可序列化。
+
+`remainingAs` 只用于玩家角色。敌方单位没有 AS，不写入 `remainingAs`；敌方行动阶段中每个存活敌人每回合只解析 1 次 AI 行动。
 
 ## 推荐数据文件拆分
 
@@ -1222,7 +1271,5 @@ docs/03-content/data/events.json
 
 本文只定义结构，不补全部内容。当前仍需要单独补正式内容表或状态机规格：
 
-- 为第 1 章普通战、精英战、灼夜特殊精英、Boss 建立 `EncounterDef`。
-- 补第 1 章敌人 `EnemyDef` 机器内容表。
 - 补第 1 章商店 `ShopDef` 机器内容表。
 - 补第 1 章事件列表和事件结果。

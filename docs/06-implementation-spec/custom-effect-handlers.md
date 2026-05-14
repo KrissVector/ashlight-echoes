@@ -93,8 +93,41 @@ interface CustomEffectHandler {
 
 | `customId` | 窗口 | 语义 |
 |------------|------|------|
-| `enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit` | `after_damage` | 用于癫狂的强盗和癫狂的强盗首领。该敌人的攻击段命中并完成本段伤害后，读取同段 `DamageRecord`；若 `shieldDamage = 0` 且 `targetShieldAfterDamage <= 0`，视为目标命中前没有护盾，对该目标施加 2 层脆弱和 2 层虚弱；若目标命中前已有护盾，即使本次伤害打破护盾也不施加，并记录 `VOID_CORROSION_BLOCKED_BY_SHIELD`。 |
-| `enemy_void_corrosion_self_1_vulnerable_1_weakness_on_attack_hit` | `on_damaged` | 用于癫狂的强盗和癫狂的强盗首领。该敌人每次被攻击段命中后，自身获得 1 层脆弱和 1 层虚弱。多段攻击每段独立触发；毒、流血等非攻击状态伤害不触发。 |
+| `enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit` | `after_damage` | 用于癫狂的强盗、癫狂的强盗首领和断誓之盾·莱恩哈特。该敌人的攻击段命中并完成本段伤害后，读取同段 `DamageRecord`；若 `shieldDamage = 0` 且 `targetShieldAfterDamage <= 0`，视为目标命中前没有护盾，对该目标施加 2 层脆弱和 2 层虚弱；若目标命中前已有护盾，即使本次伤害打破护盾也不施加，并记录 `VOID_CORROSION_BLOCKED_BY_SHIELD`。 |
+| `enemy_void_corrosion_self_1_vulnerable_1_weakness_on_attack_hit` | `on_damaged` | 用于癫狂的强盗、癫狂的强盗首领和断誓之盾·莱恩哈特。该敌人每次被攻击段命中后，自身获得 1 层脆弱和 1 层虚弱。多段攻击每段独立触发；毒、流血等非攻击状态伤害不触发。 |
+| `enemy_plague_ghoul_retaliate_poison_1_to_unshielded_basic_attacker` | `on_hit_by_basic_attack` | 染疫尸鬼被我方普攻命中后，若攻击者当前没有护盾，则对攻击者施加 1 层毒。 |
+| `enemy_vulture_predation_atk_plus_30_if_player_hp_below_30` | `aura`, `before_damage` | 荒原尸鹫存活时，若任一存活我方角色当前 HP 比例低于 30%，荒原尸鹫当前伤害计算中的 ATK +30%。 |
+| `enemy_arbalist_clear_aimed_target` | `after_damage` | 灰誓弩手使用「贯心弩矢」后，清除由该弩手施加的瞄准标记。 |
+| `enemy_hollow_sentinel_clear_self_shield_after_damage` | `after_damage` | 空甲守卫「盾击」结算后，清除自身全部护盾。 |
+| `enemy_void_wolf_bite_bleed_or_double_if_unshielded` | `after_damage` | 虚空狼系「撕咬」命中后，若目标在本段伤害结算后没有护盾：目标无流血时施加 2 层流血；目标已有流血时将当前流血层数翻倍。 |
+| `enemy_void_wolf_claw_bleed_and_extra_hit_if_target_bleeding` | `after_damage` | 虚空狼系「裂爪」每个命中段后，若目标没有护盾则施加 1 层流血；该行动两段伤害结算后，若目标存在流血，追加 1 次 100% ATK 物理伤害，追加命中后若目标没有护盾再施加 1 层流血。 |
+| `enemy_void_wolf_king_atk_plus_10_percent_per_bleeding_player` | `aura`, `before_damage` | 虚空狼王存活时，每有 1 名存活我方角色带有流血，虚空狼王当前伤害计算中的 ATK +10%。 |
+| `enemy_ashen_commander_aura_other_allies_atk_plus_20_def_plus_2` | `aura` | 骑士统领存活时，其它存活敌方单位 ATK +20%、DEF +2；统领死亡后该光环失效。 |
+| `enemy_ashen_commander_intercept_50_percent` | `before_targeted` | 骑士统领存活且其它敌方单位将被单体攻击指定为目标时，50% 概率将目标改为骑士统领。 |
+| `enemy_bulwark_def_plus_10_while_shielded` | `aura` | 缚誓壁垒当前护盾大于 0 时自身 DEF +10；护盾为 0 时该加成失效。 |
+| `enemy_apply_cannot_act_1_on_self_shield_break` | `on_shield_break` | 触发者护盾从大于 0 变为 0 时，触发者获得 1 回合无法行动状态。 |
+| `enemy_binder_soul_echo_ap_plus_30_on_ally_death` | `on_ally_death` | 钟楼缚魂师存活时，每有 1 个其它敌方单位死亡，自身 AP +30%，持续本场战斗。 |
+| `enemy_binder_redirect_target_to_random_ally_50_percent` | `before_targeted` | 钟楼缚魂师被单体攻击指定为目标时，若存在其它存活敌方单位，50% 概率将目标改为随机其它敌方单位。 |
+| `enemy_binder_siphon_kill_random_ally_heal_self_50_max_hp` | `effect_resolution` | 钟楼缚魂师「汲魂」杀死 1 名随机其它敌方单位，并治疗自身 50% 最大 HP；若没有其它存活敌方单位，该效果不执行。 |
+| `enemy_leader_battle_start_mark_shakuya_3_vulnerable_3` | `battle_start` | 癫狂的强盗首领战斗开始时，若灼夜在我方上场阵容中，对灼夜施加 3 回合猎杀标记和 3 层脆弱。 |
+| `enemy_leader_debuff_detonation_damage_and_consume_stacks` | `effect_resolution` | 癫狂的强盗首领「终极引爆」对全体我方分别读取脆弱、虚弱、流血和中毒层数总和，造成 `层数总和 × 100% ATK` 物理伤害；结算后消耗参与计算的这些层数。 |
+
+### 敌人自定义条件与目标选择
+
+| id | 类型 | 语义 |
+|----|------|------|
+| `attacker` | targetSelector.customId | 当前触发上下文中的攻击者。 |
+| `lowest_hp_ratio_enemy` | targetSelector.customId | 从敌人视角选择当前 HP 比例最低的存活我方角色；并列时按存在感权重抽取。 |
+| `aimed_target_by_self` | targetSelector.customId | 选择由当前来源敌人施加了瞄准标记的存活我方角色；没有合法目标时该行动不可用。 |
+| `random_enemy_ally` | targetSelector.customId | 从当前来源敌人的其它存活友方单位中随机选择 1 个。 |
+| `character_shakuya` | targetSelector.customId | 选择上场阵容中的灼夜；若灼夜未上场，该目标选择为空。 |
+| `aimed_target_by_self_exists` | condition.custom value | 当前来源敌人存在自己施加的瞄准目标。 |
+| `self_has_shield` | condition.custom value | 当前来源单位护盾大于 0。 |
+| `self_shield_zero` | condition.custom value | 当前来源单位护盾等于 0。 |
+| `target_is_not_self` | condition.custom value | 当前效果解析目标不是来源单位自身。 |
+| `turn_number_eq_1` | condition.custom value | 当前战斗回合数等于 1。 |
+| `turn_number_gte_2_and_no_marked_player` | condition.custom value | 当前战斗回合数大于等于 2，且场上没有由当前来源关注的存活标记目标。 |
+| `marked_enemy_alive` | condition.custom value | 当前来源关注的标记目标仍然存活。 |
 
 ## 装备被动
 

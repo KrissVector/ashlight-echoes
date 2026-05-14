@@ -1,0 +1,952 @@
+{
+  "schemaVersion": 1,
+  "enemies": [
+    {
+      "id": "shambling_corpse",
+      "name": "蹒跚活尸",
+      "role": "tutorial",
+      "chapterId": "prologue",
+      "typeTags": ["tutorial", "normal", "chapter_1_pool", "outer_corruption"],
+      "stats": { "hp": 32, "atk": 6, "ap": 0, "def": 0, "spd": 3, "crit": 0, "cdmg": 150, "evd": 0, "acc": 85 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "shambling_corpse_slow_claw",
+            "name": "迟缓抓挠",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["人形尸体轮廓", "灰烬侵蚀", "暗紫裂纹", "动作缓慢"]
+    },
+    {
+      "id": "ash_husk",
+      "name": "灰壳侵染体",
+      "role": "tutorial",
+      "chapterId": "prologue",
+      "typeTags": ["tutorial", "normal", "chapter_1_pool", "outer_corruption", "shield"],
+      "stats": { "hp": 42, "atk": 8, "ap": 0, "def": 1, "spd": 6, "crit": 0, "cdmg": 150, "evd": 0, "acc": 90 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "ash_husk_ash_claw",
+            "name": "灰爪",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "ash_husk_shell_start",
+          "trigger": "battle_start",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "shield", "target": "self", "formula": { "maxHp": 0.3 } }
+          ]
+        },
+        {
+          "id": "ash_husk_shell_break",
+          "trigger": "on_shield_break",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "weakness", "target": "self", "formula": { "base": 5 } }
+          ],
+          "oncePerTurn": false
+        }
+      ],
+      "visualKeywords": ["矮小硬壳", "灰黑色", "裂缝暗紫微光", "野兽扑咬动作"]
+    },
+    {
+      "id": "cinderfang_whelp",
+      "name": "烬齿幼狼",
+      "role": "tutorial",
+      "chapterId": "prologue",
+      "typeTags": ["tutorial", "normal", "chapter_1_pool", "outer_corruption", "bleed"],
+      "stats": { "hp": 36, "atk": 9, "ap": 0, "def": 0, "spd": 13, "crit": 5, "cdmg": 150, "evd": 10, "acc": 88 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "cinderfang_whelp_bite",
+            "name": "咬袭",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } },
+              { "type": "bleed", "formula": { "base": 1 } }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["狼形轮廓", "骨刺", "火炭裂齿", "赤橙眼光混入虚空紫"]
+    },
+    {
+      "id": "scavenger_ghoul",
+      "name": "食腐尸鬼",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "outer_corruption", "lifesteal"],
+      "stats": { "hp": 58, "atk": 11, "ap": 0, "def": 2, "spd": 7, "crit": 5, "cdmg": 150, "evd": 5, "acc": 90 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "scavenger_ghoul_feed_bite",
+            "name": "腐食撕咬",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } },
+              { "type": "lifesteal", "percent": 20 }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["人形尸鬼", "灰绿腐败皮肤", "咬痕", "背上挂着战场残片"]
+    },
+    {
+      "id": "plague_ghoul",
+      "name": "染疫尸鬼",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "void_rift", "poison"],
+      "stats": { "hp": 54, "atk": 9, "ap": 0, "def": 2, "spd": 6, "crit": 5, "cdmg": 150, "evd": 5, "acc": 90 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "plague_ghoul_miasma_spit",
+            "name": "疫雾喷吐",
+            "weight": 100,
+            "condition": { "type": "turn_mod", "value": 3 },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 0.5 } },
+              { "type": "poison", "target": "all_enemies", "formula": { "base": 1 } }
+            ]
+          },
+          {
+            "id": "plague_ghoul_plague_claw",
+            "name": "疫爪",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 0.9 } },
+              { "type": "poison", "formula": { "base": 1 } }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "plague_ghoul_plague_blood",
+          "trigger": "on_hit_by_basic_attack",
+          "targetSelector": { "type": "custom", "customId": "attacker" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_plague_ghoul_retaliate_poison_1_to_unshielded_basic_attacker" }
+          ]
+        }
+      ],
+      "visualKeywords": ["暗绿色毒雾", "灰白尸鬼", "骨缝渗液", "虚空紫和疫绿色混合光"]
+    },
+    {
+      "id": "wasteland_vulture",
+      "name": "荒原尸鹫",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "outer_corruption", "high_evasion", "execution"],
+      "stats": { "hp": 48, "atk": 13, "ap": 0, "def": 0, "spd": 16, "crit": 8, "cdmg": 150, "evd": 25, "acc": 90 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "wasteland_vulture_dive_peck",
+            "name": "俯冲啄击",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "custom", "customId": "lowest_hp_ratio_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "wasteland_vulture_predation",
+          "trigger": "aura",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_vulture_predation_atk_plus_30_if_player_hp_below_30" }
+          ]
+        }
+      ],
+      "visualKeywords": ["腐食飞禽", "翼膜破损", "长喙", "紫黑色羽根裂纹"]
+    },
+    {
+      "id": "ashen_knight",
+      "name": "灰烬骑士",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "summon", "silver_oath_remnant", "shield"],
+      "stats": { "hp": 66, "atk": 13, "ap": 0, "def": 4, "spd": 8, "crit": 5, "cdmg": 150, "evd": 5, "acc": 92 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "ashen_knight_guard",
+            "name": "举盾",
+            "weight": 80,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "self" },
+            "effects": [
+              { "type": "shield", "target": "self", "formula": { "base": 10, "atk": 1 } }
+            ]
+          },
+          {
+            "id": "ashen_knight_slash",
+            "name": "剑劈",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } }
+            ]
+          },
+          {
+            "id": "ashen_knight_sweep",
+            "name": "横扫",
+            "weight": 80,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 0.8 } }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["灰白骑士残魂", "破损银誓披风", "暗紫裂纹", "残刃"]
+    },
+    {
+      "id": "ashen_arbalist",
+      "name": "灰誓弩手",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "silver_oath_remnant", "aim"],
+      "stats": { "hp": 46, "atk": 15, "ap": 0, "def": 1, "spd": 7, "crit": 8, "cdmg": 150, "evd": 5, "acc": 92 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "ashen_arbalist_heart_piercer",
+            "name": "贯心弩矢",
+            "weight": 100,
+            "condition": { "type": "custom", "value": "aimed_target_by_self_exists" },
+            "targetSelector": { "type": "custom", "customId": "aimed_target_by_self" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1.8 } },
+              { "type": "custom", "customId": "enemy_arbalist_clear_aimed_target" }
+            ]
+          },
+          {
+            "id": "ashen_arbalist_aim",
+            "name": "灰羽瞄准",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "custom", "customId": "lowest_hp_ratio_enemy" },
+            "effects": [
+              { "type": "mark", "duration": 1, "tags": ["aimed_by_source", "visible_warning"] }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["城墙弩兵亡魂", "半透明披风", "银白弩机", "细线光标"]
+    },
+    {
+      "id": "hollow_oath_sentinel",
+      "name": "空甲守卫",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "silver_oath_remnant", "shield"],
+      "stats": { "hp": 92, "atk": 0, "ap": 0, "def": 10, "spd": 5, "crit": 0, "cdmg": 150, "evd": 0, "acc": 88 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "hollow_oath_sentinel_guard",
+            "name": "举盾",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "self" },
+            "effects": [
+              { "type": "shield", "target": "self", "formula": { "base": 10, "maxHp": 0.2 } }
+            ]
+          },
+          {
+            "id": "hollow_oath_sentinel_shield_bash",
+            "name": "盾击",
+            "weight": 100,
+            "condition": { "type": "custom", "value": "self_has_shield" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "shield": 1 } },
+              { "type": "custom", "customId": "enemy_hollow_sentinel_clear_self_shield_after_damage" }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["无人空铠", "塔盾", "军械库尘灰", "熄灭的银誓纹章"]
+    },
+    {
+      "id": "void_wolf",
+      "name": "虚空狼",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "summon", "void_rift", "bleed", "multi_hit"],
+      "stats": { "hp": 54, "atk": 12, "ap": 0, "def": 1, "spd": 15, "crit": 8, "cdmg": 150, "evd": 12, "acc": 90 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "void_wolf_rend_bite",
+            "name": "撕咬",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              {
+                "type": "damage",
+                "damageType": "physical",
+                "formula": {
+                  "atk": 1,
+                  "products": [{ "factors": ["atk", "bleedStacks"], "coefficient": 0.3 }]
+                }
+              },
+              { "type": "custom", "customId": "enemy_void_wolf_bite_bleed_or_double_if_unshielded" }
+            ]
+          },
+          {
+            "id": "void_wolf_rift_claw",
+            "name": "裂爪",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 0.8 }, "hits": 2 },
+              { "type": "custom", "customId": "enemy_void_wolf_claw_bleed_and_extra_hit_if_target_bleeding" }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["裂隙狼犬", "深紫皮肤", "暗红核心", "爪部拖出虚空裂痕"]
+    },
+    {
+      "id": "corpse_soldier",
+      "name": "活尸士兵",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "summon", "silver_oath_remnant", "multi_hit"],
+      "stats": { "hp": 55, "atk": 12, "ap": 0, "def": 2, "spd": 8, "crit": 5, "cdmg": 150, "evd": 5, "acc": 92 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "corpse_soldier_slash",
+            "name": "剑劈",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } }
+            ]
+          },
+          {
+            "id": "corpse_soldier_sweep",
+            "name": "横扫",
+            "weight": 80,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 0.8 } }
+            ]
+          },
+          {
+            "id": "corpse_soldier_triple_swing",
+            "name": "三连挥击",
+            "weight": 80,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 0.6 }, "hits": 3 }
+            ]
+          }
+        ]
+      },
+      "visualKeywords": ["旧要塞士兵遗骸", "残破制式甲", "僵硬训练动作"]
+    },
+    {
+      "id": "maddened_bandit",
+      "name": "癫狂的强盗",
+      "role": "normal",
+      "chapterId": "chapter_1",
+      "typeTags": ["normal", "special_follower", "blood_banner_remnant", "void_corrosion"],
+      "stats": { "hp": 88, "atk": 18, "ap": 0, "def": 4, "spd": 9, "crit": 30, "cdmg": 150, "evd": 8, "acc": 92 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "maddened_bandit_wild_blades",
+            "name": "乱刃",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } },
+              { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+            ]
+          },
+          {
+            "id": "maddened_bandit_poison_smoke",
+            "name": "毒烟手雷",
+            "weight": 50,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "base": 5, "atk": 0.5 } },
+              { "type": "poison", "target": "all_enemies", "formula": { "base": 1 } },
+              { "type": "percent_buff", "target": "all_enemies", "stat": "acc", "formula": { "base": -30 }, "duration": 1 }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "maddened_bandit_void_corrosion_self",
+          "trigger": "on_damaged",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_void_corrosion_self_1_vulnerable_1_weakness_on_attack_hit" }
+          ]
+        }
+      ],
+      "visualKeywords": ["破旧佣兵甲", "暗红旗布", "虚空裂纹从脖颈蔓延到脸侧"]
+    },
+    {
+      "id": "void_wolf_king",
+      "name": "虚空狼王",
+      "role": "elite",
+      "chapterId": "chapter_1",
+      "typeTags": ["elite", "void_rift", "bleed", "summoner", "multi_hit"],
+      "stats": { "hp": 230, "atk": 25, "ap": 0, "def": 3, "spd": 20, "crit": 30, "cdmg": 180, "evd": 12, "acc": 90 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "void_wolf_king_rend_bite",
+            "name": "撕咬",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              {
+                "type": "damage",
+                "damageType": "physical",
+                "formula": {
+                  "atk": 1,
+                  "products": [{ "factors": ["atk", "bleedStacks"], "coefficient": 0.3 }]
+                }
+              },
+              { "type": "custom", "customId": "enemy_void_wolf_bite_bleed_or_double_if_unshielded" }
+            ]
+          },
+          {
+            "id": "void_wolf_king_rift_claw",
+            "name": "裂爪",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 0.8 }, "hits": 2 },
+              { "type": "custom", "customId": "enemy_void_wolf_claw_bleed_and_extra_hit_if_target_bleeding" }
+            ]
+          },
+          {
+            "id": "void_wolf_king_howl",
+            "name": "狼嚎",
+            "weight": 50,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "all_allies" },
+            "effects": [
+              { "type": "percent_buff", "target": "all_allies", "stat": "atk", "formula": { "base": 30 }, "duration": 3 }
+            ]
+          },
+          {
+            "id": "void_wolf_king_call_pack",
+            "name": "狼群的呼唤",
+            "weight": 100,
+            "condition": { "type": "turn_mod", "value": 4 },
+            "targetSelector": { "type": "self" },
+            "effects": [
+              { "type": "summon", "enemyId": "void_wolf", "count": 1 }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "void_wolf_king_bloodlust",
+          "trigger": "aura",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_void_wolf_king_atk_plus_10_percent_per_bleeding_player" }
+          ]
+        }
+      ],
+      "visualKeywords": ["巨型虚空狼", "狼群首领", "暗红核心", "裂隙长嚎"]
+    },
+    {
+      "id": "ashen_commander",
+      "name": "骑士统领",
+      "role": "elite",
+      "chapterId": "chapter_1",
+      "typeTags": ["elite", "silver_oath_remnant", "aura", "intercept", "shield"],
+      "stats": { "hp": 280, "atk": 20, "ap": 0, "def": 8, "spd": 11, "crit": 12, "cdmg": 160, "evd": 8, "acc": 94 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "ashen_commander_guard",
+            "name": "举盾",
+            "weight": 80,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "self" },
+            "effects": [
+              { "type": "shield", "target": "self", "formula": { "base": 10, "atk": 1 } }
+            ]
+          },
+          {
+            "id": "ashen_commander_slash",
+            "name": "剑劈",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } }
+            ]
+          },
+          {
+            "id": "ashen_commander_sweep",
+            "name": "横扫",
+            "weight": 80,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 0.8 } }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "ashen_commander_aura",
+          "trigger": "aura",
+          "targetSelector": { "type": "all_allies" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_ashen_commander_aura_other_allies_atk_plus_20_def_plus_2" }
+          ]
+        },
+        {
+          "id": "ashen_commander_intercept",
+          "trigger": "before_targeted",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_ashen_commander_intercept_50_percent" }
+          ]
+        }
+      ],
+      "visualKeywords": ["骑士团小队长残骸", "污染军旗", "破损指挥剑"]
+    },
+    {
+      "id": "bound_oath_bulwark",
+      "name": "缚誓壁垒",
+      "role": "elite",
+      "chapterId": "chapter_1",
+      "typeTags": ["elite", "silver_oath_remnant", "shield", "bulwark"],
+      "stats": { "hp": 300, "atk": 13, "ap": 4, "def": 4, "spd": 5, "crit": 5, "cdmg": 150, "evd": 0, "acc": 90 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "bound_oath_bulwark_rebuild",
+            "name": "誓盾重组",
+            "weight": 100,
+            "condition": { "type": "custom", "value": "self_shield_zero" },
+            "targetSelector": { "type": "self" },
+            "effects": [
+              { "type": "shield", "target": "self", "formula": { "maxHp": 0.15 } }
+            ]
+          },
+          {
+            "id": "bound_oath_bulwark_radiance",
+            "name": "誓盾光辉",
+            "weight": 100,
+            "condition": { "type": "custom", "value": "self_has_shield" },
+            "targetSelector": { "type": "all_allies" },
+            "effects": [
+              { "type": "shield", "target": "all_allies", "formula": { "shield": 0.5 } }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "bound_oath_bulwark_crystal_shield",
+          "trigger": "battle_start",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "shield", "target": "self", "formula": { "maxHp": 0.15 } }
+          ]
+        },
+        {
+          "id": "bound_oath_bulwark_shielded_def",
+          "trigger": "aura",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_bulwark_def_plus_10_while_shielded" }
+          ]
+        },
+        {
+          "id": "bound_oath_bulwark_reconstruct_stagger",
+          "trigger": "on_shield_break",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_apply_cannot_act_1_on_self_shield_break" }
+          ]
+        }
+      ],
+      "visualKeywords": ["多盾集合体", "撤离通道门闩", "盾牌缝隙生长虚空晶体"]
+    },
+    {
+      "id": "bell_tower_binder",
+      "name": "钟楼缚魂师",
+      "role": "elite",
+      "chapterId": "chapter_1",
+      "typeTags": ["elite", "silver_oath_remnant", "summoner", "sacrifice", "redirect"],
+      "stats": { "hp": 132, "atk": 8, "ap": 15, "def": 5, "spd": 9, "crit": 5, "cdmg": 150, "evd": 5, "acc": 92 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "bell_tower_binder_bell_recall",
+            "name": "丧钟召回",
+            "weight": 100,
+            "condition": { "type": "turn_mod", "value": 4 },
+            "targetSelector": { "type": "self" },
+            "effects": [
+              { "type": "summon", "enemyId": "corpse_soldier", "count": 1 }
+            ]
+          },
+          {
+            "id": "bell_tower_binder_soul_bell",
+            "name": "缚魂钟声",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "magical", "formula": { "ap": 0.7 } },
+              { "type": "weakness", "target": "all_enemies", "formula": { "base": 2 } }
+            ]
+          },
+          {
+            "id": "bell_tower_binder_soul_drain",
+            "name": "汲魂",
+            "weight": 100,
+            "condition": { "type": "hp_below", "target": "self", "threshold": 0.5 },
+            "targetSelector": { "type": "custom", "customId": "random_enemy_ally" },
+            "effects": [
+              { "type": "custom", "customId": "enemy_binder_siphon_kill_random_ally_heal_self_50_max_hp" }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "bell_tower_binder_soul_echo",
+          "trigger": "on_ally_death",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_binder_soul_echo_ap_plus_30_on_ally_death" }
+          ]
+        },
+        {
+          "id": "bell_tower_binder_shadow_shift",
+          "trigger": "before_targeted",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_binder_redirect_target_to_random_ally_50_percent" }
+          ]
+        }
+      ],
+      "visualKeywords": ["钟楼书记官残魂", "破钟碎片", "漂浮铃绳", "银白亡魂音波"]
+    },
+    {
+      "id": "maddened_bandit_leader",
+      "name": "癫狂的强盗首领",
+      "role": "elite",
+      "chapterId": "chapter_1",
+      "typeTags": ["special_elite", "blood_banner_remnant", "mark", "void_corrosion", "debuff_detonation"],
+      "stats": { "hp": 270, "atk": 25, "ap": 0, "def": 9, "spd": 13, "crit": 35, "cdmg": 160, "evd": 12, "acc": 95 },
+      "ai": {
+        "type": "weighted_actions",
+        "actions": [
+          {
+            "id": "maddened_bandit_leader_hunt_mark",
+            "name": "猎杀标记",
+            "weight": 60,
+            "condition": { "type": "custom", "value": "turn_number_gte_2_and_no_marked_player" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "mark", "duration": 3, "tags": ["hunt_mark"] },
+              { "type": "vulnerable", "formula": { "base": 3 } }
+            ]
+          },
+          {
+            "id": "maddened_bandit_leader_execution_combo",
+            "name": "索命连击",
+            "weight": 100,
+            "condition": { "type": "turn_mod", "value": 3 },
+            "targetSelector": { "type": "marked_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 0.9 }, "hits": 2 },
+              { "type": "bleed", "formula": { "base": 1 } },
+              { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+            ]
+          },
+          {
+            "id": "maddened_bandit_leader_hunt_cleave",
+            "name": "追杀重斩",
+            "weight": 100,
+            "condition": { "type": "custom", "value": "marked_enemy_alive" },
+            "targetSelector": { "type": "marked_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1.3 } },
+              { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+            ]
+          },
+          {
+            "id": "maddened_bandit_leader_poison_smoke",
+            "name": "毒烟手雷",
+            "weight": 60,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "base": 5, "atk": 0.5 } },
+              { "type": "poison", "target": "all_enemies", "formula": { "base": 1 } },
+              { "type": "percent_buff", "target": "all_enemies", "stat": "acc", "formula": { "base": -30 }, "duration": 1 }
+            ]
+          },
+          {
+            "id": "maddened_bandit_leader_mad_chop",
+            "name": "癫狂劈砍",
+            "weight": 100,
+            "condition": { "type": "always" },
+            "targetSelector": { "type": "presence_weighted_enemy" },
+            "effects": [
+              { "type": "damage", "damageType": "physical", "formula": { "atk": 1.15 } },
+              { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+            ]
+          },
+          {
+            "id": "maddened_bandit_leader_final_detonation",
+            "name": "终极引爆",
+            "weight": 100,
+            "condition": { "type": "turn_mod", "value": 5 },
+            "targetSelector": { "type": "all_enemies" },
+            "effects": [
+              { "type": "custom", "customId": "enemy_leader_debuff_detonation_damage_and_consume_stacks" }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "maddened_bandit_leader_opening_mark",
+          "trigger": "battle_start",
+          "targetSelector": { "type": "custom", "customId": "character_shakuya" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_leader_battle_start_mark_shakuya_3_vulnerable_3" }
+          ]
+        },
+        {
+          "id": "maddened_bandit_leader_void_corrosion_self",
+          "trigger": "on_damaged",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_void_corrosion_self_1_vulnerable_1_weakness_on_attack_hit" }
+          ]
+        }
+      ],
+      "visualKeywords": ["暗红旗布披肩", "缺口重刀", "烧焦布条", "虚空污染裂纹"]
+    },
+    {
+      "id": "oathbreaker_reinhardt",
+      "name": "断誓之盾·莱恩哈特",
+      "role": "boss",
+      "chapterId": "chapter_1",
+      "typeTags": ["boss", "silver_oath", "shield", "void_corrosion", "phase_weighted"],
+      "stats": { "hp": 500, "atk": 20, "ap": 10, "def": 12, "spd": 9, "crit": 10, "cdmg": 160, "evd": 5, "acc": 95 },
+      "ai": {
+        "type": "phase_weighted_actions",
+        "phases": [
+          {
+            "id": "gatekeeper",
+            "condition": { "type": "hp_above", "target": "self", "threshold": 0.5 },
+            "actions": [
+              {
+                "id": "oathbreaker_reinhardt_oath_wall",
+                "name": "残誓护壁",
+                "weight": 100,
+                "condition": { "type": "custom", "value": "turn_number_eq_1" },
+                "targetSelector": { "type": "self" },
+                "effects": [
+                  { "type": "shield", "target": "self", "formula": { "base": 35 } }
+                ]
+              },
+              {
+                "id": "oathbreaker_reinhardt_silver_oath_shield",
+                "name": "银誓之盾",
+                "weight": 100,
+                "condition": { "type": "always" },
+                "targetSelector": { "type": "all_allies" },
+                "effects": [
+                  { "type": "shield", "target": "self", "formula": { "base": 10, "atk": 1 } },
+                  { "type": "shield", "target": "all_allies", "formula": { "base": 5, "atk": 0.5 }, "condition": { "type": "custom", "value": "target_is_not_self" } }
+                ]
+              },
+              {
+                "id": "oathbreaker_reinhardt_slash",
+                "name": "剑劈",
+                "weight": 80,
+                "condition": { "type": "always" },
+                "targetSelector": { "type": "presence_weighted_enemy" },
+                "effects": [
+                  { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } },
+                  { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+                ]
+              },
+              {
+                "id": "oathbreaker_reinhardt_sweep",
+                "name": "横扫",
+                "weight": 80,
+                "condition": { "type": "always" },
+                "targetSelector": { "type": "all_enemies" },
+                "effects": [
+                  { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 0.8 } },
+                  { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+                ]
+              },
+              {
+                "id": "oathbreaker_reinhardt_shield_bash",
+                "name": "盾击",
+                "weight": 100,
+                "condition": { "type": "custom", "value": "self_has_shield" },
+                "targetSelector": { "type": "presence_weighted_enemy" },
+                "effects": [
+                  { "type": "damage", "damageType": "physical", "formula": { "shield": 1 } },
+                  { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+                ]
+              },
+              {
+                "id": "oathbreaker_reinhardt_oath_radiance",
+                "name": "誓盾光辉",
+                "weight": 60,
+                "condition": { "type": "custom", "value": "self_has_shield" },
+                "targetSelector": { "type": "all_allies" },
+                "effects": [
+                  { "type": "shield", "target": "all_allies", "formula": { "shield": 0.5 } }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "oathbroken",
+            "condition": { "type": "hp_below", "target": "self", "threshold": 0.5 },
+            "enterOnceEffects": [
+              { "type": "damage", "target": "all_enemies", "damageType": "fixed", "formula": { "base": 18 }, "ignoreDefense": true, "ignoreShield": true }
+            ],
+            "actions": [
+              {
+                "id": "oathbreaker_reinhardt_phase2_slash",
+                "name": "剑劈",
+                "weight": 80,
+                "condition": { "type": "always" },
+                "targetSelector": { "type": "presence_weighted_enemy" },
+                "effects": [
+                  { "type": "damage", "damageType": "physical", "formula": { "atk": 1 } },
+                  { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+                ]
+              },
+              {
+                "id": "oathbreaker_reinhardt_phase2_sweep",
+                "name": "横扫",
+                "weight": 80,
+                "condition": { "type": "always" },
+                "targetSelector": { "type": "all_enemies" },
+                "effects": [
+                  { "type": "damage", "target": "all_enemies", "damageType": "physical", "formula": { "atk": 0.8 } },
+                  { "type": "custom", "customId": "enemy_void_corrosion_apply_2_vulnerable_2_weakness_if_target_unshielded_on_hit" }
+                ]
+              },
+              {
+                "id": "oathbreaker_reinhardt_rift_echo",
+                "name": "裂隙余波",
+                "weight": 80,
+                "condition": { "type": "always" },
+                "targetSelector": { "type": "all_enemies" },
+                "effects": [
+                  { "type": "damage", "target": "all_enemies", "damageType": "fixed", "formula": { "ap": 1 }, "ignoreDefense": true, "ignoreShield": true }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "passiveEffects": [
+        {
+          "id": "oathbreaker_reinhardt_void_corrosion_self",
+          "trigger": "on_damaged",
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "custom", "customId": "enemy_void_corrosion_self_1_vulnerable_1_weakness_on_attack_hit" }
+          ]
+        },
+        {
+          "id": "oathbreaker_reinhardt_oathbreak_berserk",
+          "trigger": "turn_start",
+          "condition": { "type": "hp_below", "target": "self", "threshold": 0.5 },
+          "targetSelector": { "type": "self" },
+          "effects": [
+            { "type": "buff", "target": "self", "stat": "atk", "formula": { "base": 2 }, "duration": "battle" },
+            { "type": "buff", "target": "self", "stat": "def", "formula": { "base": -1 }, "duration": "battle" }
+          ]
+        }
+      ],
+      "visualKeywords": ["巨型盾骑士", "破裂塔盾", "银誓徽章", "虚空晶体贯穿盾面", "半张灰白人脸"]
+    }
+  ]
+}

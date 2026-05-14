@@ -16,11 +16,13 @@
         {
           "step": 1,
           "type": "tutorial_battle",
+          "encounterId": "enc_prologue_reisa_tutorial_1",
           "summary": "玲纱单人教程战"
         },
         {
           "step": 2,
           "type": "tutorial_battle",
+          "encounterId": "enc_prologue_reisa_shakuya_tutorial_2",
           "summary": "玲纱与灼夜双人教程战"
         }
       ]
@@ -63,6 +65,7 @@
         {
           "step": 13,
           "type": "boss",
+          "encounterId": "enc_ch1_boss_reinhardt",
           "summary": "断誓之盾·莱恩哈特"
         }
       ]

@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "encounters": [
+    {
+      "id": "enc_prologue_reisa_tutorial_1",
+      "chapterId": "prologue",
+      "nodeType": "normal_battle",
+      "name": "边烬哨站：蹒跚活尸",
+      "enemyGroups": [
+        { "enemyId": "shambling_corpse", "count": 1 }
+      ],
+      "forcedCharacters": ["reisa"],
+      "rewardTableId": "reward_prologue_tutorial",
+      "tags": ["tutorial", "prologue", "fixed_step"]
+    },
+    {
+      "id": "enc_prologue_reisa_shakuya_tutorial_2",
+      "chapterId": "prologue",
+      "nodeType": "normal_battle",
+      "name": "边烬哨站：灰壳与幼狼",
+      "enemyGroups": [
+        { "enemyId": "ash_husk", "count": 1 },
+        { "enemyId": "cinderfang_whelp", "count": 2 }
+      ],
+      "forcedCharacters": ["reisa", "shakuya"],
+      "rewardTableId": "reward_prologue_tutorial",
+      "tags": ["tutorial", "prologue", "fixed_step"]
+    },
+    {
+      "id": "enc_ch1_normal_outer_husks",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "外缘侵蚀：活尸群",
+      "enemyGroups": [
+        { "enemyId": "shambling_corpse", "count": 2 },
+        { "enemyId": "ash_husk", "count": 2 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_1_5", "outer_corruption"]
+    },
+    {
+      "id": "enc_ch1_normal_vulture_husks",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "外缘侵蚀：尸鹫盘旋",
+      "enemyGroups": [
+        { "enemyId": "shambling_corpse", "count": 2 },
+        { "enemyId": "ash_husk", "count": 2 },
+        { "enemyId": "wasteland_vulture", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_1_5", "outer_corruption"]
+    },
+    {
+      "id": "enc_ch1_normal_void_wolf_whelps",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "地下裂隙：幼狼伏击",
+      "enemyGroups": [
+        { "enemyId": "void_wolf", "count": 1 },
+        { "enemyId": "cinderfang_whelp", "count": 2 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_1_5", "void_rift", "bleed"]
+    },
+    {
+      "id": "enc_ch1_normal_scavenger_vultures",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "外缘侵蚀：食腐群",
+      "enemyGroups": [
+        { "enemyId": "scavenger_ghoul", "count": 2 },
+        { "enemyId": "wasteland_vulture", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_1_5", "outer_corruption"]
+    },
+    {
+      "id": "enc_ch1_normal_plague_scavengers",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "地下裂隙：疫尸游荡",
+      "enemyGroups": [
+        { "enemyId": "scavenger_ghoul", "count": 1 },
+        { "enemyId": "plague_ghoul", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_1_5", "void_rift", "poison"]
+    },
+    {
+      "id": "enc_ch1_normal_plague_vulture_pack",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "地下裂隙：疫雾尸鹫",
+      "enemyGroups": [
+        { "enemyId": "scavenger_ghoul", "count": 2 },
+        { "enemyId": "plague_ghoul", "count": 1 },
+        { "enemyId": "wasteland_vulture", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_7_plus", "outer_corruption", "poison"]
+    },
+    {
+      "id": "enc_ch1_normal_void_wolf_pack",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "地下裂隙：虚空狼群",
+      "enemyGroups": [
+        { "enemyId": "void_wolf", "count": 2 },
+        { "enemyId": "cinderfang_whelp", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_7_plus", "void_rift", "bleed"]
+    },
+    {
+      "id": "enc_ch1_normal_ashen_crossfire",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "银誓残阵：城墙交叉火力",
+      "enemyGroups": [
+        { "enemyId": "ashen_knight", "count": 1 },
+        { "enemyId": "ashen_arbalist", "count": 2 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_7_plus", "silver_oath_remnant", "aim"]
+    },
+    {
+      "id": "enc_ch1_normal_hollow_armory",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "银誓残阵：旧军械库",
+      "enemyGroups": [
+        { "enemyId": "hollow_oath_sentinel", "count": 2 },
+        { "enemyId": "corpse_soldier", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_7_plus", "silver_oath_remnant", "shield"]
+    },
+    {
+      "id": "enc_ch1_normal_bandit_vulture_ambush",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "血旗残党：荒原追击",
+      "enemyGroups": [
+        { "enemyId": "maddened_bandit", "count": 3 },
+        { "enemyId": "wasteland_vulture", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_7_plus", "blood_banner_remnant"]
+    },
+    {
+      "id": "enc_ch1_normal_ashen_knight_squad",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "银誓残阵：骑士小队",
+      "enemyGroups": [
+        { "enemyId": "ashen_knight", "count": 3 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_7_plus", "silver_oath_remnant"]
+    },
+    {
+      "id": "enc_ch1_normal_hollow_crossfire",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "银誓残阵：盾后弩线",
+      "enemyGroups": [
+        { "enemyId": "hollow_oath_sentinel", "count": 1 },
+        { "enemyId": "ashen_arbalist", "count": 2 },
+        { "enemyId": "corpse_soldier", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "normal", "step_7_plus", "silver_oath_remnant", "shield", "aim"]
+    },
+    {
+      "id": "enc_ch1_elite_void_wolf_king",
+      "chapterId": "chapter_1",
+      "nodeType": "elite_battle",
+      "name": "精英：虚空狼王",
+      "enemyGroups": [
+        { "enemyId": "void_wolf_king", "count": 1 },
+        { "enemyId": "void_wolf", "count": 2 },
+        { "enemyId": "cinderfang_whelp", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_elite_battle",
+      "tags": ["chapter_1", "elite", "void_rift", "bleed"]
+    },
+    {
+      "id": "enc_ch1_elite_ashen_commander",
+      "chapterId": "chapter_1",
+      "nodeType": "elite_battle",
+      "name": "精英：骑士统领",
+      "enemyGroups": [
+        { "enemyId": "ashen_commander", "count": 1 },
+        { "enemyId": "ashen_knight", "count": 2 },
+        { "enemyId": "ashen_arbalist", "count": 1 }
+      ],
+      "rewardTableId": "reward_ch1_elite_battle",
+      "tags": ["chapter_1", "elite", "silver_oath_remnant"]
+    },
+    {
+      "id": "enc_ch1_elite_bound_oath_bulwark",
+      "chapterId": "chapter_1",
+      "nodeType": "elite_battle",
+      "name": "精英：缚誓壁垒",
+      "enemyGroups": [
+        { "enemyId": "bound_oath_bulwark", "count": 1 },
+        { "enemyId": "hollow_oath_sentinel", "count": 2 }
+      ],
+      "rewardTableId": "reward_ch1_elite_battle",
+      "tags": ["chapter_1", "elite", "silver_oath_remnant", "shield"]
+    },
+    {
+      "id": "enc_ch1_elite_bell_tower_binder",
+      "chapterId": "chapter_1",
+      "nodeType": "elite_battle",
+      "name": "精英：钟楼缚魂师",
+      "enemyGroups": [
+        { "enemyId": "bell_tower_binder", "count": 1 },
+        { "enemyId": "corpse_soldier", "count": 2 },
+        { "enemyId": "ashen_arbalist", "count": 2 }
+      ],
+      "rewardTableId": "reward_ch1_elite_battle",
+      "tags": ["chapter_1", "elite", "silver_oath_remnant", "summon"]
+    },
+    {
+      "id": "enc_ch1_shakuya_ultimate_unlock",
+      "chapterId": "chapter_1",
+      "nodeType": "special_elite",
+      "name": "血战到底！",
+      "enemyGroups": [
+        { "enemyId": "maddened_bandit_leader", "count": 1 },
+        { "enemyId": "maddened_bandit", "count": 4 }
+      ],
+      "forcedCharacters": ["reisa", "shakuya"],
+      "battleStartModifierIds": ["post_last_stand"],
+      "battleStartUltimateUnlocks": [
+        {
+          "characterId": "reisa",
+          "ultimateCardId": "immovable",
+          "addToOpeningHand": true,
+          "addToDrawPile": true,
+          "condition": { "type": "ultimate_not_unlocked", "characterId": "reisa", "ultimateCardId": "immovable" }
+        },
+        {
+          "characterId": "shakuya",
+          "ultimateCardId": "flame_raven",
+          "addToOpeningHand": true,
+          "addToDrawPile": true,
+          "condition": { "type": "ultimate_not_unlocked", "characterId": "shakuya", "ultimateCardId": "flame_raven" }
+        }
+      ],
+      "rewardTableId": "reward_ch1_shakuya_special_elite",
+      "unlocksOnClear": [
+        { "type": "meta_flag", "targetId": "shakuya_amulet_origin_revealed" },
+        { "type": "run_flag", "targetId": "ch1_step6_last_stand_cleared" }
+      ],
+      "tags": ["chapter_1", "fixed_step", "special_elite", "blood_banner_remnant"]
+    },
+    {
+      "id": "enc_ch1_shakuya_breakout",
+      "chapterId": "chapter_1",
+      "nodeType": "normal_battle",
+      "name": "突出重围",
+      "enemyGroups": [
+        { "enemyId": "maddened_bandit", "count": 3 }
+      ],
+      "forcedCharacters": ["reisa", "shakuya"],
+      "battleStartModifierIds": ["story_breakout_hp_80"],
+      "rewardTableId": "reward_ch1_normal_battle",
+      "tags": ["chapter_1", "fixed_step", "normal", "blood_banner_remnant"]
+    },
+    {
+      "id": "enc_ch1_boss_reinhardt",
+      "chapterId": "chapter_1",
+      "nodeType": "boss",
+      "name": "断誓之盾·莱恩哈特",
+      "enemyGroups": [
+        { "enemyId": "oathbreaker_reinhardt", "count": 1 },
+        { "enemyId": "ashen_knight", "count": 2 },
+        { "enemyId": "ashen_arbalist", "count": 2 }
+      ],
+      "battleStartUltimateUnlocks": [
+        {
+          "characterId": "reisa",
+          "ultimateCardId": "immovable",
+          "addToOpeningHand": true,
+          "addToDrawPile": true,
+          "condition": { "type": "ultimate_not_unlocked", "characterId": "reisa", "ultimateCardId": "immovable" }
+        },
+        {
+          "characterId": "shakuya",
+          "ultimateCardId": "flame_raven",
+          "addToOpeningHand": true,
+          "addToDrawPile": true,
+          "condition": { "type": "ultimate_not_unlocked", "characterId": "shakuya", "ultimateCardId": "flame_raven" }
+        }
+      ],
+      "rewardTableId": "reward_ch1_boss",
+      "tags": ["chapter_1", "boss", "fixed_step", "silver_oath"]
+    }
+  ],
+  "pools": {
+    "pool_ch1_normal_encounters": [
+      { "encounterId": "enc_ch1_normal_outer_husks", "stepRange": [1, 5] },
+      { "encounterId": "enc_ch1_normal_vulture_husks", "stepRange": [1, 5] },
+      { "encounterId": "enc_ch1_normal_void_wolf_whelps", "stepRange": [1, 5] },
+      { "encounterId": "enc_ch1_normal_scavenger_vultures", "stepRange": [1, 5] },
+      { "encounterId": "enc_ch1_normal_plague_scavengers", "stepRange": [1, 5] },
+      { "encounterId": "enc_ch1_normal_plague_vulture_pack", "stepRange": [7, 12] },
+      { "encounterId": "enc_ch1_normal_void_wolf_pack", "stepRange": [7, 12] },
+      { "encounterId": "enc_ch1_normal_ashen_crossfire", "stepRange": [7, 12] },
+      { "encounterId": "enc_ch1_normal_hollow_armory", "stepRange": [7, 12] },
+      { "encounterId": "enc_ch1_normal_bandit_vulture_ambush", "stepRange": [7, 12] },
+      { "encounterId": "enc_ch1_normal_ashen_knight_squad", "stepRange": [7, 12] },
+      { "encounterId": "enc_ch1_normal_hollow_crossfire", "stepRange": [7, 12] }
+    ],
+    "pool_ch1_elite_encounters": [
+      { "encounterId": "enc_ch1_elite_void_wolf_king", "stepRange": [1, 12] },
+      { "encounterId": "enc_ch1_elite_ashen_commander", "stepRange": [1, 12] },
+      { "encounterId": "enc_ch1_elite_bound_oath_bulwark", "stepRange": [1, 12] },
+      { "encounterId": "enc_ch1_elite_bell_tower_binder", "stepRange": [1, 12] }
+    ]
+  }
+}
