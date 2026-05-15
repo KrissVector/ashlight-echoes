@@ -74,6 +74,146 @@
       "tags": ["chapter_1_shop_pool", "normal_drop_pool"]
     },
     {
+      "id": "battle_minor_healing_potion",
+      "name": "小型治疗药水",
+      "rarity": "normal",
+      "description": "战斗中使用，回复 30%最大HP",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "heal", "target": "selected", "formula": { "maxHp": 0.3 } }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "battle_minor_defense_potion",
+      "name": "铁肤药水",
+      "rarity": "normal",
+      "description": "本场战斗 DEF+8",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "buff", "target": "selected", "stat": "def", "formula": { "base": 8 }, "duration": "battle" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "battle_minor_attack_potion",
+      "name": "战意药水",
+      "rarity": "normal",
+      "description": "本场战斗 ATK+20%",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "atk", "formula": { "base": 20 }, "duration": "battle" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "battle_minor_ap_potion",
+      "name": "灵泉药水",
+      "rarity": "normal",
+      "description": "本场战斗 AP+20%",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "ap", "formula": { "base": 20 }, "duration": "battle" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "battle_minor_evasion_potion",
+      "name": "轻身药水",
+      "rarity": "normal",
+      "description": "本场战斗闪避+30%",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "buff", "target": "selected", "stat": "evd", "formula": { "base": 30 }, "duration": "battle" }
+      ],
+      "price": { "min": 25, "max": 50, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "chapter_1_shop_pool", "normal_drop_pool"]
+    },
+    {
+      "id": "battle_major_healing_potion",
+      "name": "高效治疗药水",
+      "rarity": "rare",
+      "description": "战斗中使用，回复 70%最大HP",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "heal", "target": "selected", "formula": { "maxHp": 0.7 } }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "rare_drop_pool"]
+    },
+    {
+      "id": "battle_major_defense_potion",
+      "name": "坚壁药水",
+      "rarity": "rare",
+      "description": "本场战斗 DEF+15",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "buff", "target": "selected", "stat": "def", "formula": { "base": 15 }, "duration": "battle" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "rare_drop_pool"]
+    },
+    {
+      "id": "battle_major_attack_potion",
+      "name": "狂攻药水",
+      "rarity": "rare",
+      "description": "本场战斗 ATK+40%",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "atk", "formula": { "base": 40 }, "duration": "battle" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "rare_drop_pool"]
+    },
+    {
+      "id": "battle_major_ap_potion",
+      "name": "奥能药水",
+      "rarity": "rare",
+      "description": "本场战斗 AP+40%",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "percent_buff", "target": "selected", "stat": "ap", "formula": { "base": 40 }, "duration": "battle" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "rare_drop_pool"]
+    },
+    {
+      "id": "battle_major_evasion_potion",
+      "name": "幻步药水",
+      "rarity": "rare",
+      "description": "本场战斗闪避+50%",
+      "targetType": "single_character",
+      "useTiming": "player_action",
+      "consumeOnUse": true,
+      "effects": [
+        { "type": "buff", "target": "selected", "stat": "evd", "formula": { "base": 50 }, "duration": "battle" }
+      ],
+      "price": { "min": 50, "max": 80, "sellRatio": 0.4 },
+      "tags": ["battle_consumable", "rare_drop_pool"]
+    },
+    {
       "id": "assault_elixir",
       "name": "猛攻秘药",
       "rarity": "rare",
@@ -663,8 +803,8 @@
     }
   ],
   "pools": {
-    "pool_potions_common_all": ["strength_tonic", "endurance_tonic", "protection_tonic", "agility_tonic", "precision_tonic", "lumina_essence"],
-    "pool_potions_rare_all": ["assault_elixir", "ironwall_elixir", "spirit_elixir", "lethal_elixir", "life_elixir", "venom_elixir", "bloodsuck_elixir", "focus_elixir", "multi_hit_elixir", "nirvana_elixir"],
+    "pool_potions_common_all": ["strength_tonic", "endurance_tonic", "protection_tonic", "agility_tonic", "precision_tonic", "lumina_essence", "battle_minor_healing_potion", "battle_minor_defense_potion", "battle_minor_attack_potion", "battle_minor_ap_potion", "battle_minor_evasion_potion"],
+    "pool_potions_rare_all": ["assault_elixir", "ironwall_elixir", "spirit_elixir", "lethal_elixir", "life_elixir", "venom_elixir", "bloodsuck_elixir", "focus_elixir", "multi_hit_elixir", "nirvana_elixir", "battle_major_healing_potion", "battle_major_defense_potion", "battle_major_attack_potion", "battle_major_ap_potion", "battle_major_evasion_potion"],
     "pool_potions_epic_all": ["berserker_blood", "archmage_essence", "shadow_soul", "guardian_will", "life_siphon", "chain_reaction", "energy_source", "ash_secret_elixir", "corrosion_elixir"],
     "pool_potions_legendary_all": ["card_copy_potion", "card_removal_potion", "universal_remodel_potion", "talent_awakening", "limit_breakthrough"]
   }

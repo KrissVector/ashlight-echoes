@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "shops": [
+    {
+      "id": "shop_ch1_default",
+      "chapterId": "chapter_1",
+      "itemRules": [
+        {
+          "itemType": "equipment",
+          "minCount": 3,
+          "maxCount": 3,
+          "rarityWeights": {
+            "normal": 100
+          },
+          "poolId": "pool_equipment_common_all"
+        },
+        {
+          "itemType": "potion",
+          "minCount": 3,
+          "maxCount": 3,
+          "rarityWeights": {
+            "normal": 100
+          },
+          "poolId": "pool_potions_common_all"
+        }
+      ],
+      "services": [
+        {
+          "type": "manual_save",
+          "price": 10
+        },
+        {
+          "type": "recycle_equipment",
+          "price": {
+            "type": "sell_ratio",
+            "sellRatio": 0.4
+          }
+        },
+        {
+          "type": "recycle_potion",
+          "price": {
+            "type": "sell_ratio",
+            "sellRatio": 0.4
+          }
+        },
+        {
+          "type": "remove_cursed_equipment",
+          "price": 25
+        },
+        {
+          "type": "cleanse_modifier",
+          "price": 25
+        },
+        {
+          "type": "repair_equipment",
+          "price": 25
+        }
+      ]
+    }
+  ]
+}

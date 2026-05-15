@@ -633,13 +633,6 @@
       "chapter_3": { "rare": 50, "epic": 50 },
       "chapter_4": { "epic": 100 },
       "chapter_5": { "epic": 90, "legendary": 10 }
-    },
-    "shopEquipment": {
-      "chapter_1": { "normal": 100 },
-      "chapter_2": { "normal": 80, "rare": 20 },
-      "chapter_3": { "normal": 60, "rare": 30, "epic": 10 },
-      "chapter_4": { "normal": 40, "rare": 40, "epic": 20 },
-      "chapter_5": { "normal": 30, "rare": 40, "epic": 25, "legendary": 5 }
     }
   },
   "goldRules": {
@@ -648,9 +641,6 @@
     "bossBattleVictory": 100,
     "growthNormalGold": 20,
     "growthRareGold": 50,
-    "growthRefreshCost": 5,
-    "shopManualSaveCost": 10,
-    "shopCleanseDebuffCost": 25,
-    "curseEquipmentRemovalCost": 25
+    "growthRefreshCost": 5
   }
 }

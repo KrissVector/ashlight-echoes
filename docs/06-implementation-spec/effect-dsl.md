@@ -21,7 +21,7 @@
 - `docs/02-systems/battle.md`：伤害、治疗、护盾、毒、流血、虚弱、脆弱、AS、能量等战斗规则。
 - `docs/02-systems/cards.md`：卡牌来源、牌区、升级、消耗和变形规则。
 - `docs/02-systems/equipment.md`：装备属性加成、附带卡牌、改变卡牌、诅咒牌。
-- `docs/02-systems/potions.md`：药水永久成长、卡牌复制、删除、改造。
+- `docs/02-systems/potions.md`：药水永久成长、一次性战斗药水、卡牌复制、删除、改造。
 - `docs/02-systems/node-modifiers.md`：节点修正和环境效果。
 - `docs/03-content/data/cards.json`：当前正式卡牌内容表。
 - `docs/06-implementation-spec/data-schema.md`：运行时数据结构基线。
@@ -199,16 +199,17 @@ type TargetType =
 
 | 上下文 | 来源 | 可用状态 |
 |--------|------|----------|
-| `battle` | 卡牌、普攻、敌人技能、战斗内状态 | `BattleState`、来源单位、目标单位、牌区 |
-| `between_nodes` | 药水、节点间事件、商店服务 | `RunSave`、角色 run 状态、药水背包、装备槽 |
+| `battle` | 卡牌、普攻、敌人技能、战斗内状态、一次性战斗药水 | `BattleState`、来源单位、目标单位、牌区 |
+| `between_nodes` | 永久成长药水、节点间事件、商店服务 | `RunSave`、角色 run 状态、药水背包、装备槽 |
 | `reward` | 战后奖励、Boss 奖励 | `RunSave`、奖励池、待领奖励 |
 | `run_setup` | 新 run、序章、章节进入 | `ProfileSave`、`RunSave` |
 
 效果执行器必须校验上下文。例如：
 
 - `damage` 只能在战斗上下文执行。
-- `potion` 的永久属性和卡牌操作只能在节点之间执行。
-- `card_operation` 可以由药水、装备、事件或奖励触发，但商店不能直接提供删牌或买牌服务。
+- `PotionDef.useTiming = "between_nodes"` 的永久属性和卡牌操作只能在节点之间执行。
+- `PotionDef.useTiming = "player_action"` 的一次性战斗药水只能在战斗 `player_action` 阶段执行，治疗和 `duration: "battle"` 增益在战斗上下文结算。
+- `card_operation` 可以由药水、装备、事件或奖励触发；商店边界见 [商店系统](../02-systems/shop.md)。
 
 ## 效果执行顺序
 
@@ -955,7 +956,7 @@ interface CardOperationDef {
 - 操作静态卡牌定义时必须生成或修改 `CardInstance`，不能改写 `CardDef`。
 - 装备附带卡牌必须记录 `sourceInstanceId`；装备替换或回收时同步移除。
 - 药水造成的新增、复制、删除、改造为永久 run 改动。
-- 商店不能直接卖卡，也不能直接删卡；只能通过药水间接触发。
+- 商店与卡牌操作的边界见 [商店系统](../02-systems/shop.md)。
 
 ## 敌人和召唤效果
 
@@ -997,5 +998,5 @@ interface CardOperationDef {
 - 百分比使用百分数，不使用 0.3 表示 30%。
 - `target` 必须是合法 `TargetType`。
 - `duration` 必须是数字、`battle`、`run` 或 `permanent`。
-- `card_operation` 不得在商店服务中直接作为删牌或买牌功能暴露。
+- `card_operation` 的商店边界见 [商店系统](../02-systems/shop.md)。
 - 内容表必须使用本文件定义的正式 DSL；没有登记语义的字段不得进入机器可读内容表。

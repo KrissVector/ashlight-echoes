@@ -1,6 +1,6 @@
 # 实现规格说明
 
-本目录用于承载《Ashlight Echoes》重构开发时直接面向 Codex / Claude Code 的实现规格。
+本目录用于承载《Ashlight Echoes》重构开发时直接面向 Codex / Claude Code 的实现规格。其中 [run-flow.md](run-flow.md) 同时是核心玩法流程的唯一设计源头。
 
 完整文档体系见 [../README.md](../README.md)。本目录不是完整设计入口；它负责把 `docs/02-systems/` 和 `docs/03-content/` 中已经确认的设计翻译成更适合开发执行的数据契约、状态机规则、内容边界和验收标准。
 
@@ -25,15 +25,15 @@
 5. [custom-effect-handlers.md](custom-effect-handlers.md)：`customId` 特殊效果的 handler 注册、触发窗口和全量语义清单。
 6. [run-flow.md](run-flow.md)：序章、第 1 章节点生成、奖励、商店、事件、存档和章节结算。
 
-当前已建立 [mvp-scope.md](mvp-scope.md)、[data-schema.md](data-schema.md)、[battle-state-machine.md](battle-state-machine.md)、[effect-dsl.md](effect-dsl.md)、[custom-effect-handlers.md](custom-effect-handlers.md) 和 [run-flow.md](run-flow.md)。其中 [run-flow.md](run-flow.md) 是初版规格，仍需继续按 [../02-systems/map-encounters.md](../02-systems/map-encounters.md) 与 [../02-systems/node-modifiers.md](../02-systems/node-modifiers.md) 校准。
+当前已建立 [mvp-scope.md](mvp-scope.md)、[data-schema.md](data-schema.md)、[battle-state-machine.md](battle-state-machine.md)、[effect-dsl.md](effect-dsl.md)、[custom-effect-handlers.md](custom-effect-handlers.md) 和 [run-flow.md](run-flow.md)。其中 [run-flow.md](run-flow.md) 定义完整 run 流程；地图候选细节和节点修正内容分别由 [../02-systems/map-encounters.md](../02-systems/map-encounters.md) 与 [../02-systems/node-modifiers.md](../02-systems/node-modifiers.md) 补充。
 
 MVP 暂不单独维护 `acceptance-cases.md`。形成可玩版本后，以项目负责人实际游玩体验为主要验收方式；验收标准见 [mvp-scope.md](mvp-scope.md)。
 
 ## 与设计源头的关系
 
-`06-implementation-spec/` 的定位是实现契约，不是玩法设计替代品。
+`06-implementation-spec/` 的主要定位是实现契约；例外是 [run-flow.md](run-flow.md)，它同时承担核心玩法流程设计源头。
 
-- 系统设计意图以 `docs/02-systems/` 为源头。
+- 除核心玩法流程外，系统设计意图以 `docs/02-systems/` 为源头。
 - 角色、卡牌、敌人等内容定义以 `docs/03-content/` 和 `docs/03-content/data/` 为源头。
 - 字段结构、运行时状态、结算顺序和可执行流程以本目录为实现规格。
 - 如果实现规格与系统设计冲突，先视为文档 bug，必须修正文档，不允许在实现层自行猜测。

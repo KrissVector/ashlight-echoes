@@ -6,7 +6,7 @@
 
 ## 目的
 
-本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌、章节、装备、药水、节点修正和奖励表 `id`（唯一标识）的来源。
+本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌、章节、装备、药水、节点修正、商店和奖励表 `id`（唯一标识）的来源。
 
 本文使用 TypeScript 风格描述字段类型，但不要求最终项目必须使用 TypeScript。实现时可以转成 JSON Schema、Zod、Pydantic、C# class、Godot Resource 或其他等价结构。
 
@@ -21,8 +21,9 @@
 | `docs/03-content/data/chapters.json` | 序章与 1-5 章的章节标题、主地点、固定步摘要 | 作为 `ChapterDef` 的正式内容来源；遭遇表和节点生成细节在 `run-flow.md` 补齐 |
 | `docs/03-content/data/equipment.json` | 装备、装备附带卡、诅咒牌和装备池 | 作为 `EquipmentDef`、装备关联 `CardDef` 和装备池的正式内容来源 |
 | `docs/03-content/data/potions.json` | 药水、药水新增卡和药水池 | 作为 `PotionDef`、药水关联 `CardDef` 和药水池的正式内容来源 |
-| `docs/03-content/data/node-modifiers.json` | 战后随机事件、节点选项自带修正和第 1 章可用池 | 作为 `NodeModifierDef` 的正式内容来源 |
-| `docs/03-content/data/reward-tables.json` | 属性成长池、第 1 章奖励表、金币规则和装备品质分布 | 作为 `RewardTableDef` 与成长池的正式内容来源 |
+| `docs/03-content/data/node-modifiers.json` | 节点结束后随机事件、节点选项自带修正和第 1 章可用池 | 作为 `NodeModifierDef` 的正式内容来源 |
+| `docs/03-content/data/reward-tables.json` | 属性成长池、第 1 章奖励表、金币规则和装备掉落品质分布 | 作为 `RewardTableDef` 与成长池的正式内容来源 |
+| `docs/03-content/data/shops.json` | 第 1 章商店定义、商品规则和常驻服务 | 作为 `ShopDef` 的正式内容来源 |
 
 对应的权威规则来源如下：
 
@@ -31,12 +32,14 @@
 | `docs/03-content/characters.md` | 5 名角色基础属性、定位、解锁章节 | 角色设计说明来源；数值以 `docs/03-content/data/characters.json` 为准 |
 | `docs/02-systems/cards.md` | 固有卡牌数量、上场限制、牌区规则、升级规则 | 卡牌与牌区规则权威来源 |
 | `docs/02-systems/battle.md` | 属性列表、能量、AS、伤害、状态和效果类型 | 战斗属性与效果类型权威来源 |
-| `docs/02-systems/roguelike-run.md` | 奖励、金币、成长池、掉落分布、商店服务 | 奖励和经济权威来源 |
+| `docs/02-systems/roguelike-run.md` | 奖励、金币、成长池、掉落分布 | 奖励和经济权威来源 |
 | `docs/02-systems/equipment.md` | 装备稀有度、槽位、掉落、装备列表 | 装备设计来源；机器内容见 `docs/03-content/data/equipment.json` |
 | `docs/02-systems/potions.md` | 药水稀有度、背包、使用时机、药水列表 | 药水设计来源；机器内容见 `docs/03-content/data/potions.json` |
-| `docs/02-systems/map-encounters.md` | 章节、步数、节点类型、选项生成、固定步 | 章节和节点权威来源 |
+| `docs/02-systems/shop.md` | 商店商品、服务、价格、品质分布和 `shops.json` 规则 | 商店设计来源；机器内容见 `docs/03-content/data/shops.json` |
+| `docs/02-systems/map-encounters.md` | 章节、步数、节点类型、选项生成、固定步 | 地图节点候选设计来源 |
 | `docs/02-systems/node-modifiers.md` | 47 个节点修正与效果描述 | 节点修正设计来源；机器内容见 `docs/03-content/data/node-modifiers.json` |
 | `docs/03-content/enemies-chapter-1.md` | 序章与第 1 章敌人数值、AI 行为和遭遇组合 | 序章与第 1 章敌人和遭遇内容来源 |
+| `docs/06-implementation-spec/run-flow.md` | 核心玩法循环、节点结算顺序、奖励和下一节点生成 | 完整 run 流程唯一设计源头 |
 
 ## 统一约定
 
@@ -327,7 +330,7 @@ interface CardModification {
 }
 ```
 
-`canRemove` 是运行时规则开关。具体药水或事件能否移除固有卡牌，由该效果的 `CardOperationDef.allowIntrinsic` 决定，不在商店中提供直接删牌服务。
+`canRemove` 是运行时规则开关。具体药水或事件能否移除固有卡牌，由该效果的 `CardOperationDef.allowIntrinsic` 决定；商店边界见 [商店系统](../02-systems/shop.md)。
 
 ## 效果定义
 
@@ -537,7 +540,7 @@ interface CardFilterDef {
 }
 ```
 
-商店节点不直接提供 `remove_card` 或 `add_card` 服务；商店只能通过出售药水，间接触发药水中的 `card_operation`。
+商店与卡牌操作的边界见 [商店系统](../02-systems/shop.md)。
 
 ## 装备定义
 
@@ -578,10 +581,10 @@ interface PriceDef {
 规则：
 
 - 每名角色最多装备 3 件。
-- 装备后锁定，只能被新装备替换或在商店按规则回收。
+- 装备后锁定，只能被新装备替换；商店处理规则见 [商店系统](../02-systems/shop.md)。
 - 史诗、传说、诅咒装备必须至少有一项 `cardOperations`。
 - 装备添加的卡牌必须记录 `sourceInstanceId`，替换或回收装备时同步移除。
-- 诅咒装备回收不是获得金币，而是花费金币处理。
+- 诅咒装备的商店处理规则见 [商店系统](../02-systems/shop.md)。
 
 ### 装备实例
 
@@ -601,6 +604,7 @@ interface EquipmentInstance {
 
 ```ts
 type PotionId = string;
+type PotionUseTiming = "between_nodes" | "player_action";
 
 interface PotionDef {
   id: PotionId;
@@ -608,6 +612,8 @@ interface PotionDef {
   rarity: PotionRarity;
   description: string;
   targetType: "single_character" | "all_characters" | "none";
+  useTiming?: PotionUseTiming;
+  consumeOnUse?: boolean;
   effects: EffectDef[];
   price?: PriceDef;
   tags?: string[];
@@ -624,8 +630,11 @@ interface PotionInstance {
 规则：
 
 - 药水背包全队共享，上限 3。
-- 药水只能在节点之间使用。
-- 药水效果永久且不可撤销，写入 `RunCharacterState`、`RunGlobalStats` 或对应卡牌实例。
+- `useTiming` 缺省时视为 `between_nodes`，用于永久成长药水。
+- `useTiming: "between_nodes"` 的药水只能在节点之间使用，效果写入 `RunCharacterState`、`RunGlobalStats` 或对应卡牌实例。
+- `useTiming: "player_action"` 的药水只能在战斗 `player_action` 阶段使用，不消耗 AS，不消耗或产生能量，效果在战斗上下文中结算。
+- `consumeOnUse` 缺省时视为 `true`。药水使用后从背包移除。
+- 一次性战斗药水的治疗为即时效果；属性增益应使用 `duration: "battle"`，战斗结束后移除。
 - 背包满时获得新药水，必须选择丢弃旧药水或放弃新药水。
 
 ## 敌人定义
@@ -890,6 +899,17 @@ interface NodeModifierDef {
   description: string;
 }
 
+interface NodeModifierPoolEntryDef {
+  modifierId: NodeModifierId;
+  weight: number;
+}
+
+interface NodeModifierDataFile {
+  schemaVersion: number;
+  nodeModifiers: NodeModifierDef[];
+  pools: Record<string, NodeModifierId[] | NodeModifierPoolEntryDef[]>;
+}
+
 interface CleanseRuleDef {
   type:
     | "after_boss"
@@ -903,6 +923,13 @@ interface CleanseRuleDef {
 ```
 
 节点修正必须从 `node-modifiers.md` 的 47 项规则转成机器可读数据。第 1 章只加载 `chapterLimit` 允许出现的修正。
+
+规则：
+
+- `source: "post_node_random"` 表示节点结束后随机事件，不是战斗后专属事件。
+- 节点结束后随机事件池必须使用 `NodeModifierPoolEntryDef[]`，实现层直接读取 `weight` 做加权随机。
+- 当前第 1 章节点结束后随机事件池 `pool_ch1_post_node_random_modifiers` 中所有条目 `weight = 100`，表示等概率抽取。
+- 节点选项自带修正池可以继续使用 `NodeModifierId[]`；是否绑定到候选节点由节点生成规则决定。
 
 ## 奖励定义
 
@@ -973,9 +1000,7 @@ interface ShopDef {
 
 type ShopItemType =
   | "potion"
-  | "equipment"
-  | "intel"
-  | "boss_item";
+  | "equipment";
 
 interface ShopItemRuleDef {
   itemType: ShopItemType;
@@ -990,19 +1015,23 @@ interface ShopServiceDef {
     | "manual_save"
     | "cleanse_modifier"
     | "repair_equipment"
+    | "remove_cursed_equipment"
     | "recycle_equipment"
-    | "recycle_potion"
-    | "intel_purchase";
-  price: number | PriceDef;
+    | "recycle_potion";
+  price: ShopServicePrice;
+}
+
+type ShopServicePrice =
+  | number
+  | ShopServicePriceRule;
+
+interface ShopServicePriceRule {
+  type: "sell_ratio";
+  sellRatio: number;
 }
 ```
 
-明确规则：
-
-- 商店可以卖药水、装备、情报、Boss 道具。
-- 商店不直接卖卡牌。
-- 商店不提供直接删牌服务。
-- 商店可以概率出售传说药水，由药水间接实现卡牌复制、删除或改造。
+商店商品、服务、价格、品质分布和禁止项见 [商店系统](../02-systems/shop.md)。本文只定义 `ShopDef` 的运行时数据结构。
 
 ## 事件定义
 
@@ -1264,12 +1293,11 @@ docs/03-content/data/events.json
 - 所有 `rarity` 属于对应枚举。
 - 所有 `EffectDef.type` 必须在效果注册表中存在。
 - 所有第 1 章 MVP 必需 encounter、enemy、reward table 均存在。
-- 商店数据不得包含直接卖卡或直接删牌服务。
+- 商店数据必须满足 [商店系统](../02-systems/shop.md) 的校验规则。
 - 第 1 章 Boss 奖励必须能表达史诗装备与诅咒装备二选一。
 
 ## 内容表缺口
 
 本文只定义结构，不补全部内容。当前仍需要单独补正式内容表或状态机规格：
 
-- 补第 1 章商店 `ShopDef` 机器内容表。
 - 补第 1 章事件列表和事件结果。

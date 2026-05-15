@@ -85,7 +85,7 @@ interface CustomEffectHandler {
 | `before_reward` / `after_reward` | 奖励生成前后 | 金币加成、双倍掉落 |
 | `node_option_generation` | 生成下一步候选节点时 | 碎片指引、不祥预感、盲选 |
 | `node_enter` | 进入节点时 | 怪物数量倍率、战斗环境绑定 |
-| `node_complete` | 节点完成后 | 死亡宣告步数、战后随机事件 |
+| `node_complete` | 节点完成后 | 死亡宣告步数、节点结束后随机事件 |
 | `shop_service` | 商店服务执行时 | 净化、修理、诅咒装备处理 |
 | `effect_resolution` | 当前 custom 效果被主动结算时 | 装备卡、药水牌、诅咒牌的主动效果 |
 
