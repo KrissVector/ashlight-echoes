@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "rules": {
+    "composition": "base_hint_then_node_option_modifier_hint",
+    "selectionOrder": "content_first_then_hint",
+    "sharedHintMinContentBindings": 2,
+    "exclusiveHintAllowedForTags": ["fixed_story", "boss"],
+    "postNodeRandomModifiersAreExcluded": true
+  },
+  "baseHints": [
+    {
+      "id": "hint_ch1_outer_ruins_shadows",
+      "chapterId": "chapter_1",
+      "text": "要塞外缘的灰白废墟里，有几处影子在缓慢游荡。",
+      "exclusive": false,
+      "tags": ["outer_corruption", "undead"]
+    },
+    {
+      "id": "hint_ch1_broken_wall_carrion",
+      "chapterId": "chapter_1",
+      "text": "破碎城墙外传来腐肉拖行和低哑啃咬声。",
+      "exclusive": false,
+      "tags": ["outer_corruption", "undead"]
+    },
+    {
+      "id": "hint_ch1_circling_vultures",
+      "chapterId": "chapter_1",
+      "text": "空中有黑影盘旋，地面也留下被啃食过的痕迹。",
+      "exclusive": false,
+      "tags": ["outer_corruption", "vulture"]
+    },
+    {
+      "id": "hint_ch1_rift_beast_growl",
+      "chapterId": "chapter_1",
+      "text": "地下裂隙附近传来压低的兽吼，紫黑色雾气贴着地面流动。",
+      "exclusive": false,
+      "tags": ["void_rift", "beast"]
+    },
+    {
+      "id": "hint_ch1_rift_claw_marks",
+      "chapterId": "chapter_1",
+      "text": "裂隙边缘布满爪痕和拖拽痕，像有什么东西刚刚经过。",
+      "exclusive": false,
+      "tags": ["void_rift", "beast"]
+    },
+    {
+      "id": "hint_ch1_plague_mist_steps",
+      "chapterId": "chapter_1",
+      "text": "废墟低处涌出腥甜的疫雾，里面偶尔传来湿重脚步声。",
+      "exclusive": false,
+      "tags": ["poison", "plague"]
+    },
+    {
+      "id": "hint_ch1_corrupted_tunnel_glow",
+      "chapterId": "chapter_1",
+      "text": "被污染的坑道里亮着零星紫光，空气里混着腐败和星辉残味。",
+      "exclusive": false,
+      "tags": ["void_rift", "lumina"]
+    },
+    {
+      "id": "hint_ch1_training_ground_lines",
+      "chapterId": "chapter_1",
+      "text": "前方似乎是昔日的新人骑士训练场，地面还残留着步法刻线。",
+      "exclusive": false,
+      "tags": ["training", "silver_oath"]
+    },
+    {
+      "id": "hint_ch1_training_flags_armor",
+      "chapterId": "chapter_1",
+      "text": "银白色训练旗倒在废墟边缘，远处传来整齐的甲胄声。",
+      "exclusive": false,
+      "tags": ["training", "silver_oath_remnant"]
+    },
+    {
+      "id": "hint_ch1_wall_crossbow_sounds",
+      "chapterId": "chapter_1",
+      "text": "城墙方向传来弩机拉弦声，残破垛口后有银光闪动。",
+      "exclusive": false,
+      "tags": ["wall", "aim", "silver_oath_remnant"]
+    },
+    {
+      "id": "hint_ch1_old_formation",
+      "chapterId": "chapter_1",
+      "text": "断墙后的旧阵地仍像在执行命令，盾牌和弩线交错成残阵。",
+      "exclusive": false,
+      "tags": ["shield", "aim", "silver_oath_remnant"]
+    },
+    {
+      "id": "hint_ch1_armory_rust",
+      "chapterId": "chapter_1",
+      "text": "前方似乎是旧军械库的残区，铁锈和封存药剂的气味混在一起。",
+      "exclusive": false,
+      "tags": ["armory", "supply"]
+    },
+    {
+      "id": "hint_ch1_armory_shield_rack",
+      "chapterId": "chapter_1",
+      "text": "半塌的库门后露出封存箱和旧盾架，金属拖地声从深处传来。",
+      "exclusive": false,
+      "tags": ["armory", "shield"]
+    },
+    {
+      "id": "hint_ch1_bell_tower_echo",
+      "chapterId": "chapter_1",
+      "text": "远处钟楼残影在雾中摇晃，低沉回声沿着石道传来。",
+      "exclusive": false,
+      "tags": ["bell_tower", "silver_oath_remnant"]
+    },
+    {
+      "id": "hint_ch1_broken_stele_marks",
+      "chapterId": "chapter_1",
+      "text": "不远处能看到一些碎裂的石碑遗迹，碑面仍有银色刻痕。",
+      "exclusive": false,
+      "tags": ["oath_stele", "silver_oath"]
+    },
+    {
+      "id": "hint_ch1_oath_fragments",
+      "chapterId": "chapter_1",
+      "text": "旧誓言的残句刻在倒塌石碑上，周围安静得不太自然。",
+      "exclusive": false,
+      "tags": ["oath_stele", "silver_oath"]
+    },
+    {
+      "id": "hint_ch1_lamplight_or_lumina",
+      "chapterId": "chapter_1",
+      "text": "废墟深处有微弱灯火，像补给点，也像某种残留星辉。",
+      "exclusive": false,
+      "tags": ["shop", "lumina", "supply"]
+    },
+    {
+      "id": "hint_ch1_lamplight_voices",
+      "chapterId": "chapter_1",
+      "text": "前方隐约有灯火和低声人语，临时帐布在断墙后晃动。",
+      "exclusive": false,
+      "tags": ["shop", "supply"]
+    },
+    {
+      "id": "hint_ch1_infirmary_supplies",
+      "chapterId": "chapter_1",
+      "text": "破旧医帐和补给箱散落在路边，封条上还能看到银誓纹样。",
+      "exclusive": false,
+      "tags": ["infirmary", "supply"]
+    },
+    {
+      "id": "hint_ch1_small_campfire",
+      "chapterId": "chapter_1",
+      "text": "前方似乎是个小型营地，隐约可看见篝火和炊烟。",
+      "exclusive": false,
+      "tags": ["camp", "shop", "blood_banner_remnant"]
+    },
+    {
+      "id": "hint_ch1_old_waystation_tracks",
+      "chapterId": "chapter_1",
+      "text": "前方似乎是个旧驿站，地上有着车辙的痕迹。",
+      "exclusive": false,
+      "tags": ["waystation", "shop", "outer_corruption"]
+    },
+    {
+      "id": "hint_ch1_wasteland_footsteps",
+      "chapterId": "chapter_1",
+      "text": "荒原边缘传来急促脚步声，空中有黑影跟着盘旋。",
+      "exclusive": false,
+      "tags": ["wasteland", "chase", "vulture"]
+    },
+    {
+      "id": "hint_ch1_chase_traces",
+      "chapterId": "chapter_1",
+      "text": "断枝和碎石间残留着追逐痕迹，前方像刚爆发过一场混乱。",
+      "exclusive": false,
+      "tags": ["chase", "outer_corruption"]
+    },
+    {
+      "id": "hint_ch1_silver_light_path",
+      "chapterId": "chapter_1",
+      "text": "要塞深处的银色残光凝成一条路，像在把人引向旧日誓约的遗留之处。",
+      "exclusive": false,
+      "tags": ["silver_oath", "oath_stele"]
+    },
+    {
+      "id": "hint_ch1_ordered_guard_traces",
+      "chapterId": "chapter_1",
+      "text": "前方的守卫痕迹变得异常整齐，像有人仍在维持骑士团最后的阵列。",
+      "exclusive": false,
+      "tags": ["silver_oath_remnant", "shield"]
+    },
+    {
+      "id": "hint_ch1_training_stakes",
+      "chapterId": "chapter_1",
+      "text": "破损木桩沿训练线排开，像刚有人复盘过旧式守势。",
+      "exclusive": false,
+      "tags": ["training", "defense"]
+    },
+    {
+      "id": "hint_ch1_silver_lamp_device",
+      "chapterId": "chapter_1",
+      "text": "银誓遗留的灯器还在发光，周围没有明显脚印。",
+      "exclusive": false,
+      "tags": ["lumina", "infirmary", "shop"]
+    },
+    {
+      "id": "hint_ch1_story_last_stand",
+      "chapterId": "chapter_1",
+      "text": "血旗残党已经追上来，灼夜的护身符在混乱中发出灼热回响。",
+      "exclusive": true,
+      "tags": ["fixed_story", "chapter_1_step_6"]
+    },
+    {
+      "id": "hint_ch1_story_breakout",
+      "chapterId": "chapter_1",
+      "text": "后方追兵逼近，前方残墙只留下一条勉强突围的空隙。",
+      "exclusive": true,
+      "tags": ["fixed_story", "chapter_1_step_6"]
+    },
+    {
+      "id": "hint_ch1_boss_reinhardt",
+      "chapterId": "chapter_1",
+      "text": "要塞最深处传来沉重的盾击声，银白残光在断裂王座前凝成最后的守门人。",
+      "exclusive": true,
+      "tags": ["boss", "silver_oath"]
+    }
+  ],
+  "contentHints": {
+    "encounters": {
+      "enc_ch1_normal_outer_husks": ["hint_ch1_outer_ruins_shadows", "hint_ch1_broken_wall_carrion", "hint_ch1_chase_traces", "hint_ch1_old_waystation_tracks"],
+      "enc_ch1_normal_vulture_husks": ["hint_ch1_outer_ruins_shadows", "hint_ch1_circling_vultures", "hint_ch1_wasteland_footsteps", "hint_ch1_old_waystation_tracks"],
+      "enc_ch1_normal_void_wolf_whelps": ["hint_ch1_rift_beast_growl", "hint_ch1_rift_claw_marks", "hint_ch1_corrupted_tunnel_glow"],
+      "enc_ch1_normal_scavenger_vultures": ["hint_ch1_broken_wall_carrion", "hint_ch1_circling_vultures", "hint_ch1_chase_traces"],
+      "enc_ch1_normal_plague_scavengers": ["hint_ch1_plague_mist_steps", "hint_ch1_corrupted_tunnel_glow"],
+      "enc_ch1_normal_plague_vulture_pack": ["hint_ch1_circling_vultures", "hint_ch1_plague_mist_steps", "hint_ch1_wasteland_footsteps"],
+      "enc_ch1_normal_void_wolf_pack": ["hint_ch1_rift_beast_growl", "hint_ch1_rift_claw_marks"],
+      "enc_ch1_normal_ashen_crossfire": ["hint_ch1_wall_crossbow_sounds", "hint_ch1_old_formation", "hint_ch1_bell_tower_echo"],
+      "enc_ch1_normal_hollow_armory": ["hint_ch1_armory_rust", "hint_ch1_armory_shield_rack", "hint_ch1_infirmary_supplies"],
+      "enc_ch1_normal_bandit_vulture_ambush": ["hint_ch1_wasteland_footsteps", "hint_ch1_chase_traces", "hint_ch1_small_campfire", "hint_ch1_lamplight_voices"],
+      "enc_ch1_normal_ashen_knight_squad": ["hint_ch1_training_ground_lines", "hint_ch1_training_flags_armor", "hint_ch1_training_stakes"],
+      "enc_ch1_normal_hollow_crossfire": ["hint_ch1_training_flags_armor", "hint_ch1_wall_crossbow_sounds", "hint_ch1_old_formation"],
+      "enc_ch1_elite_void_wolf_king": ["hint_ch1_rift_beast_growl", "hint_ch1_rift_claw_marks", "hint_ch1_corrupted_tunnel_glow"],
+      "enc_ch1_elite_ashen_commander": ["hint_ch1_training_ground_lines", "hint_ch1_broken_stele_marks", "hint_ch1_ordered_guard_traces"],
+      "enc_ch1_elite_bound_oath_bulwark": ["hint_ch1_armory_shield_rack", "hint_ch1_silver_light_path", "hint_ch1_ordered_guard_traces"],
+      "enc_ch1_elite_bell_tower_binder": ["hint_ch1_wall_crossbow_sounds", "hint_ch1_bell_tower_echo", "hint_ch1_oath_fragments"],
+      "enc_ch1_shakuya_ultimate_unlock": ["hint_ch1_story_last_stand"],
+      "enc_ch1_shakuya_breakout": ["hint_ch1_story_breakout"],
+      "enc_ch1_boss_reinhardt": ["hint_ch1_boss_reinhardt"]
+    },
+    "events": {
+      "event_ch1_broken_oath_stele": ["hint_ch1_broken_stele_marks", "hint_ch1_oath_fragments", "hint_ch1_silver_light_path"],
+      "event_ch1_collapsed_armory": ["hint_ch1_armory_rust", "hint_ch1_armory_shield_rack", "hint_ch1_infirmary_supplies"],
+      "event_ch1_lumina_lantern": ["hint_ch1_corrupted_tunnel_glow", "hint_ch1_lamplight_or_lumina", "hint_ch1_silver_lamp_device"],
+      "event_ch1_sealed_infirmary": ["hint_ch1_lamplight_or_lumina", "hint_ch1_infirmary_supplies", "hint_ch1_silver_lamp_device"],
+      "event_ch1_silent_training_ground": ["hint_ch1_training_ground_lines", "hint_ch1_training_flags_armor", "hint_ch1_training_stakes"]
+    },
+    "shops": {
+      "shop_ch1_default": ["hint_ch1_small_campfire", "hint_ch1_old_waystation_tracks", "hint_ch1_lamplight_voices"]
+    }
+  },
+  "nodeOptionModifierHints": {
+    "node_swarm": ["那里聚集着远超寻常的敌影。"],
+    "node_endless_horde": ["前方的脚步声密密麻麻，像是没有尽头。"],
+    "node_bloodthirst_frenzy": ["前方的敌意格外凶残，连空气都带着躁动。"],
+    "node_desperate_charge": ["那些身影摇摇欲坠，却正以亡命般的气势冲来。"],
+    "node_treasure_guard": ["更深处似乎有被严密守住的贵重战利品。"],
+    "node_undying_body": ["前方的敌影伤口不断闭合，像是很难真正倒下。"],
+    "node_ambush": ["道路两侧安静得反常，像有人正等你踏进去。"],
+    "node_hidden_killing_intent": ["那里传来的杀意被压得很低，却让人本能地想后退。"],
+    "node_heavy_ambush": ["前方不止一处埋伏，退路也可能已经被盯上。"],
+    "node_energy_depletion": ["附近星辉流动稀薄，像会吞掉刚聚起的能量。"],
+    "node_shield_field": ["残留护光覆盖着前路，靠近时能感到一层温热屏障。"],
+    "node_energy_surge": ["星辉流动异常充沛，像能持续补充战斗能量。"],
+    "node_energy_overflow": ["过量星辉从裂隙中涌出，能量几乎不受控制地灌入回路。"],
+    "node_poison_mist": ["毒雾贴着地面蔓延，敌我双方都无法完全避开。"],
+    "node_dust_cloud": ["烟尘遮住视线，任何攻击都更难看清目标。"],
+    "node_void_corrosion": ["虚空腐蚀从地面向外扩散，所有踏入者都会被侵蚀。"],
+    "node_rune_malfunction": ["失控符文干扰术式和技能，只剩最直接的攻击还能可靠执行。"],
+    "node_anti_magic_field": ["一层禁魔领域压在前方，所有魔力都被强行抹平。"],
+    "node_regeneration_ground": ["脚下的残余星辉缓慢回流，伤口会在战斗中不断愈合。"],
+    "node_berserk_field": ["狂暴气息笼罩前路，攻势会被放大，防线却难以维持。"],
+    "node_damage_resonance": ["这里的伤害和治疗都会被异常共振放大。"],
+    "node_cursed_altar": ["诅咒祭坛仍在低鸣，每次动用力量都会索取代价。"],
+    "node_vulnerable_field": ["空气中充满刺痛感，所有人都会更容易被伤到。"],
+    "node_death_ripple": ["死亡的回响在这里徘徊，倒下的瞬间可能牵动整片战场。"],
+    "node_mirror_land": ["前方像一面破碎镜域，敌影正在映出队伍的轮廓。"]
+  }
+}

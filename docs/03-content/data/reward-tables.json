@@ -325,6 +325,16 @@
       "growth_rare_spd_2",
       "growth_rare_gold_50"
     ],
+    "pool_growth_rare_attribute": [
+      "growth_rare_atk_6",
+      "growth_rare_ap_6",
+      "growth_rare_def_5",
+      "growth_rare_hp_30",
+      "growth_rare_crit_8",
+      "growth_rare_cdmg_35",
+      "growth_rare_evd_8",
+      "growth_rare_spd_2"
+    ],
     "pool_growth_epic": [
       "growth_epic_atk_12",
       "growth_epic_ap_12",

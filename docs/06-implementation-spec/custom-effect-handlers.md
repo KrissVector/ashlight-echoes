@@ -86,7 +86,7 @@ interface CustomEffectHandler {
 | `node_option_generation` | 生成下一步候选节点时 | 碎片指引、不祥预感、盲选 |
 | `node_enter` | 进入节点时 | 怪物数量倍率、战斗环境绑定 |
 | `node_complete` | 节点完成后 | 死亡宣告步数、节点结束后随机事件 |
-| `shop_service` | 商店服务执行时 | 净化、修理、诅咒装备处理 |
+| `shop_service` | 商店服务执行时 | 永久 debuff 净化、装备净化、诅咒装备处理 |
 | `effect_resolution` | 当前 custom 效果被主动结算时 | 装备卡、药水牌、诅咒牌的主动效果 |
 
 ## 敌人机制
@@ -241,7 +241,7 @@ interface CustomEffectHandler {
 | `player_damage_taken_plus_30_percent_next_battle` | `before_damage` | 下场战斗中我方受到所有伤害 +30%。战斗结束后移除。 |
 | `after_player_card_play_30_percent_exhaust_random_hand_card` | `after_card_play` | 下场战斗中玩家每次出牌后，30% 概率随机消耗 1 张其它手牌。战斗结束后移除。 |
 | `player_damage_taken_plus_20_percent_each_battle` | `before_damage` | 持续期间我方受到所有伤害 +20%；击败 Boss 或商店净化后移除。 |
-| `disable_random_equipment_on_random_character` | `effect_resolution`, `shop_service` | 随机选择 1 名角色的 1 件装备设为失效；商店修理后恢复。 |
+| `apply_void_corrosion_to_random_equipment_on_random_character` | `effect_resolution`, `shop_service` | 随机选择 1 名角色的 1 件已装备装备，标记为受到虚空侵蚀并失效；通过商店 `cleanse_equipment` 净化该装备后恢复。 |
 | `mark_random_character_death_after_10_nodes` | `node_complete`, `shop_service` | 随机标记 1 名角色。之后每完成 1 个节点计数 +1，达到 10 后该角色本 run 死亡不可上场；商店可净化或复活。 |
 | `random_character_atk_ap_minus_20_percent_until_5_battles_or_shop` | `battle_start`, `battle_end`, `shop_service` | 随机角色 ATK/AP -20%；经过 5 场战斗或商店治疗后移除。 |
 | `next_node_selection_blind_all_information` | `node_option_generation` | 下一次候选节点隐藏所有类型提示、修正描述和风险收益信息。触发后移除。 |

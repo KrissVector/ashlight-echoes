@@ -26,10 +26,6 @@
       ],
       "services": [
         {
-          "type": "manual_save",
-          "price": 10
-        },
-        {
           "type": "recycle_equipment",
           "price": {
             "type": "sell_ratio",
@@ -52,7 +48,7 @@
           "price": 25
         },
         {
-          "type": "repair_equipment",
+          "type": "cleanse_equipment",
           "price": 25
         }
       ]

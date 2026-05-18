@@ -217,18 +217,18 @@
       "tags": ["persistent"]
     },
     {
-      "id": "post_corrosion_infection",
-      "name": "腐蚀侵染",
+      "id": "post_equipment_void_corrosion",
+      "name": "虚空侵蚀",
       "source": ["post_node_random"],
       "polarity": "debuff",
       "applyTo": "run",
       "duration": "run",
       "effects": [
-        { "type": "custom", "customId": "disable_random_equipment_on_random_character" }
+        { "type": "custom", "customId": "apply_void_corrosion_to_random_equipment_on_random_character" }
       ],
-      "cleanseRule": { "type": "shop_cleanse", "price": 25 },
-      "description": "随机一名角色的随机一件装备失效。进入商店修理可消除。",
-      "tags": ["persistent", "equipment"]
+      "cleanseRule": { "type": "shop_cleanse_equipment", "price": 25 },
+      "description": "随机一名角色的随机一件已装备装备受到虚空侵蚀并失效。进入商店净化该装备可恢复。",
+      "tags": ["persistent", "equipment", "void_corrosion"]
     },
     {
       "id": "post_death_sentence",
@@ -692,7 +692,7 @@
       { "modifierId": "post_curse_entangled", "weight": 100 },
       { "modifierId": "post_anxious_mind", "weight": 100 },
       { "modifierId": "post_abyss_curse", "weight": 100 },
-      { "modifierId": "post_corrosion_infection", "weight": 100 },
+      { "modifierId": "post_equipment_void_corrosion", "weight": 100 },
       { "modifierId": "post_death_sentence", "weight": 100 },
       { "modifierId": "post_power_drain", "weight": 100 },
       { "modifierId": "post_miasma_invasion", "weight": 100 }

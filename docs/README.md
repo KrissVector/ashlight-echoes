@@ -29,7 +29,9 @@
 7. [02-systems/roguelike-run.md](02-systems/roguelike-run.md)：奖励、成长池、金币经济和章节推进设计源头。
 8. [02-systems/shop.md](02-systems/shop.md)：商店商品、服务、价格和机器内容表规则。
 9. [02-systems/map-encounters.md](02-systems/map-encounters.md)：地图节点候选、模糊提示、固定步和节点类型规则。
-10. [03-content/data/README.md](03-content/data/README.md)：正式机器内容表入口。
+10. [03-content/node-hints-chapter-1.md](03-content/node-hints-chapter-1.md)：第 1 章节点基础描述和节点自带修正文案。
+11. [03-content/events-chapter-1.md](03-content/events-chapter-1.md)：第 1 章事件节点内容和选项收益。
+12. [03-content/data/README.md](03-content/data/README.md)：正式机器内容表入口。
 
 ## 文档模块
 
@@ -71,8 +73,10 @@
 |------|--------|------|
 | [characters.md](03-content/characters.md) | 当前有效 | 角色定位、属性、初始牌和解锁章节说明。数值以 `data/characters.json` 为准。 |
 | [enemies-chapter-1.md](03-content/enemies-chapter-1.md) | 当前有效 | 序章与第 1 章普通敌人、精英敌人、步 6 追杀剧情节点和 Boss 的数值、AI 与叙事方向。 |
+| [events-chapter-1.md](03-content/events-chapter-1.md) | 当前有效 | 第 1 章事件节点、选项收益、隐藏代价和随机规则。 |
+| [node-hints-chapter-1.md](03-content/node-hints-chapter-1.md) | 当前有效 | 第 1 章节点基础描述、固定节点专属描述和节点自带修正文案。 |
 | [build-archetypes.md](03-content/build-archetypes.md) | 当前有效 | 构筑原型和系统联动方向，用于指导内容扩展和平衡。 |
-| [data/](03-content/data/README.md) | 当前有效 | 正式机器内容表。当前包含角色、卡牌、章节、装备、药水、节点修正、商店和奖励表。 |
+| [data/](03-content/data/README.md) | 当前有效 | 正式机器内容表。当前包含角色、卡牌、章节、装备、药水、敌人、遭遇、事件、节点提示、节点修正、商店和奖励表。 |
 
 `03-content/data/` 中的 JSON 是机器可读内容表，不是草案。`id`（唯一标识）、名称、初始牌、章节主地点、卡牌效果等实现时应读取这里的数据。
 
@@ -149,10 +153,7 @@
 
 这些不是无效文档，而是尚未完全机器化或尚未定死的内容：
 
-- 第 1 章事件节点正式列表、文案库和事件结果表。
-- 节点结束后随机事件触发概率。
-- 第 1 章节点描述文本池。
-- 事件的机器内容表。
+- 暂无阻塞第 1 章 MVP 开发的内容表缺口。
 
 补这些内容时，必须先回到对应设计源头确认规则，再写实现规格和数据表。
 

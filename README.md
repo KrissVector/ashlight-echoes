@@ -14,6 +14,8 @@
 - [肉鸽流程与奖励](docs/02-systems/roguelike-run.md)
 - [核心 Run 流程规格](docs/06-implementation-spec/run-flow.md)
 - [地图与遭遇](docs/02-systems/map-encounters.md)
+- [第 1 章节点提示文案](docs/03-content/node-hints-chapter-1.md)
+- [第 1 章事件节点](docs/03-content/events-chapter-1.md)
 - [商店系统](docs/02-systems/shop.md)
 - [美术风格指南](docs/04-art/style-guide.md)
 - [正式内容表](docs/03-content/data/README.md)
@@ -22,6 +24,7 @@
 ## LLM 协作记忆
 
 - 项目内记忆文件位于 [memory/](memory/README.md)。
+- 当前项目交接状态见 [project-working-state.md](memory/project-working-state.md)。
 - Codex / Claude Code 或其它 LLM pull 本仓库后，必须先读取 `memory/`，并把其中内容同步到本机 LLM 记忆目录，再继续工作。
 - 每次提交前，必须把当前本机 LLM 记忆同步回 `memory/`，确保仓库里的记忆是最新副本。
 - `memory/` 只保存协作偏好和长期工作规则，不替代正式设计文档；玩法、内容和实现规格仍以 `docs/README.md` 中的文档体系为准。
@@ -30,5 +33,5 @@
 
 - 旧原型源码刻意不迁移，避免旧架构和旧规则污染新版实现。
 - 旧技术文档刻意不迁移，技术方案以后按新版设计规格重新定义。
-- `docs/03-content/data/` 是正式内容表，后续实现应以这里的角色、卡牌、章节、装备、药水、节点修正、商店和奖励表 id 为准。
+- `docs/03-content/data/` 是正式内容表，后续实现应以这里的角色、卡牌、章节、装备、药水、敌人、遭遇、事件、节点修正、商店和奖励表 id 为准。
 - 正式设计文档使用“角色 / 队伍成员”表述；叙事基调聚焦群像角色和队伍协作。

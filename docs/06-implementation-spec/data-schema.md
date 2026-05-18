@@ -6,7 +6,7 @@
 
 ## 目的
 
-本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌、章节、装备、药水、节点修正、商店和奖励表 `id`（唯一标识）的来源。
+本文定义《Ashlight Echoes》正式实现使用的数据结构。这里的结构面向 Codex / Claude Code 直接开发。正式内容表位于 `docs/03-content/data/`，实现时应以这些内容表作为角色、卡牌、章节、装备、药水、节点修正、商店、事件和奖励表 `id`（唯一标识）的来源。
 
 本文使用 TypeScript 风格描述字段类型，但不要求最终项目必须使用 TypeScript。实现时可以转成 JSON Schema、Zod、Pydantic、C# class、Godot Resource 或其他等价结构。
 
@@ -22,8 +22,10 @@
 | `docs/03-content/data/equipment.json` | 装备、装备附带卡、诅咒牌和装备池 | 作为 `EquipmentDef`、装备关联 `CardDef` 和装备池的正式内容来源 |
 | `docs/03-content/data/potions.json` | 药水、药水新增卡和药水池 | 作为 `PotionDef`、药水关联 `CardDef` 和药水池的正式内容来源 |
 | `docs/03-content/data/node-modifiers.json` | 节点结束后随机事件、节点选项自带修正和第 1 章可用池 | 作为 `NodeModifierDef` 的正式内容来源 |
+| `docs/03-content/data/node-hints.json` | 第 1 章节点基础描述、固定节点专属描述和节点自带修正文案 | 作为 `NodeHintDef` 与候选节点展示文案的正式内容来源 |
 | `docs/03-content/data/reward-tables.json` | 属性成长池、第 1 章奖励表、金币规则和装备掉落品质分布 | 作为 `RewardTableDef` 与成长池的正式内容来源 |
 | `docs/03-content/data/shops.json` | 第 1 章商店定义、商品规则和常驻服务 | 作为 `ShopDef` 的正式内容来源 |
+| `docs/03-content/data/events.json` | 第 1 章事件节点、选项、结果和事件池 | 作为 `EventDef` 的正式内容来源 |
 
 对应的权威规则来源如下：
 
@@ -39,6 +41,8 @@
 | `docs/02-systems/map-encounters.md` | 章节、步数、节点类型、选项生成、固定步 | 地图节点候选设计来源 |
 | `docs/02-systems/node-modifiers.md` | 47 个节点修正与效果描述 | 节点修正设计来源；机器内容见 `docs/03-content/data/node-modifiers.json` |
 | `docs/03-content/enemies-chapter-1.md` | 序章与第 1 章敌人数值、AI 行为和遭遇组合 | 序章与第 1 章敌人和遭遇内容来源 |
+| `docs/03-content/events-chapter-1.md` | 第 1 章事件节点、选项收益和随机规则 | 第 1 章事件内容来源；机器内容见 `docs/03-content/data/events.json` |
+| `docs/03-content/node-hints-chapter-1.md` | 第 1 章节点基础描述、节点自带修正文案和展示规则 | 第 1 章节点提示来源；机器内容见 `docs/03-content/data/node-hints.json` |
 | `docs/06-implementation-spec/run-flow.md` | 核心玩法循环、节点结算顺序、奖励和下一节点生成 | 完整 run 流程唯一设计源头 |
 
 ## 统一约定
@@ -794,11 +798,42 @@ interface NodeOptionRuleDef {
 interface NodeOptionDef {
   optionId: string;
   nodeType: NodeType;
+  hintId?: NodeHintId;
   hintText: string;
   encounterId?: EncounterId;
   eventId?: string;
   shopId?: string;
   modifierIds: NodeModifierId[];
+}
+
+type NodeHintId = string;
+
+interface NodeHintDef {
+  id: NodeHintId;
+  chapterId: ChapterId;
+  text: string;
+  exclusive: boolean;
+  tags?: string[];
+}
+
+interface NodeHintRulesDef {
+  composition: "base_hint_then_node_option_modifier_hint";
+  selectionOrder: "content_first_then_hint";
+  sharedHintMinContentBindings: number;
+  exclusiveHintAllowedForTags: string[];
+  postNodeRandomModifiersAreExcluded: boolean;
+}
+
+interface NodeHintsDataFile {
+  schemaVersion: number;
+  rules: NodeHintRulesDef;
+  baseHints: NodeHintDef[];
+  contentHints: {
+    encounters: Record<EncounterId, NodeHintId[]>;
+    events: Record<EventId, NodeHintId[]>;
+    shops: Record<ShopId, NodeHintId[]>;
+  };
+  nodeOptionModifierHints: Record<NodeModifierId, string[]>;
 }
 
 interface EncounterDef {
@@ -914,6 +949,7 @@ interface CleanseRuleDef {
   type:
     | "after_boss"
     | "shop_cleanse"
+    | "shop_cleanse_equipment"
     | "after_battles"
     | "after_steps"
     | "none";
@@ -928,7 +964,8 @@ interface CleanseRuleDef {
 
 - `source: "post_node_random"` 表示节点结束后随机事件，不是战斗后专属事件。
 - 节点结束后随机事件池必须使用 `NodeModifierPoolEntryDef[]`，实现层直接读取 `weight` 做加权随机。
-- 当前第 1 章节点结束后随机事件池 `pool_ch1_post_node_random_modifiers` 中所有条目 `weight = 100`，表示等概率抽取。
+- 当前第 1 章节点完成后 100% 触发 1 个节点结束后随机事件。
+- 当前第 1 章节点结束后随机事件池 `pool_ch1_post_node_random_modifiers` 中所有条目 `weight = 100`，表示从池内完全随机、等权抽取。
 - 节点选项自带修正池可以继续使用 `NodeModifierId[]`；是否绑定到候选节点由节点生成规则决定。
 
 ## 奖励定义
@@ -936,6 +973,7 @@ interface CleanseRuleDef {
 ```ts
 type RewardType =
   | "growth_choice"
+  | "growth_apply"
   | "gold"
   | "potion_drop"
   | "equipment_drop"
@@ -956,6 +994,27 @@ interface RewardDef {
   rarityWeights?: Partial<Record<GrowthRarity | PotionRarity | EquipmentRarity, number>>;
   poolId?: string;
   config?: Record<string, unknown>;
+}
+
+type GrowthRewardTargetScope =
+  | "selected_character"
+  | "run_roster"
+  | "global";
+
+type GrowthRewardSelectionMode =
+  | "same_for_all_targets"
+  | "random_per_target";
+
+interface GrowthApplyRewardConfig {
+  targetScope: GrowthRewardTargetScope;
+  selectionMode?: GrowthRewardSelectionMode;
+  growthOptionId?: string;
+  growths?: InlineGrowthDef[];
+}
+
+interface InlineGrowthDef {
+  op: "add_flat" | "add_percent";
+  value: Record<string, number>;
 }
 
 interface GrowthOptionDef {
@@ -983,6 +1042,10 @@ interface UnlockDef {
 - 战后属性成长为三选一，三个选项独立生成。
 - 每个成长选项最多单独刷新 1 次。
 - 金币、药水、装备、卡牌升级按 `roguelike-run.md`、`equipment.md`、`potions.md` 的当前规则生成。
+- `growth_apply` 直接应用属性成长，不进入三选一界面。它用于事件奖励、剧情奖励等明确给定成长的来源。
+- `growth_apply.config.targetScope = "run_roster"` 表示作用于当前 `RunState.roster` 全员，不限当前上场角色。
+- `growth_apply.config.selectionMode = "random_per_target"` 表示每个目标独立从 `poolId` 指向的成长池中随机 1 项；未写时默认同一个成长应用到全部目标。
+- 奖励若只写 `poolId` 而不写 `rarityWeights`，则从该池所有条目中等权随机抽取，不按品质先抽。
 - `card_upgrade` 可通过 `config.targetCardId`、`config.upgradeIds` 和 `config.choiceCount` 指定只升级某一张牌，例如第 1 章步 6「血战到底！」胜利后只在 `flame_raven_up1` 与 `flame_raven_up2` 中二选一。
 - Boss 奖励表不得只写一个“随机装备”；必须能表达第 1 章史诗装备与诅咒装备二选一。
 
@@ -1012,9 +1075,8 @@ interface ShopItemRuleDef {
 
 interface ShopServiceDef {
   type:
-    | "manual_save"
     | "cleanse_modifier"
-    | "repair_equipment"
+    | "cleanse_equipment"
     | "remove_cursed_equipment"
     | "recycle_equipment"
     | "recycle_potion";
@@ -1071,9 +1133,20 @@ interface EventResultDef {
   rewards?: RewardDef[];
   text?: string;
 }
+
+interface EventPoolEntryDef {
+  eventId: EventId;
+  weight: number;
+}
+
+interface EventDataFile {
+  schemaVersion: number;
+  events: EventDef[];
+  pools: Record<string, EventPoolEntryDef[]>;
+}
 ```
 
-MVP 的第 1 章事件列表仍未补齐。实现时可以先做少量事件，但结构必须支持金币、药水、节点修正和 run 状态变化。
+第 1 章事件机器内容见 `docs/03-content/data/events.json`。事件节点不会触发普通战或精英战的常规奖励表；事件选项自身给予的金钱、药水、装备、属性成长或卡牌升级是事件奖励。
 
 ## 运行时存档
 
@@ -1132,7 +1205,6 @@ interface RunSave {
   routeHistory: RouteHistoryEntry[];
   flags: Record<string, boolean>;
   autoSaveUpdatedAt?: string;
-  manualSaveUpdatedAt?: string;
 }
 ```
 
@@ -1255,7 +1327,7 @@ interface StatusInstance {
 }
 ```
 
-MVP 可以不支持战斗中手动存档；但为了调试、自动测试和崩溃恢复，战斗状态结构应保持可序列化。
+MVP 不支持战斗中存档；但为了调试、自动测试和崩溃恢复，战斗状态结构应保持可序列化。
 
 `remainingAs` 只用于玩家角色。敌方单位没有 AS，不写入 `remainingAs`；敌方行动阶段中每个存活敌人每回合只解析 1 次 AI 行动。
 
@@ -1271,6 +1343,7 @@ docs/03-content/data/equipment.json
 docs/03-content/data/potions.json
 docs/03-content/data/enemies.json
 docs/03-content/data/encounters.json
+docs/03-content/data/node-hints.json
 docs/03-content/data/node-modifiers.json
 docs/03-content/data/reward-tables.json
 docs/03-content/data/shops.json
@@ -1294,10 +1367,13 @@ docs/03-content/data/events.json
 - 所有 `EffectDef.type` 必须在效果注册表中存在。
 - 所有第 1 章 MVP 必需 encounter、enemy、reward table 均存在。
 - 商店数据必须满足 [商店系统](../02-systems/shop.md) 的校验规则。
+- 商店服务不得包含 `manual_save`；MVP 只使用单自动存档槽。
 - 第 1 章 Boss 奖励必须能表达史诗装备与诅咒装备二选一。
+- `node-hints.json` 中所有 `contentHints` 引用的 encounter、event、shop 和 hint id 必须存在。
+- 除 `exclusive = true` 的固定剧情和 Boss 描述外，每条第 1 章基础描述必须至少被 2 个内容节点引用。
+- 每个第 1 章随机候选内容必须至少绑定 2 条基础描述；固定剧情分支和 Boss 必须各绑定 1 条专属描述。
+- 每个第 1 章可用 `node_option` 修正必须至少有 1 条节点自带修正文案。
 
 ## 内容表缺口
 
-本文只定义结构，不补全部内容。当前仍需要单独补正式内容表或状态机规格：
-
-- 补第 1 章事件列表和事件结果。
+本文只定义结构，不补全部内容。当前没有阻塞第 1 章 MVP 开发的内容表缺口。

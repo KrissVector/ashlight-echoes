@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "event_ch1_broken_oath_stele",
+      "chapterId": "chapter_1",
+      "title": "断裂誓碑",
+      "prompt": "银誓骑士团的誓碑倒在训练场边，碑文被虚空裂纹切成数段。玲纱认得碑尾残留的誓句，那是旧骑士团入誓时必须念出的最后一句。",
+      "options": [
+        {
+          "id": "clean_inscription",
+          "text": "擦净碑文",
+          "results": [
+            {
+              "text": "玲纱重新读出誓句，旧日守护之法在她的记忆中变得清晰。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "card_upgrade",
+                  "count": 1,
+                  "config": {
+                    "targetOwner": "reisa",
+                    "targetCardId": "iron_bastion",
+                    "upgradeIds": ["iron_bastion_up1", "iron_bastion_up2"],
+                    "choiceCount": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "take_silver_oath_fragment",
+          "text": "收起银誓碎片",
+          "results": [
+            {
+              "text": "碎片仍保留着旧骑士团的封存力量，可以作为装备带走。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "equipment_drop",
+                  "count": 1,
+                  "poolId": "pool_equipment_epic_all"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tags": ["chapter_1", "silver_oath", "reisa", "card_upgrade", "equipment"]
+    },
+    {
+      "id": "event_ch1_collapsed_armory",
+      "chapterId": "chapter_1",
+      "title": "残破军械库",
+      "prompt": "半塌的军械库里还压着封存补给。铁架深处有药剂箱，也有被银誓封条锁住的装备匣。",
+      "options": [
+        {
+          "id": "search_medicine_crate",
+          "text": "搜索药剂箱",
+          "results": [
+            {
+              "text": "药剂箱保存得比想象中更好，里面还有能在战斗中派上用场的药剂。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "potion_drop",
+                  "count": 2,
+                  "poolId": "pool_potions_rare_or_epic_all"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "take_sealed_equipment",
+          "text": "搬出封存装备",
+          "results": [
+            {
+              "text": "装备匣上的封条已经松动，里面的力量仍然完整，只是性质难以预料。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "equipment_drop",
+                  "count": 1,
+                  "poolId": "pool_equipment_epic_or_curse_all"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tags": ["chapter_1", "armory", "potion", "equipment"]
+    },
+    {
+      "id": "event_ch1_lumina_lantern",
+      "chapterId": "chapter_1",
+      "title": "星辉残灯",
+      "prompt": "一盏旧式星辉灯仍在暗紫雾气中微弱发光。灯芯的光不像快要熄灭，反而像是在等待有人重新引导它。",
+      "options": [
+        {
+          "id": "stabilize_lantern",
+          "text": "稳定灯火",
+          "results": [
+            {
+              "text": "灯火重新稳定，队伍在后续战斗中更容易汇聚能量。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "growth_apply",
+                  "count": 1,
+                  "config": {
+                    "targetScope": "global",
+                    "growthOptionId": "growth_epic_er_1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "divide_lumina",
+          "text": "分取星辉",
+          "results": [
+            {
+              "text": "星辉被分入每个人的武器与术式回路，攻势变得更加锐利。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "growth_apply",
+                  "count": 1,
+                  "config": {
+                    "targetScope": "run_roster",
+                    "growths": [
+                      {
+                        "op": "add_percent",
+                        "value": { "atk": 10, "ap": 10 }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tags": ["chapter_1", "lumina", "growth"]
+    },
+    {
+      "id": "event_ch1_sealed_infirmary",
+      "chapterId": "chapter_1",
+      "title": "封存医帐",
+      "prompt": "破旧医帐被银誓封条锁住，里面还残留着灾变前的治疗物资。部分药剂已经变色，但封存柜中央仍有几瓶完好的药液。",
+      "options": [
+        {
+          "id": "inventory_supplies",
+          "text": "清点补给",
+          "results": [
+            {
+              "text": "队伍找到了还能流通的旧货币和一瓶保存完好的药水。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "gold",
+                  "count": 100
+                },
+                {
+                  "type": "potion_drop",
+                  "count": 1,
+                  "poolId": "pool_potions_all"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "use_old_medicine",
+          "text": "使用旧药剂",
+          "results": [
+            {
+              "text": "旧药剂仍然有效，每个人都从中获得了不同方向的强化。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "growth_apply",
+                  "count": 1,
+                  "poolId": "pool_growth_rare_attribute",
+                  "config": {
+                    "targetScope": "run_roster",
+                    "selectionMode": "random_per_target"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tags": ["chapter_1", "infirmary", "gold", "potion", "growth"]
+    },
+    {
+      "id": "event_ch1_silent_training_ground",
+      "chapterId": "chapter_1",
+      "title": "沉默训练场",
+      "prompt": "训练场中央还刻着银誓骑士的步法线。玲纱记得这里曾经用来训练守势转换，灼夜则更在意那些能直接用于实战的发力痕迹。",
+      "options": [
+        {
+          "id": "review_defense",
+          "text": "复盘守势",
+          "results": [
+            {
+              "text": "队伍重新熟悉银誓骑士的守势步法，防线变得更稳。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "growth_apply",
+                  "count": 1,
+                  "config": {
+                    "targetScope": "run_roster",
+                    "growths": [
+                      {
+                        "op": "add_flat",
+                        "value": { "def": 5 }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sharpen_offense",
+          "text": "强化攻势",
+          "results": [
+            {
+              "text": "队伍把训练重点放在破阵和追击上，攻击节奏更加果断。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "growth_apply",
+                  "count": 1,
+                  "config": {
+                    "targetScope": "run_roster",
+                    "growths": [
+                      {
+                        "op": "add_percent",
+                        "value": { "atk": 15 }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "balanced_drill",
+          "text": "均衡训练",
+          "results": [
+            {
+              "text": "队伍兼顾守势与攻势，训练成果更加均衡。",
+              "effects": [],
+              "rewards": [
+                {
+                  "type": "growth_apply",
+                  "count": 1,
+                  "config": {
+                    "targetScope": "run_roster",
+                    "growths": [
+                      {
+                        "op": "add_flat",
+                        "value": { "def": 2 }
+                      },
+                      {
+                        "op": "add_percent",
+                        "value": { "atk": 8 }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tags": ["chapter_1", "training", "growth"]
+    }
+  ],
+  "pools": {
+    "pool_ch1_events": [
+      { "eventId": "event_ch1_broken_oath_stele", "weight": 100 },
+      { "eventId": "event_ch1_collapsed_armory", "weight": 100 },
+      { "eventId": "event_ch1_lumina_lantern", "weight": 100 },
+      { "eventId": "event_ch1_sealed_infirmary", "weight": 100 },
+      { "eventId": "event_ch1_silent_training_ground", "weight": 100 }
+    ]
+  }
+}

@@ -13,3 +13,4 @@
 当前同步文件：
 
 - `user-communication-preferences.md`：用户沟通偏好、文档质量要求、字段解释要求、记忆同步规则和项目交付标准。
+- `project-working-state.md`：当前项目交接状态、已确认事项和下次需要继续讨论的问题。
